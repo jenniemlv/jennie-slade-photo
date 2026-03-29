@@ -131,13 +131,68 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated by roadmapper) | | |
+| FOUN-01 | Phase 1 | Pending |
+| FOUN-02 | Phase 1 | Pending |
+| FOUN-03 | Phase 1 | Pending |
+| FOUN-04 | Phase 1 | Pending |
+| FOUN-05 | Phase 1 | Pending |
+| FOUN-06 | Phase 1 | Pending |
+| DESN-03 | Phase 1 | Pending |
+| DESN-05 | Phase 1 | Pending |
+| DESN-07 | Phase 1 | Pending |
+| SEOP-07 | Phase 1 | Pending |
+| SEOP-09 | Phase 1 | Pending |
+| LAYO-01 | Phase 2 | Pending |
+| LAYO-02 | Phase 2 | Pending |
+| LAYO-03 | Phase 2 | Pending |
+| LAYO-04 | Phase 2 | Pending |
+| LAYO-05 | Phase 2 | Pending |
+| LAYO-06 | Phase 2 | Pending |
+| DESN-02 | Phase 2 | Pending |
+| DESN-06 | Phase 2 | Pending |
+| HOME-01 | Phase 3 | Pending |
+| HOME-02 | Phase 3 | Pending |
+| HOME-03 | Phase 3 | Pending |
+| HOME-04 | Phase 3 | Pending |
+| HOME-05 | Phase 3 | Pending |
+| HOME-06 | Phase 3 | Pending |
+| DESN-01 | Phase 3 | Pending |
+| DESN-04 | Phase 3 | Pending |
+| ABOU-01 | Phase 4 | Pending |
+| ABOU-02 | Phase 4 | Pending |
+| ABOU-03 | Phase 4 | Pending |
+| ABOU-04 | Phase 4 | Pending |
+| ABOU-05 | Phase 4 | Pending |
+| PORT-01 | Phase 5 | Pending |
+| PORT-02 | Phase 5 | Pending |
+| PORT-03 | Phase 5 | Pending |
+| PORT-04 | Phase 5 | Pending |
+| PORT-05 | Phase 5 | Pending |
+| PORT-06 | Phase 5 | Pending |
+| PORT-07 | Phase 5 | Pending |
+| PORT-08 | Phase 5 | Pending |
+| SEOP-05 | Phase 5 | Pending |
+| SEOP-08 | Phase 5 | Pending |
+| CONT-01 | Phase 6 | Pending |
+| CONT-02 | Phase 6 | Pending |
+| CONT-03 | Phase 6 | Pending |
+| CONT-04 | Phase 6 | Pending |
+| CONT-05 | Phase 6 | Pending |
+| SEOP-01 | Phase 7 | Pending |
+| SEOP-02 | Phase 7 | Pending |
+| SEOP-03 | Phase 7 | Pending |
+| SEOP-04 | Phase 7 | Pending |
+| SEOP-06 | Phase 7 | Pending |
+| BLOG-01 | Phase 8 | Pending |
+| BLOG-02 | Phase 8 | Pending |
+| BLOG-03 | Phase 8 | Pending |
+| BLOG-04 | Phase 8 | Pending |
 
 **Coverage:**
 - v1 requirements: 43 total
-- Mapped to phases: 0
-- Unmapped: 43
+- Mapped to phases: 43
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-29*
-*Last updated: 2026-03-29 after initial definition*
+*Last updated: 2026-03-29 after roadmap creation — all 43 requirements mapped*
