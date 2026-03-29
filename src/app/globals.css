@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand colors — warm undertone, never cool (per design-spec.md and CLAUDE.md) */
+  /* The grays are warm (slightly yellow/beige undertone). This is intentional. */
+  --color-black: #000000;
+  --color-charcoal: #1a1a1a;
+  --color-gray: #6b6b6b;
+  --color-blue-mist: #b8c5d4;
+  --color-teal-sage: #5f8f8b;
+  --color-warm-gray: #d4d1cb;
+  --color-warm-gray-light: #e3e0da;
+  --color-off-white: #f0eeeb;
+  --color-white: #ffffff;
+
+  /* Font family tokens — CSS variables set by next/font on <html> element */
+  /* These map to Tailwind utilities: font-display, font-heading, etc. */
+  --font-display: var(--font-libre-baskerville), Georgia, serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-subheading: var(--font-apparel), Georgia, sans-serif;
+  --font-body: var(--font-libre-baskerville), Georgia, serif;
+  --font-accent: var(--font-arapey), serif;
+  --font-script: var(--font-destiny), cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Typography hierarchy — matches design-spec.md exactly (D-12) */
+@layer base {
+  /* Title / H1 — Libre Baskerville 30px+ uppercase 0.02em */
+  .type-title {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Heading / H2 — Montserrat 12-14px uppercase 0.02em */
+  .type-heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+  }
+
+  /* Subheading / H3 — Apparel 15-18px uppercase 0.07em */
+  .type-subheading {
+    font-family: var(--font-subheading);
+    font-size: 15px;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    line-height: 1.1;
+  }
+
+  /* Body / Paragraph — Libre Baskerville 16px, 1.9 line-height */
+  .type-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-charcoal);
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+  }
+
+  /* Accent — Arapey 16px */
+  .type-accent {
+    font-family: var(--font-accent);
+    font-size: 16px;
+    color: var(--color-charcoal);
+  }
+
+  /* Base body defaults */
+  body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background-color: var(--color-white);
+  }
 }
