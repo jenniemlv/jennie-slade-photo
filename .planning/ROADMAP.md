@@ -33,7 +33,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Libre Baskerville, Montserrat, Arapey render correctly; Apparel and Destiny slots exist with system-font fallbacks
   4. Brand color tokens (warm grays, teal-sage) are available as Tailwind utilities throughout the project
   5. Base typography hierarchy (title, heading, subheading, body, accent) matches the design spec in a rendered test page
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Bootstrap Next.js project, configure fonts, colors, Cloudinary, and typography
+- [ ] 01-02-PLAN.md — CloudinaryImage wrapper, /dev test page, and visual verification
 
 ### Phase 2: Layout Shell
 **Goal**: Navigation and footer exist on every page, the design system atoms are ready to use, and root layout is wired correctly
@@ -130,7 +133,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/2 | Planned | - |
 | 2. Layout Shell | 0/TBD | Not started | - |
 | 3. Homepage | 0/TBD | Not started | - |
 | 4. About Page | 0/TBD | Not started | - |
