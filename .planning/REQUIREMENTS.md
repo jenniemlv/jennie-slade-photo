@@ -9,12 +9,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUN-01**: Next.js 16 App Router project bootstrapped with TypeScript and Tailwind CSS v4
-- [ ] **FOUN-02**: Brand color palette configured as Tailwind theme extensions (warm grays, teal-sage accent)
-- [ ] **FOUN-03**: Google Fonts configured via next/font (Libre Baskerville, Montserrat, Arapey)
-- [ ] **FOUN-04**: Custom font slots prepared for Apparel and Destiny (next/font/local, fallback to system fonts until files provided)
-- [ ] **FOUN-05**: Cloudinary configured in next.config with remotePatterns and next-cloudinary installed
-- [ ] **FOUN-06**: Base CSS with typography hierarchy matching design spec (title, heading, subheading, paragraph styles)
+- [x] **FOUN-01**: Next.js 16 App Router project bootstrapped with TypeScript and Tailwind CSS v4
+- [x] **FOUN-02**: Brand color palette configured as Tailwind theme extensions (warm grays, teal-sage accent)
+- [x] **FOUN-03**: Google Fonts configured via next/font (Libre Baskerville, Montserrat, Arapey)
+- [x] **FOUN-04**: Custom font slots prepared for Apparel and Destiny (next/font/local, fallback to system fonts until files provided)
+- [x] **FOUN-05**: Cloudinary configured in next.config with remotePatterns and next-cloudinary installed
+- [x] **FOUN-06**: Base CSS with typography hierarchy matching design spec (title, heading, subheading, paragraph styles)
 
 ### Layout
 
@@ -76,17 +76,17 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **SEOP-04**: Sitemap generated via app/sitemap.ts
 - [ ] **SEOP-05**: All images have descriptive, location-specific alt text
 - [ ] **SEOP-06**: Lighthouse score 90+ on all categories
-- [ ] **SEOP-07**: First Contentful Paint under 1.5 seconds
+- [x] **SEOP-07**: First Contentful Paint under 1.5 seconds
 - [ ] **SEOP-08**: CLS less than 0.1 across all pages (no layout shift from images or fonts)
-- [ ] **SEOP-09**: Proper font-display: swap to prevent FOUT/FOIT
+- [x] **SEOP-09**: Proper font-display: swap to prevent FOUT/FOIT
 
 ### Design Quality
 
 - [ ] **DESN-01**: Editorial magazine feel with generous whitespace throughout
 - [ ] **DESN-02**: Warm color palette consistently applied (no cool grays anywhere)
-- [ ] **DESN-03**: Serif-dominant typography creating timeless, sophisticated feel
+- [x] **DESN-03**: Serif-dominant typography creating timeless, sophisticated feel
 - [ ] **DESN-04**: Photography is always the hero element on every page
-- [ ] **DESN-05**: Reading-line text layout (short paragraphs, 1.9 line-height, text breathing room)
+- [x] **DESN-05**: Reading-line text layout (short paragraphs, 1.9 line-height, text breathing room)
 - [ ] **DESN-06**: Subtle page transition animations (soft fade between routes)
 - [ ] **DESN-07**: Placeholder blocks (warm-gray) for all images until real photography is added
 
@@ -131,17 +131,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | Phase 1 | Pending |
-| FOUN-02 | Phase 1 | Pending |
-| FOUN-03 | Phase 1 | Pending |
-| FOUN-04 | Phase 1 | Pending |
-| FOUN-05 | Phase 1 | Pending |
-| FOUN-06 | Phase 1 | Pending |
-| DESN-03 | Phase 1 | Pending |
-| DESN-05 | Phase 1 | Pending |
+| FOUN-01 | Phase 1 | Complete |
+| FOUN-02 | Phase 1 | Complete |
+| FOUN-03 | Phase 1 | Complete |
+| FOUN-04 | Phase 1 | Complete |
+| FOUN-05 | Phase 1 | Complete |
+| FOUN-06 | Phase 1 | Complete |
+| DESN-03 | Phase 1 | Complete |
+| DESN-05 | Phase 1 | Complete |
 | DESN-07 | Phase 1 | Pending |
-| SEOP-07 | Phase 1 | Pending |
-| SEOP-09 | Phase 1 | Pending |
+| SEOP-07 | Phase 1 | Complete |
+| SEOP-09 | Phase 1 | Complete |
 | LAYO-01 | Phase 2 | Pending |
 | LAYO-02 | Phase 2 | Pending |
 | LAYO-03 | Phase 2 | Pending |
