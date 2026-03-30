@@ -27,12 +27,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Homepage
 
-- [ ] **HOME-01**: Stacked editorial layout with large images interspersed with text sections (magazine-spread feel)
-- [ ] **HOME-02**: Hero section with full-width image, tagline overlay, eager-loaded for LCP performance
-- [ ] **HOME-03**: Welcome/intro text section with Jennie's voice and generational continuity story hook
+- [x] **HOME-01**: Stacked editorial layout with large images interspersed with text sections (magazine-spread feel)
+- [x] **HOME-02**: Hero section with full-width image, tagline overlay, eager-loaded for LCP performance
+- [x] **HOME-03**: Welcome/intro text section with Jennie's voice and generational continuity story hook
 - [ ] **HOME-04**: Portfolio preview section showcasing weddings, families, and seniors with links to gallery pages
-- [ ] **HOME-05**: Subtle scroll-triggered fade-in animations on sections below the fold
-- [ ] **HOME-06**: Fully responsive and beautiful on mobile devices
+- [x] **HOME-05**: Subtle scroll-triggered fade-in animations on sections below the fold
+- [x] **HOME-06**: Fully responsive and beautiful on mobile devices
 
 ### About
 
@@ -82,10 +82,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design Quality
 
-- [ ] **DESN-01**: Editorial magazine feel with generous whitespace throughout
+- [x] **DESN-01**: Editorial magazine feel with generous whitespace throughout
 - [x] **DESN-02**: Warm color palette consistently applied (no cool grays anywhere)
 - [x] **DESN-03**: Serif-dominant typography creating timeless, sophisticated feel
-- [ ] **DESN-04**: Photography is always the hero element on every page
+- [x] **DESN-04**: Photography is always the hero element on every page
 - [x] **DESN-05**: Reading-line text layout (short paragraphs, 1.9 line-height, text breathing room)
 - [x] **DESN-06**: Subtle page transition animations (soft fade between routes)
 - [x] **DESN-07**: Placeholder blocks (warm-gray) for all images until real photography is added
@@ -150,14 +150,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LAYO-06 | Phase 2 | Complete |
 | DESN-02 | Phase 2 | Complete |
 | DESN-06 | Phase 2 | Complete |
-| HOME-01 | Phase 3 | Pending |
-| HOME-02 | Phase 3 | Pending |
-| HOME-03 | Phase 3 | Pending |
+| HOME-01 | Phase 3 | Complete |
+| HOME-02 | Phase 3 | Complete |
+| HOME-03 | Phase 3 | Complete |
 | HOME-04 | Phase 3 | Pending |
-| HOME-05 | Phase 3 | Pending |
-| HOME-06 | Phase 3 | Pending |
-| DESN-01 | Phase 3 | Pending |
-| DESN-04 | Phase 3 | Pending |
+| HOME-05 | Phase 3 | Complete |
+| HOME-06 | Phase 3 | Complete |
+| DESN-01 | Phase 3 | Complete |
+| DESN-04 | Phase 3 | Complete |
 | ABOU-01 | Phase 4 | Pending |
 | ABOU-02 | Phase 4 | Pending |
 | ABOU-03 | Phase 4 | Pending |

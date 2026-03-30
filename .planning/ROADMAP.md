@@ -65,9 +65,9 @@ Plans:
   3. Portfolio preview section shows weddings, families, and seniors tiles with links to their respective gallery pages
   4. Sections below the fold fade in smoothly on scroll (not immediately visible, not jarring)
   5. The page is beautiful and usable on a real iPhone in Safari, not just browser DevTools
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
-- [ ] 03-01-PLAN.md — ScrollFade component, HeroSection, and WelcomeSection with editorial copy
+- [x] 03-01-PLAN.md — ScrollFade component, HeroSection, and WelcomeSection with editorial copy
 - [ ] 03-02-PLAN.md — PortfolioPreview component, page.tsx composition, and visual verification
 **UI hint**: yes
 
@@ -142,7 +142,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
-| 3. Homepage | 0/2 | In progress | - |
+| 3. Homepage | 1/2 | In Progress|  |
 | 4. About Page | 0/TBD | Not started | - |
 | 5. Gallery System | 0/TBD | Not started | - |
 | 6. Contact Page | 0/TBD | Not started | - |

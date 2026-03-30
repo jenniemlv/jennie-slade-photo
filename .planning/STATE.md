@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-30T20:19:13.645Z"
+status: Ready to execute
+stopped_at: Completed 03-homepage-03-01-PLAN.md
+last_updated: "2026-03-30T20:44:36.021Z"
 progress:
   total_phases: 8
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 7
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** The photographs are the product. Every design decision must make the photography look stunning, never compete with it.
-**Current focus:** Phase 02 — layout-shell
+**Current focus:** Phase 03 — homepage
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
+Phase: 03 (homepage) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Plan: Not started
 | Phase 02-layout-shell P02 | 7 | 1 tasks | 1 files |
 | Phase 02-layout-shell P03 | 2 | 1 tasks | 2 files |
 | Phase 02-layout-shell P03 | 2 | 2 tasks | 2 files |
+| Phase 03-homepage P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [Phase 02-layout-shell]: Footer is a Server Component with no 'use client' — no interactivity needed, reduces client bundle
 - [Phase 02-layout-shell]: Instagram icon in Footer uses inline SVG — lucide-react v0.400+ removed social brand icons, same pattern as Header
 - [Phase 02-layout-shell]: Header and Footer are siblings of PageTransition in layout.tsx, not children — they persist across all route changes without fading
+- [Phase 03-homepage]: HeroSection does not use Section wrapper — full-bleed hero needs no max-width constraint
+- [Phase 03-homepage]: ScrollFade fires once only via observer.disconnect() — sections do not re-animate on scroll back
+- [Phase 03-homepage]: HeroSection tagline uses text-[22px]/[30px]/[38px] overrides instead of type-title 30px default to prevent mobile overflow
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T20:19:13.638Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-homepage/03-CONTEXT.md
+Last session: 2026-03-30T20:44:36.018Z
+Stopped at: Completed 03-homepage-03-01-PLAN.md
+Resume file: None
