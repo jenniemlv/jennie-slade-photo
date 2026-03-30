@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 2 UI-SPEC approved
-last_updated: "2026-03-30T04:54:27.545Z"
+status: Ready to execute
+stopped_at: Completed 02-layout-shell 02-01-PLAN.md
+last_updated: "2026-03-30T14:18:14.963Z"
 progress:
   total_phases: 8
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 5
+  completed_plans: 3
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** The photographs are the product. Every design decision must make the photography look stunning, never compete with it.
-**Current focus:** Phase 01 — foundation
+**Current focus:** Phase 02 — layout-shell
 
 ## Current Position
 
-Phase: 2
-Plan: Not started
+Phase: 02 (layout-shell) — EXECUTING
+Plan: 2 of 3
 
 ## Performance Metrics
 
@@ -48,6 +48,7 @@ Plan: Not started
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 6 | 2 tasks | 9 files |
 | Phase 01-foundation P02 | 525983min | 2 tasks | 2 files |
+| Phase 02-layout-shell P01 | 22 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: All next/font instances defined in src/lib/fonts.ts only — never import from next/font in individual components (prevents duplicate instances and extra network requests)
 - [Phase 01-foundation]: CloudinaryImage wrapper sets quality=80 as project default with props.quality override — prevents double-optimization
 - [Phase 01-foundation]: /dev page is the canonical visual verification artifact for the foundation phase — remove before launch
+- [Phase 02-layout-shell]: Section and Button are Server Components (no 'use client') to minimize client bundle
+- [Phase 02-layout-shell]: PageTransition uses key={pathname} to force remount on route change — canonical App Router page transition pattern
+- [Phase 02-layout-shell]: variantClasses Record lookup object enforced in Section and Button for Tailwind v4 static scanner compatibility
 
 ### Pending Todos
 
@@ -78,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T04:54:27.538Z
-Stopped at: Phase 2 UI-SPEC approved
-Resume file: .planning/phases/02-layout-shell/02-UI-SPEC.md
+Last session: 2026-03-30T14:18:14.960Z
+Stopped at: Completed 02-layout-shell 02-01-PLAN.md
+Resume file: None
