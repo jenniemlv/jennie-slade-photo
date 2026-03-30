@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 02-layout-shell 02-01-PLAN.md
-last_updated: "2026-03-30T14:18:14.963Z"
+stopped_at: Completed 02-layout-shell 02-02-PLAN.md
+last_updated: "2026-03-30T14:22:34.030Z"
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 4
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 ## Current Position
 
 Phase: 02 (layout-shell) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -49,6 +49,7 @@ Plan: 2 of 3
 | Phase 01-foundation P01 | 6 | 2 tasks | 9 files |
 | Phase 01-foundation P02 | 525983min | 2 tasks | 2 files |
 | Phase 02-layout-shell P01 | 22 | 2 tasks | 4 files |
+| Phase 02-layout-shell P02 | 7 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 02-layout-shell]: Section and Button are Server Components (no 'use client') to minimize client bundle
 - [Phase 02-layout-shell]: PageTransition uses key={pathname} to force remount on route change — canonical App Router page transition pattern
 - [Phase 02-layout-shell]: variantClasses Record lookup object enforced in Section and Button for Tailwind v4 static scanner compatibility
+- [Phase 02-layout-shell]: Instagram icon implemented as inline SVG because lucide-react dropped social brand icons in v0.400+
+- [Phase 02-layout-shell]: Mobile menu overlay uses opacity+visibility (not display:none) so CSS transition-all animates open/close correctly
+- [Phase 02-layout-shell]: lastScrollY tracked as closure variable in useEffect, not useState, to prevent re-renders on every scroll tick
 
 ### Pending Todos
 
@@ -82,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T14:18:14.960Z
-Stopped at: Completed 02-layout-shell 02-01-PLAN.md
+Last session: 2026-03-30T14:22:34.027Z
+Stopped at: Completed 02-layout-shell 02-02-PLAN.md
 Resume file: None

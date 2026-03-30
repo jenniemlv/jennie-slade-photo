@@ -18,9 +18,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Layout
 
-- [ ] **LAYO-01**: Centered elegant navigation with site name/logo centered above nav links
-- [ ] **LAYO-02**: Navigation is responsive with clean hamburger menu on mobile
-- [ ] **LAYO-03**: Header disappears on scroll-down, reappears on scroll-up (transparent/disappearing behavior)
+- [x] **LAYO-01**: Centered elegant navigation with site name/logo centered above nav links
+- [x] **LAYO-02**: Navigation is responsive with clean hamburger menu on mobile
+- [x] **LAYO-03**: Header disappears on scroll-down, reappears on scroll-up (transparent/disappearing behavior)
 - [ ] **LAYO-04**: Footer with "Jennie Slade Photography" in display font, email, Instagram link, and nav links
 - [x] **LAYO-05**: Reusable section layout components for consistent whitespace and padding
 - [x] **LAYO-06**: Primary and secondary button components matching design spec (Apparel font, uppercase, 10px radius)
@@ -83,7 +83,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Design Quality
 
 - [ ] **DESN-01**: Editorial magazine feel with generous whitespace throughout
-- [ ] **DESN-02**: Warm color palette consistently applied (no cool grays anywhere)
+- [x] **DESN-02**: Warm color palette consistently applied (no cool grays anywhere)
 - [x] **DESN-03**: Serif-dominant typography creating timeless, sophisticated feel
 - [ ] **DESN-04**: Photography is always the hero element on every page
 - [x] **DESN-05**: Reading-line text layout (short paragraphs, 1.9 line-height, text breathing room)
@@ -142,13 +142,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DESN-07 | Phase 1 | Complete |
 | SEOP-07 | Phase 1 | Complete |
 | SEOP-09 | Phase 1 | Complete |
-| LAYO-01 | Phase 2 | Pending |
-| LAYO-02 | Phase 2 | Pending |
-| LAYO-03 | Phase 2 | Pending |
+| LAYO-01 | Phase 2 | Complete |
+| LAYO-02 | Phase 2 | Complete |
+| LAYO-03 | Phase 2 | Complete |
 | LAYO-04 | Phase 2 | Pending |
 | LAYO-05 | Phase 2 | Complete |
 | LAYO-06 | Phase 2 | Complete |
-| DESN-02 | Phase 2 | Pending |
+| DESN-02 | Phase 2 | Complete |
 | DESN-06 | Phase 2 | Complete |
 | HOME-01 | Phase 3 | Pending |
 | HOME-02 | Phase 3 | Pending |
