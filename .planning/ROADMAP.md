@@ -48,7 +48,11 @@ Plans:
   3. Footer shows "Jennie Slade Photography" in display font with email, Instagram link, and nav links
   4. Primary and secondary button components render in Apparel/fallback font, uppercase, with correct border radius and hover state
   5. Warm color palette is visibly consistent throughout nav and footer (no cool grays appear)
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 02-01-PLAN.md — Section, Button, and PageTransition design system primitives
+- [ ] 02-02-PLAN.md — Scroll-aware Header with mobile menu overlay
+- [ ] 02-03-PLAN.md — Footer component and root layout wiring with visual verification
 **UI hint**: yes
 
 ### Phase 3: Homepage
@@ -134,7 +138,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
-| 2. Layout Shell | 0/TBD | Not started | - |
+| 2. Layout Shell | 0/3 | Not started | - |
 | 3. Homepage | 0/TBD | Not started | - |
 | 4. About Page | 0/TBD | Not started | - |
 | 5. Gallery System | 0/TBD | Not started | - |
