@@ -1,13 +1,36 @@
-// Minimal placeholder home page — will be fully built in Phase 3
-// This stub confirms fonts, colors, and typography classes render correctly
+// Homepage — editorial magazine-spread layout (Phase 3)
+//
+// Composes all three homepage sections in order:
+//   1. HeroSection     — full-viewport warm-gray hero with tagline (no scroll animation)
+//   2. WelcomeSection  — personal intro copy, wraps in ScrollFade
+//   3. PortfolioPreview — three-tile gallery gateway, wraps in ScrollFade
+//
+// The hero is NOT wrapped in ScrollFade — it should be immediately visible.
+// Everything below the fold fades in as the user scrolls (D-15, D-16).
+//
+// This is a Server Component (no 'use client'). ScrollFade is a Client Component
+// but can be used as a child of a Server Component without issue.
+
+import HeroSection from '@/components/homepage/HeroSection'
+import WelcomeSection from '@/components/homepage/WelcomeSection'
+import PortfolioPreview from '@/components/homepage/PortfolioPreview'
+import ScrollFade from '@/components/ui/ScrollFade'
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-off-white">
-      <div className="text-center space-y-4">
-        <h1 className="type-title">Jennie Slade Photography</h1>
-        <p className="type-body text-gray">Site under construction</p>
-      </div>
+    <main>
+      {/* Hero — full-bleed, immediately visible, no scroll animation */}
+      <HeroSection />
+
+      {/* Welcome — editorial intro, fades in on scroll */}
+      <ScrollFade>
+        <WelcomeSection />
+      </ScrollFade>
+
+      {/* Portfolio preview — three gallery tiles, fades in on scroll */}
+      <ScrollFade>
+        <PortfolioPreview />
+      </ScrollFade>
     </main>
   )
 }
