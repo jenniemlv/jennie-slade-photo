@@ -12,11 +12,10 @@ The photographs are the product. Every design decision must make the photography
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Next.js App Router project with Tailwind CSS, custom fonts, and brand color palette — Validated in Phase 1: Foundation
+- ✓ Cloudinary integration for image hosting and optimization — Validated in Phase 1: Foundation
 
 ### Active
-
-- [ ] Next.js App Router project with Tailwind CSS, custom fonts, and brand color palette
 - [ ] Responsive navigation with centered elegant layout (logo/name centered, nav links below)
 - [ ] Stacked editorial homepage with large images, tagline, welcome text, portfolio previews
 - [ ] About page with Jennie's bio, personal story, and personality
@@ -31,7 +30,6 @@ The photographs are the product. Every design decision must make the photography
 - [ ] Mobile-first responsive design that's beautiful on phones
 - [ ] Subtle scroll animations (fade-in) and smooth page transitions
 - [ ] Performance optimized (Lighthouse 90+, FCP under 1.5s)
-- [ ] Cloudinary integration for image hosting and optimization
 - [ ] Footer with branding, email, Instagram link, and nav links
 
 ### Out of Scope
@@ -106,4 +104,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-29 after initialization*
+*Last updated: 2026-03-30 after Phase 1: Foundation complete*
