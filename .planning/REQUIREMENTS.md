@@ -88,7 +88,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DESN-04**: Photography is always the hero element on every page
 - [x] **DESN-05**: Reading-line text layout (short paragraphs, 1.9 line-height, text breathing room)
 - [ ] **DESN-06**: Subtle page transition animations (soft fade between routes)
-- [ ] **DESN-07**: Placeholder blocks (warm-gray) for all images until real photography is added
+- [x] **DESN-07**: Placeholder blocks (warm-gray) for all images until real photography is added
 
 ## v2 Requirements
 
@@ -139,7 +139,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUN-06 | Phase 1 | Complete |
 | DESN-03 | Phase 1 | Complete |
 | DESN-05 | Phase 1 | Complete |
-| DESN-07 | Phase 1 | Pending |
+| DESN-07 | Phase 1 | Complete |
 | SEOP-07 | Phase 1 | Complete |
 | SEOP-09 | Phase 1 | Complete |
 | LAYO-01 | Phase 2 | Pending |
