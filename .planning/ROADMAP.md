@@ -13,7 +13,7 @@ Eight phases build the site in dependency order: foundation and configuration fi
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js project with brand tokens, fonts, Cloudinary, and base CSS configured correctly from day one (completed 2026-03-30)
-- [ ] **Phase 2: Layout Shell** - Navigation, footer, and design system primitives that wrap every page
+- [x] **Phase 2: Layout Shell** - Navigation, footer, and design system primitives that wrap every page (completed 2026-03-30)
 - [ ] **Phase 3: Homepage** - The editorial statement of the site, proving the magazine-spread layout works
 - [ ] **Phase 4: About Page** - Jennie's story, generational continuity narrative, and social proof
 - [ ] **Phase 5: Gallery System** - Portfolio hub and three gallery pages with lightbox, the highest-risk performance phase
@@ -48,11 +48,11 @@ Plans:
   3. Footer shows "Jennie Slade Photography" in display font with email, Instagram link, and nav links
   4. Primary and secondary button components render in Apparel/fallback font, uppercase, with correct border radius and hover state
   5. Warm color palette is visibly consistent throughout nav and footer (no cool grays appear)
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 Plans:
 - [x] 02-01-PLAN.md — Section, Button, and PageTransition design system primitives
 - [x] 02-02-PLAN.md — Scroll-aware Header with mobile menu overlay
-- [ ] 02-03-PLAN.md — Footer component and root layout wiring with visual verification
+- [x] 02-03-PLAN.md — Footer component and root layout wiring with visual verification
 **UI hint**: yes
 
 ### Phase 3: Homepage
@@ -138,7 +138,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
-| 2. Layout Shell | 2/3 | In Progress|  |
+| 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
 | 3. Homepage | 0/TBD | Not started | - |
 | 4. About Page | 0/TBD | Not started | - |
 | 5. Gallery System | 0/TBD | Not started | - |

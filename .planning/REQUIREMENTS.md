@@ -21,7 +21,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **LAYO-01**: Centered elegant navigation with site name/logo centered above nav links
 - [x] **LAYO-02**: Navigation is responsive with clean hamburger menu on mobile
 - [x] **LAYO-03**: Header disappears on scroll-down, reappears on scroll-up (transparent/disappearing behavior)
-- [ ] **LAYO-04**: Footer with "Jennie Slade Photography" in display font, email, Instagram link, and nav links
+- [x] **LAYO-04**: Footer with "Jennie Slade Photography" in display font, email, Instagram link, and nav links
 - [x] **LAYO-05**: Reusable section layout components for consistent whitespace and padding
 - [x] **LAYO-06**: Primary and secondary button components matching design spec (Apparel font, uppercase, 10px radius)
 
@@ -145,7 +145,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LAYO-01 | Phase 2 | Complete |
 | LAYO-02 | Phase 2 | Complete |
 | LAYO-03 | Phase 2 | Complete |
-| LAYO-04 | Phase 2 | Pending |
+| LAYO-04 | Phase 2 | Complete |
 | LAYO-05 | Phase 2 | Complete |
 | LAYO-06 | Phase 2 | Complete |
 | DESN-02 | Phase 2 | Complete |

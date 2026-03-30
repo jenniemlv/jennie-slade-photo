@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 02-layout-shell 02-02-PLAN.md
-last_updated: "2026-03-30T14:22:34.030Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 02-layout-shell 02-03-PLAN.md (awaiting human-verify checkpoint)
+last_updated: "2026-03-30T14:26:33.861Z"
 progress:
   total_phases: 8
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State
@@ -50,6 +50,7 @@ Plan: 3 of 3
 | Phase 01-foundation P02 | 525983min | 2 tasks | 2 files |
 | Phase 02-layout-shell P01 | 22 | 2 tasks | 4 files |
 | Phase 02-layout-shell P02 | 7 | 1 tasks | 1 files |
+| Phase 02-layout-shell P03 | 2 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,9 @@ Recent decisions affecting current work:
 - [Phase 02-layout-shell]: Instagram icon implemented as inline SVG because lucide-react dropped social brand icons in v0.400+
 - [Phase 02-layout-shell]: Mobile menu overlay uses opacity+visibility (not display:none) so CSS transition-all animates open/close correctly
 - [Phase 02-layout-shell]: lastScrollY tracked as closure variable in useEffect, not useState, to prevent re-renders on every scroll tick
+- [Phase 02-layout-shell]: Footer is a Server Component with no 'use client' — no interactivity needed, reduces client bundle
+- [Phase 02-layout-shell]: Instagram icon in Footer uses inline SVG — lucide-react v0.400+ removed social brand icons, same pattern as Header
+- [Phase 02-layout-shell]: Header and Footer are siblings of PageTransition in layout.tsx, not children — they persist across all route changes without fading
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-30T14:22:34.027Z
-Stopped at: Completed 02-layout-shell 02-02-PLAN.md
+Last session: 2026-03-30T14:26:33.858Z
+Stopped at: Completed 02-layout-shell 02-03-PLAN.md (awaiting human-verify checkpoint)
 Resume file: None
