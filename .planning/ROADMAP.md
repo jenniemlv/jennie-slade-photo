@@ -80,7 +80,9 @@ Plans:
   2. The generational continuity narrative (18+ years, same families) appears as a distinct section or callout
   3. At least one testimonial quote appears near the bottom of the page (placeholder slot acceptable if quotes not yet provided)
   4. A clear CTA to the contact page appears at the bottom of the page
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 04-01-PLAN.md — About page with editorial bio, photo placeholder, testimonial callouts, and contact CTA
 **UI hint**: yes
 
 ### Phase 5: Gallery System
@@ -143,7 +145,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
 | 3. Homepage | 2/2 | Complete   | 2026-03-31 |
-| 4. About Page | 0/TBD | Not started | - |
+| 4. About Page | 0/1 | Not started | - |
 | 5. Gallery System | 0/TBD | Not started | - |
 | 6. Contact Page | 0/TBD | Not started | - |
 | 7. SEO and Open Graph | 0/TBD | Not started | - |
