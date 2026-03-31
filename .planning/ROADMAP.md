@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js project with brand tokens, fonts, Cloudinary, and base CSS configured correctly from day one (completed 2026-03-30)
 - [x] **Phase 2: Layout Shell** - Navigation, footer, and design system primitives that wrap every page (completed 2026-03-30)
-- [ ] **Phase 3: Homepage** - The editorial statement of the site, proving the magazine-spread layout works
+- [x] **Phase 3: Homepage** - The editorial statement of the site, proving the magazine-spread layout works (completed 2026-03-31)
 - [ ] **Phase 4: About Page** - Jennie's story, generational continuity narrative, and social proof
 - [ ] **Phase 5: Gallery System** - Portfolio hub and three gallery pages with lightbox, the highest-risk performance phase
 - [ ] **Phase 6: Contact Page** - Inquiry form with email delivery, the conversion goal of the site
@@ -65,10 +65,10 @@ Plans:
   3. Portfolio preview section shows weddings, families, and seniors tiles with links to their respective gallery pages
   4. Sections below the fold fade in smoothly on scroll (not immediately visible, not jarring)
   5. The page is beautiful and usable on a real iPhone in Safari, not just browser DevTools
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 03-01-PLAN.md — ScrollFade component, HeroSection, and WelcomeSection with editorial copy
-- [ ] 03-02-PLAN.md — PortfolioPreview component, page.tsx composition, and visual verification
+- [x] 03-02-PLAN.md — PortfolioPreview component, page.tsx composition, and visual verification
 **UI hint**: yes
 
 ### Phase 4: About Page
@@ -142,7 +142,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
-| 3. Homepage | 1/2 | In Progress|  |
+| 3. Homepage | 2/2 | Complete   | 2026-03-31 |
 | 4. About Page | 0/TBD | Not started | - |
 | 5. Gallery System | 0/TBD | Not started | - |
 | 6. Contact Page | 0/TBD | Not started | - |

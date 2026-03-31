@@ -30,7 +30,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **HOME-01**: Stacked editorial layout with large images interspersed with text sections (magazine-spread feel)
 - [x] **HOME-02**: Hero section with full-width image, tagline overlay, eager-loaded for LCP performance
 - [x] **HOME-03**: Welcome/intro text section with Jennie's voice and generational continuity story hook
-- [ ] **HOME-04**: Portfolio preview section showcasing weddings, families, and seniors with links to gallery pages
+- [x] **HOME-04**: Portfolio preview section showcasing weddings, families, and seniors with links to gallery pages
 - [x] **HOME-05**: Subtle scroll-triggered fade-in animations on sections below the fold
 - [x] **HOME-06**: Fully responsive and beautiful on mobile devices
 
@@ -153,7 +153,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | HOME-01 | Phase 3 | Complete |
 | HOME-02 | Phase 3 | Complete |
 | HOME-03 | Phase 3 | Complete |
-| HOME-04 | Phase 3 | Pending |
+| HOME-04 | Phase 3 | Complete |
 | HOME-05 | Phase 3 | Complete |
 | HOME-06 | Phase 3 | Complete |
 | DESN-01 | Phase 3 | Complete |
