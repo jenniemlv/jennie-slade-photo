@@ -36,11 +36,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### About
 
-- [ ] **ABOU-01**: About page with Jennie's personal story, bio, and personality
-- [ ] **ABOU-02**: Personal photo(s) of Jennie integrated into the page layout
-- [ ] **ABOU-03**: Generational continuity narrative (18+ years photographing the same families)
-- [ ] **ABOU-04**: Testimonial quotes integrated near relevant content (placeholder slots if quotes not yet provided)
-- [ ] **ABOU-05**: CTA to contact page at the bottom
+- [x] **ABOU-01**: About page with Jennie's personal story, bio, and personality
+- [x] **ABOU-02**: Personal photo(s) of Jennie integrated into the page layout
+- [x] **ABOU-03**: Generational continuity narrative (18+ years photographing the same families)
+- [x] **ABOU-04**: Testimonial quotes integrated near relevant content (placeholder slots if quotes not yet provided)
+- [x] **ABOU-05**: CTA to contact page at the bottom
 
 ### Portfolio
 
@@ -158,11 +158,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | HOME-06 | Phase 3 | Complete |
 | DESN-01 | Phase 3 | Complete |
 | DESN-04 | Phase 3 | Complete |
-| ABOU-01 | Phase 4 | Pending |
-| ABOU-02 | Phase 4 | Pending |
-| ABOU-03 | Phase 4 | Pending |
-| ABOU-04 | Phase 4 | Pending |
-| ABOU-05 | Phase 4 | Pending |
+| ABOU-01 | Phase 4 | Complete |
+| ABOU-02 | Phase 4 | Complete |
+| ABOU-03 | Phase 4 | Complete |
+| ABOU-04 | Phase 4 | Complete |
+| ABOU-05 | Phase 4 | Complete |
 | PORT-01 | Phase 5 | Pending |
 | PORT-02 | Phase 5 | Pending |
 | PORT-03 | Phase 5 | Pending |

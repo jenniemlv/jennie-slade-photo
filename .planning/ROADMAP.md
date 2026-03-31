@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Next.js project with brand tokens, fonts, Cloudinary, and base CSS configured correctly from day one (completed 2026-03-30)
 - [x] **Phase 2: Layout Shell** - Navigation, footer, and design system primitives that wrap every page (completed 2026-03-30)
 - [x] **Phase 3: Homepage** - The editorial statement of the site, proving the magazine-spread layout works (completed 2026-03-31)
-- [ ] **Phase 4: About Page** - Jennie's story, generational continuity narrative, and social proof
+- [x] **Phase 4: About Page** - Jennie's story, generational continuity narrative, and social proof (completed 2026-03-31)
 - [ ] **Phase 5: Gallery System** - Portfolio hub and three gallery pages with lightbox, the highest-risk performance phase
 - [ ] **Phase 6: Contact Page** - Inquiry form with email delivery, the conversion goal of the site
 - [ ] **Phase 7: SEO and Open Graph** - Meta tags, structured data, sitemap, and performance verification across all pages
@@ -80,9 +80,9 @@ Plans:
   2. The generational continuity narrative (18+ years, same families) appears as a distinct section or callout
   3. At least one testimonial quote appears near the bottom of the page (placeholder slot acceptable if quotes not yet provided)
   4. A clear CTA to the contact page appears at the bottom of the page
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 04-01-PLAN.md — About page with editorial bio, photo placeholder, testimonial callouts, and contact CTA
+- [x] 04-01-PLAN.md — About page with editorial bio, photo placeholder, testimonial callouts, and contact CTA
 **UI hint**: yes
 
 ### Phase 5: Gallery System
@@ -145,7 +145,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Foundation | 2/2 | Complete   | 2026-03-30 |
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
 | 3. Homepage | 2/2 | Complete   | 2026-03-31 |
-| 4. About Page | 0/1 | Not started | - |
+| 4. About Page | 1/1 | Complete   | 2026-03-31 |
 | 5. Gallery System | 0/TBD | Not started | - |
 | 6. Contact Page | 0/TBD | Not started | - |
 | 7. SEO and Open Graph | 0/TBD | Not started | - |
