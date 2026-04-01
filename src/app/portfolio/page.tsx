@@ -31,7 +31,7 @@ import ScrollFade from '@/components/ui/ScrollFade'
 export const metadata: Metadata = {
   title: 'Portfolio — Jennie Slade Photography',
   description:
-    'Browse wedding, family, and senior portrait photography by Jennie Slade, Las Vegas photographer with over 20 years of experience.',
+    'Browse wedding, family, senior, and headshot photography by Jennie Slade, Las Vegas photographer with over 20 years of experience.',
 }
 
 // The three gallery categories with editorial descriptors (D-02)
@@ -50,6 +50,11 @@ const categories = [
     label: 'Seniors',
     href: '/seniors',
     descriptor: 'A milestone worth remembering.',
+  },
+  {
+    label: 'Headshots & Corporate',
+    href: '/headshots',
+    descriptor: 'Your best first impression.',
   },
 ]
 

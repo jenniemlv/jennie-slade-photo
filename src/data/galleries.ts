@@ -74,3 +74,21 @@ export const seniorImages: GalleryImage[] = [
   { id: 'senior-11', src: '', alt: 'High school senior duo session, best friends portrait Las Vegas' },
   { id: 'senior-12', src: '', alt: 'Senior boy casual portrait, downtown Las Vegas murals' },
 ]
+
+// ---------------------------------------------------------------------------
+// Headshots & Corporate — aspect-[2/3] portrait (12 images)
+// ---------------------------------------------------------------------------
+export const headshotImages: GalleryImage[] = [
+  { id: 'headshot-01', src: '', alt: 'Professional headshot, Las Vegas studio lighting' },
+  { id: 'headshot-02', src: '', alt: 'Corporate team headshot, modern Las Vegas office' },
+  { id: 'headshot-03', src: '', alt: 'Executive portrait, natural light Las Vegas' },
+  { id: 'headshot-04', src: '', alt: 'Business branding portrait, downtown Las Vegas' },
+  { id: 'headshot-05', src: '', alt: 'LinkedIn professional headshot, studio Las Vegas' },
+  { id: 'headshot-06', src: '', alt: 'Entrepreneur branding session, Las Vegas workspace' },
+  { id: 'headshot-07', src: '', alt: 'Corporate headshot, clean white background Las Vegas' },
+  { id: 'headshot-08', src: '', alt: 'Professional portrait, outdoor Las Vegas setting' },
+  { id: 'headshot-09', src: '', alt: 'Team branding photos, Las Vegas business office' },
+  { id: 'headshot-10', src: '', alt: 'Actor headshot, dramatic lighting Las Vegas studio' },
+  { id: 'headshot-11', src: '', alt: 'Real estate agent headshot, professional Las Vegas' },
+  { id: 'headshot-12', src: '', alt: 'Creative professional portrait, artistic Las Vegas backdrop' },
+]
