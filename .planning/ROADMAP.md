@@ -126,7 +126,11 @@ Plans:
   3. Google Rich Results Test passes for LocalBusiness JSON-LD with no errors (Las Vegas photographer structured data)
   4. `app/sitemap.ts` generates a valid sitemap covering all routes
   5. Lighthouse SEO score is 100 and overall score is 90+ on all categories across all pages
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 07-01-PLAN.md — JSON-LD structured data, base OG metadata, sitemap, robots.txt, and OG default image
+- [ ] 07-02-PLAN.md — SEO-optimized meta titles and OG tags on all 8 pages
+- [ ] 07-03-PLAN.md — Lighthouse audit, fixes, and human verification
 
 ### Phase 8: Blog Structure
 **Goal**: Blog infrastructure exists and is ready to receive content, even with zero posts at launch
@@ -153,5 +157,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 4. About Page | 1/1 | Complete   | 2026-03-31 |
 | 5. Gallery System | 2/2 | Complete   | 2026-04-01 |
 | 6. Contact Page | 1/1 | Complete   | 2026-04-01 |
-| 7. SEO and Open Graph | 0/TBD | Not started | - |
+| 7. SEO and Open Graph | 0/3 | In progress | - |
 | 8. Blog Structure | 0/TBD | Not started | - |
