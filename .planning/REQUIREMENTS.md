@@ -55,11 +55,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Contact
 
-- [ ] **CONT-01**: Contact page with simple inquiry form (name, email, session type dropdown, preferred date, message)
-- [ ] **CONT-02**: Form validation with clear error messages
-- [ ] **CONT-03**: Form submission sends email via Resend (Server Action, no API route needed)
-- [ ] **CONT-04**: Success confirmation message after form submission
-- [ ] **CONT-05**: Honeypot field for spam protection
+- [x] **CONT-01**: Contact page with simple inquiry form (name, email, session type dropdown, preferred date, message)
+- [x] **CONT-02**: Form validation with clear error messages
+- [x] **CONT-03**: Form submission sends email via Resend (Server Action, no API route needed)
+- [x] **CONT-04**: Success confirmation message after form submission
+- [x] **CONT-05**: Honeypot field for spam protection
 
 ### Blog
 
@@ -173,11 +173,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PORT-08 | Phase 5 | Complete |
 | SEOP-05 | Phase 5 | Complete |
 | SEOP-08 | Phase 5 | Complete |
-| CONT-01 | Phase 6 | Pending |
-| CONT-02 | Phase 6 | Pending |
-| CONT-03 | Phase 6 | Pending |
-| CONT-04 | Phase 6 | Pending |
-| CONT-05 | Phase 6 | Pending |
+| CONT-01 | Phase 6 | Complete |
+| CONT-02 | Phase 6 | Complete |
+| CONT-03 | Phase 6 | Complete |
+| CONT-04 | Phase 6 | Complete |
+| CONT-05 | Phase 6 | Complete |
 | SEOP-01 | Phase 7 | Pending |
 | SEOP-02 | Phase 7 | Pending |
 | SEOP-03 | Phase 7 | Pending |
