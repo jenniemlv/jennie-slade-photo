@@ -111,7 +111,9 @@ Plans:
   3. A successful form submission delivers an email to jennie@jennieslade.com via Resend
   4. After successful submission, a confirmation message is clearly visible on the page
   5. A honeypot field is present in the form DOM and submission with it filled is rejected silently
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 06-01-PLAN.md — Contact form with validation, honeypot, investment section, and stubbed Server Action
 **UI hint**: yes
 
 ### Phase 7: SEO and Open Graph
@@ -150,6 +152,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Homepage | 2/2 | Complete   | 2026-03-31 |
 | 4. About Page | 1/1 | Complete   | 2026-03-31 |
 | 5. Gallery System | 2/2 | Complete   | 2026-04-01 |
-| 6. Contact Page | 0/TBD | Not started | - |
+| 6. Contact Page | 0/1 | Not started | - |
 | 7. SEO and Open Graph | 0/TBD | Not started | - |
 | 8. Blog Structure | 0/TBD | Not started | - |
