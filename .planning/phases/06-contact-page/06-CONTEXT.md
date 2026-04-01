@@ -31,8 +31,15 @@ Build the contact/inquiry page with a simple form that validates, shows success 
 - **D-11:** When Resend is configured later: npm install resend, add RESEND_API_KEY to .env.local, uncomment the send call in the Server Action. No code restructuring needed.
 
 ### Pricing
-- **D-12:** No specific pricing on the contact page. Photography pricing is relationship-based. Instead, a soft line like "Every session is unique. Let's chat about what you're envisioning, and I'll put together something just for you."
-- **D-13:** This matches Lauren Fair and Tec Petaja — neither shows pricing. The inquiry form IS the pricing conversation starter.
+- **D-12:** Include a simple pricing section above or near the form. Soft, warm presentation. Not a pricing table. More like editorial text with "starting at" ranges.
+- **D-13:** Pricing details (from Jennie):
+  - Families: starting at $500
+  - Seniors: starting at $500
+  - Headshots / Corporate: starting at $500 (estimate, confirm with Jennie)
+  - Weddings: starting at $3,000
+- **D-13b:** Keep it warm and inviting. Use "Investment" as the heading, not "Pricing." Frame it as investing in memories.
+- **D-13c:** Simple editorial layout. List each session type with "starting at $X" and a one-line description. Not a pricing table or card grid. Clean, minimal, warm.
+- **D-13d:** Add a note at the bottom: "Want something custom? I love creating sessions that are uniquely yours. Just tell me what you're envisioning." This covers the custom session option Jennie mentioned.
 
 ### Page Layout
 - **D-14:** Page heading "Get in Touch" in type-title, centered.
