@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Layout Shell** - Navigation, footer, and design system primitives that wrap every page (completed 2026-03-30)
 - [x] **Phase 3: Homepage** - The editorial statement of the site, proving the magazine-spread layout works (completed 2026-03-31)
 - [x] **Phase 4: About Page** - Jennie's story, generational continuity narrative, and social proof (completed 2026-03-31)
-- [ ] **Phase 5: Gallery System** - Portfolio hub and three gallery pages with lightbox, the highest-risk performance phase
+- [x] **Phase 5: Gallery System** - Portfolio hub and three gallery pages with lightbox, the highest-risk performance phase (completed 2026-04-01)
 - [ ] **Phase 6: Contact Page** - Inquiry form with email delivery, the conversion goal of the site
 - [ ] **Phase 7: SEO and Open Graph** - Meta tags, structured data, sitemap, and performance verification across all pages
 - [ ] **Phase 8: Blog Structure** - Blog listing page and post template, ready for content with zero posts at launch
@@ -95,10 +95,10 @@ Plans:
   3. Clicking any image opens a full-screen lightbox; keyboard arrow navigation and mobile swipe both work correctly
   4. Gallery images use `CldImage` with explicit dimensions; Lighthouse CLS score is below 0.1 on all three gallery pages
   5. Lightbox and swipe navigation work on an actual iPhone in Safari (not just DevTools mobile emulation)
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 05-01-PLAN.md — Install lightbox library, create gallery data arrays, and build GalleryGrid component
-- [ ] 05-02-PLAN.md — Portfolio hub page and three gallery pages with visual verification
+- [x] 05-02-PLAN.md — Portfolio hub page and three gallery pages with visual verification
 **UI hint**: yes
 
 ### Phase 6: Contact Page
@@ -149,7 +149,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
 | 3. Homepage | 2/2 | Complete   | 2026-03-31 |
 | 4. About Page | 1/1 | Complete   | 2026-03-31 |
-| 5. Gallery System | 1/2 | In Progress|  |
+| 5. Gallery System | 2/2 | Complete   | 2026-04-01 |
 | 6. Contact Page | 0/TBD | Not started | - |
 | 7. SEO and Open Graph | 0/TBD | Not started | - |
 | 8. Blog Structure | 0/TBD | Not started | - |

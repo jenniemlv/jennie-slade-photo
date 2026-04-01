@@ -44,12 +44,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Portfolio
 
-- [ ] **PORT-01**: Portfolio hub page linking to weddings, families, and seniors galleries
+- [x] **PORT-01**: Portfolio hub page linking to weddings, families, and seniors galleries
 - [x] **PORT-02**: Clean uniform grid gallery component with generous spacing between images
 - [x] **PORT-03**: Full-screen lightbox on image click (keyboard-navigable, swipe on mobile, prev/next)
-- [ ] **PORT-04**: Weddings gallery page with descriptive text and curated image grid
-- [ ] **PORT-05**: Families gallery page with descriptive text and curated image grid
-- [ ] **PORT-06**: Seniors gallery page with descriptive text and curated image grid
+- [x] **PORT-04**: Weddings gallery page with descriptive text and curated image grid
+- [x] **PORT-05**: Families gallery page with descriptive text and curated image grid
+- [x] **PORT-06**: Seniors gallery page with descriptive text and curated image grid
 - [x] **PORT-07**: Gallery images use Cloudinary CldImage component with proper width/height to prevent CLS
 - [x] **PORT-08**: Gallery data stored in static TypeScript arrays (easy for non-developer to update)
 
@@ -163,12 +163,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ABOU-03 | Phase 4 | Complete |
 | ABOU-04 | Phase 4 | Complete |
 | ABOU-05 | Phase 4 | Complete |
-| PORT-01 | Phase 5 | Pending |
+| PORT-01 | Phase 5 | Complete |
 | PORT-02 | Phase 5 | Complete |
 | PORT-03 | Phase 5 | Complete |
-| PORT-04 | Phase 5 | Pending |
-| PORT-05 | Phase 5 | Pending |
-| PORT-06 | Phase 5 | Pending |
+| PORT-04 | Phase 5 | Complete |
+| PORT-05 | Phase 5 | Complete |
+| PORT-06 | Phase 5 | Complete |
 | PORT-07 | Phase 5 | Complete |
 | PORT-08 | Phase 5 | Complete |
 | SEOP-05 | Phase 5 | Complete |
