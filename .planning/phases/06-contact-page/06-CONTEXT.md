@@ -35,7 +35,9 @@ Build the contact/inquiry page with a simple form that validates, shows success 
 - **D-13:** Pricing details (from Jennie):
   - Families: starting at $500
   - Seniors: starting at $500
-  - Headshots / Corporate: starting at $500 (estimate, confirm with Jennie)
+  - Individual Headshots: starting at $200 (5 edited images)
+  - Corporate Teams: $150/person (3 edited images per person)
+  - Teams of 10+: $100/person
   - Weddings: starting at $3,000
 - **D-13b:** Keep it warm and inviting. Use "Investment" as the heading, not "Pricing." Frame it as investing in memories.
 - **D-13c:** Simple editorial layout. List each session type with "starting at $X" and a one-line description. Not a pricing table or card grid. Clean, minimal, warm.
