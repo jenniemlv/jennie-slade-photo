@@ -38,13 +38,13 @@ export default function HeroSection() {
           The priority prop is REQUIRED for LCP (D-04). */}
       <div className="absolute inset-0 bg-warm-gray" />
 
-      {/* Semi-transparent overlay for text legibility against any background */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Semi-transparent overlay for text legibility — enable when real photo is added:
+          <div className="absolute inset-0 bg-black/20" /> */}
 
       {/* Tagline overlay — centered, never wraps awkwardly on mobile */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <h1
-          className="type-title text-white text-center max-w-2xl text-[22px] md:text-[30px] lg:text-[38px] leading-relaxed"
+          className="type-title text-charcoal text-center max-w-2xl text-[22px] md:text-[30px] lg:text-[38px] leading-relaxed"
         >
           Real moments. Real joy. Remembered forever.
         </h1>

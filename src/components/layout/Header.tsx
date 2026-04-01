@@ -169,7 +169,7 @@ export default function Header() {
         aria-modal="true"
         aria-label="Navigation menu"
         className={[
-          'fixed inset-0 z-[60] bg-white flex flex-col items-center',
+          'fixed inset-0 z-[60] bg-off-white flex flex-col items-center',
           'transition-all duration-300',
           menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
         ].join(' ')}

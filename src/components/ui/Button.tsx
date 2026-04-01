@@ -27,10 +27,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 // Complete class strings required — no dynamic construction (Tailwind v4 static scanner).
 const variantClasses: Record<ButtonVariant, string> = {
-  // Primary: black bg, white text, 80% opacity on hover (D-17)
-  primary: 'bg-black text-white border border-black hover:opacity-80',
-  // Secondary: transparent bg, black border, inverts to black bg/white text on hover (D-18)
-  secondary: 'bg-transparent text-black border border-black hover:bg-black hover:text-white',
+  // Primary: warm taupe bg, white text, subtle hover (Lauren Fair style)
+  primary: 'bg-charcoal text-off-white border border-charcoal hover:opacity-80',
+  // Secondary: transparent bg, warm taupe border, inverts on hover
+  secondary: 'bg-transparent text-charcoal border border-charcoal hover:bg-charcoal hover:text-off-white',
 }
 
 export default function Button({

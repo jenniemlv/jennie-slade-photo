@@ -23,9 +23,9 @@ interface SectionProps {
 // Complete class strings are required — Tailwind v4 scans statically and cannot
 // detect dynamically constructed class names (e.g., `bg-${variant}`).
 const variantClasses: Record<SectionVariant, string> = {
-  default: 'bg-white',
-  muted: 'bg-off-white',
-  warm: 'bg-warm-gray-light',
+  default: 'bg-off-white',
+  muted: 'bg-warm-gray-light',
+  warm: 'bg-warm-gray',
 }
 
 export default function Section({

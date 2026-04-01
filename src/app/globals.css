@@ -1,85 +1,95 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors — warm undertone, never cool (per design-spec.md and CLAUDE.md) */
-  /* The grays are warm (slightly yellow/beige undertone). This is intentional. */
+  /* Brand colors — inspired by Lauren Fair & Tec Petaja aesthetic
+     Warm taupe/brown palette, cream backgrounds, refined and airy */
   --color-black: #000000;
-  --color-charcoal: #1a1a1a;
-  --color-gray: #6b6b6b;
+  --color-charcoal: #4b4746;          /* Warm taupe-brown (was #1a1a1a) — softer, more editorial */
+  --color-gray: #8a8483;              /* Warm mid-gray (was #6b6b6b) — lighter, warmer */
   --color-blue-mist: #b8c5d4;
   --color-teal-sage: #5f8f8b;
   --color-warm-gray: #d4d1cb;
   --color-warm-gray-light: #e3e0da;
-  --color-off-white: #f0eeeb;
-  --color-white: #ffffff;
+  --color-off-white: #f8f4ef;         /* Cream/ivory (was #f0eeeb) — matches Lauren Fair */
+  --color-cream: #f8f4ef;             /* Alias for readability */
+  --color-white: #fdfcfa;             /* Warm white, not pure white */
 
-  /* Font family tokens — CSS variables set by next/font on <html> element */
-  /* These map to Tailwind utilities: font-display, font-heading, etc. */
-  --font-display: var(--font-libre-baskerville), Georgia, serif;
+  /* Font family tokens — Lauren Fair / Tec Petaja inspired
+     Cormorant for display/titles (light, elegant, like Goldenbook)
+     Lora for body text (warm, calligraphic, like Larken)
+     Montserrat Light for small uppercase labels */
+  --font-display: var(--font-cormorant), Georgia, serif;
   --font-heading: var(--font-montserrat), sans-serif;
   --font-subheading: var(--font-apparel), Georgia, sans-serif;
-  --font-body: var(--font-libre-baskerville), Georgia, serif;
+  --font-body: var(--font-lora), Georgia, serif;
   --font-accent: var(--font-arapey), serif;
   --font-script: var(--font-destiny), cursive;
 }
 
-/* Typography hierarchy — matches design-spec.md exactly (D-12) */
+/* Typography hierarchy — refined to match Lauren Fair / Tec Petaja editorial feel */
 @layer base {
-  /* Title / H1 — Libre Baskerville 30px+ uppercase 0.02em */
+  /* Title / H1 — Cormorant Light, elegant and delicate, generous letter spacing */
   .type-title {
     font-family: var(--font-display);
-    font-size: 30px;
-    color: var(--color-black);
+    font-size: 32px;
+    color: var(--color-charcoal);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    font-weight: 300;
   }
 
-  /* Heading / H2 — Montserrat 12-14px uppercase 0.02em */
+  /* Heading / H2 — Montserrat, wider letter spacing for editorial refinement */
   .type-heading {
     font-family: var(--font-heading);
-    font-size: 12px;
-    color: var(--color-charcoal);
+    font-size: 11px;
+    color: var(--color-gray);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.15em;
     line-height: 1.8;
+    font-weight: 300;
   }
 
-  /* Subheading / H3 — Apparel 15-18px uppercase 0.07em */
+  /* Subheading / H3 — Apparel, generous spacing */
   .type-subheading {
     font-family: var(--font-subheading);
-    font-size: 15px;
+    font-size: 14px;
     color: var(--color-charcoal);
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    line-height: 1.1;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    font-weight: 400;
   }
 
-  /* Body / Paragraph — Libre Baskerville 16px, 1.9 line-height */
+  /* Body / Paragraph — Libre Baskerville, warm taupe color */
   .type-body {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 15px;
     color: var(--color-charcoal);
     letter-spacing: 0.02em;
     line-height: 1.9;
+    font-weight: 400;
   }
 
-  /* Accent — Arapey 16px */
+  /* Accent — Arapey italic, for testimonials and editorial callouts */
   .type-accent {
     font-family: var(--font-accent);
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-charcoal);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
   }
 
   /* Base body defaults */
   body {
     font-family: var(--font-body);
     color: var(--color-charcoal);
-    background-color: var(--color-white);
+    background-color: var(--color-off-white);
   }
 }
 
-/* Page transition — subtle fade-in on route change (D-21) */
+/* Page transition — subtle fade-in on route change */
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }

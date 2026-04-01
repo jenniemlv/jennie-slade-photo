@@ -19,6 +19,7 @@
  */
 
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Section from '@/components/layout/Section'
 import Button from '@/components/ui/Button'
 import ScrollFade from '@/components/ui/ScrollFade'
@@ -36,15 +37,20 @@ export default function AboutPage() {
       {/* ── Section 1: Photo + Intro ──────────────────────────────────────────
           NOT wrapped in ScrollFade — should be immediately visible on page load.
           Centered column, max-w-3xl for comfortable reading at portrait width.    */}
-      <Section variant="default">
+      <Section variant="default" className="pt-32 md:pt-40">
         <div className="max-w-3xl mx-auto text-center">
 
-          {/* Warm-gray portrait placeholder — will be replaced with a real photo of Jennie.
-              aspect-[3/4] gives a natural portrait orientation. Full-width on mobile. */}
-          <div
-            className="mx-auto w-full max-w-md aspect-[3/4] bg-warm-gray rounded-sm mb-12"
-            aria-label="Photo of Jennie Slade — coming soon"
-          />
+          {/* Jennie's headshot with her Canon camera */}
+          <div className="mx-auto w-full max-w-md mb-12 overflow-hidden rounded-sm">
+            <Image
+              src="/images/jennie-headshot.png"
+              alt="Jennie Slade holding her Canon camera, black and white portrait"
+              width={800}
+              height={1067}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
 
           {/* Page title — Libre Baskerville, uppercase */}
           <h1 className="type-title mb-4">Hello, I&apos;m Jennie</h1>
@@ -52,8 +58,18 @@ export default function AboutPage() {
           {/* Decorative subtitle — Montserrat uppercase, small */}
           <p className="type-heading mb-10">Las Vegas Portrait Photographer</p>
 
+          {/* Short warm intro to bridge the gap before the origin story */}
+          <p className="type-body max-w-2xl mx-auto">
+            I&apos;m so glad you&apos;re here. Whether you found me through a friend, a Google search,
+            or you&apos;ve been coming back for years, I want you to know a little about the person
+            behind the camera.
+          </p>
+
         </div>
       </Section>
+
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
 
       {/* ── Section 2: Origin Story ────────────────────────────────────────── */}
       <ScrollFade>
@@ -87,6 +103,38 @@ export default function AboutPage() {
         </Section>
       </ScrollFade>
 
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
+
+      {/* ── Personal photo: travel/adventure ─────────────────────────────── */}
+      <ScrollFade>
+        <Section variant="muted">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="overflow-hidden rounded-sm aspect-[3/4]">
+              <Image
+                src="/images/jennie-photo-2.jpg"
+                alt="Jennie traveling with her partner overlooking the ocean"
+                width={600}
+                height={900}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="overflow-hidden rounded-sm aspect-[3/4]">
+              <Image
+                src="/images/jennie-photo-3.jpg"
+                alt="Jennie exploring a European city"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </Section>
+      </ScrollFade>
+
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
+
       {/* ── Section 3: What to Expect ─────────────────────────────────────── */}
       <ScrollFade>
         <Section variant="muted">
@@ -112,6 +160,38 @@ export default function AboutPage() {
           </div>
         </Section>
       </ScrollFade>
+
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
+
+      {/* ── Jennie in action: shooting photos ──────────────────────────────── */}
+      <ScrollFade>
+        <Section variant="default">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="overflow-hidden rounded-sm aspect-[3/4]">
+              <Image
+                src="/images/jennie-shooting-1.jpg"
+                alt="Jennie photographing a client at the Welcome to Las Vegas sign"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="overflow-hidden rounded-sm aspect-[3/4]">
+              <Image
+                src="/images/jennie-shooting3.jpg"
+                alt="Jennie photographing a portrait session"
+                width={800}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </Section>
+      </ScrollFade>
+
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
 
       {/* ── Section 4: Generational Story ────────────────────────────────── */}
       <ScrollFade>
@@ -155,6 +235,9 @@ export default function AboutPage() {
         </Section>
       </ScrollFade>
 
+      {/* Decorative divider */}
+      <div className="flex justify-center py-4"><div className="w-16 border-t border-warm-gray" /></div>
+
       {/* ── Section 6: A Little More About Me ────────────────────────────── */}
       <ScrollFade>
         <Section variant="default">
@@ -175,6 +258,17 @@ export default function AboutPage() {
               I&apos;m a Las Vegas native, born and raised. This city is home, and so are the families
               who live here. I love that I get to be part of your story.
             </p>
+
+            {/* Family photo */}
+            <div className="mt-10 overflow-hidden rounded-sm">
+              <Image
+                src="/images/jennie-family.jpg"
+                alt="Jennie Slade with her family"
+                width={1200}
+                height={800}
+                className="w-full h-auto"
+              />
+            </div>
 
           </div>
         </Section>

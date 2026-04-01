@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { libreBaskerville, montserrat, arapey, apparel, destiny } from '@/lib/fonts'
+import { cormorant, lora, montserrat, arapey, apparel, destiny } from '@/lib/fonts'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PageTransition from '@/components/ui/PageTransition'
@@ -20,7 +20,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={[
-        libreBaskerville.variable,
+        cormorant.variable,
+        lora.variable,
         montserrat.variable,
         arapey.variable,
         apparel.variable,
