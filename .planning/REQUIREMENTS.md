@@ -45,13 +45,13 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Portfolio
 
 - [ ] **PORT-01**: Portfolio hub page linking to weddings, families, and seniors galleries
-- [ ] **PORT-02**: Clean uniform grid gallery component with generous spacing between images
-- [ ] **PORT-03**: Full-screen lightbox on image click (keyboard-navigable, swipe on mobile, prev/next)
+- [x] **PORT-02**: Clean uniform grid gallery component with generous spacing between images
+- [x] **PORT-03**: Full-screen lightbox on image click (keyboard-navigable, swipe on mobile, prev/next)
 - [ ] **PORT-04**: Weddings gallery page with descriptive text and curated image grid
 - [ ] **PORT-05**: Families gallery page with descriptive text and curated image grid
 - [ ] **PORT-06**: Seniors gallery page with descriptive text and curated image grid
-- [ ] **PORT-07**: Gallery images use Cloudinary CldImage component with proper width/height to prevent CLS
-- [ ] **PORT-08**: Gallery data stored in static TypeScript arrays (easy for non-developer to update)
+- [x] **PORT-07**: Gallery images use Cloudinary CldImage component with proper width/height to prevent CLS
+- [x] **PORT-08**: Gallery data stored in static TypeScript arrays (easy for non-developer to update)
 
 ### Contact
 
@@ -74,10 +74,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **SEOP-02**: Open Graph tags with 1200x630 images for social sharing on every page
 - [ ] **SEOP-03**: LocalBusiness JSON-LD structured data for Las Vegas photographer
 - [ ] **SEOP-04**: Sitemap generated via app/sitemap.ts
-- [ ] **SEOP-05**: All images have descriptive, location-specific alt text
+- [x] **SEOP-05**: All images have descriptive, location-specific alt text
 - [ ] **SEOP-06**: Lighthouse score 90+ on all categories
 - [x] **SEOP-07**: First Contentful Paint under 1.5 seconds
-- [ ] **SEOP-08**: CLS less than 0.1 across all pages (no layout shift from images or fonts)
+- [x] **SEOP-08**: CLS less than 0.1 across all pages (no layout shift from images or fonts)
 - [x] **SEOP-09**: Proper font-display: swap to prevent FOUT/FOIT
 
 ### Design Quality
@@ -164,15 +164,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ABOU-04 | Phase 4 | Complete |
 | ABOU-05 | Phase 4 | Complete |
 | PORT-01 | Phase 5 | Pending |
-| PORT-02 | Phase 5 | Pending |
-| PORT-03 | Phase 5 | Pending |
+| PORT-02 | Phase 5 | Complete |
+| PORT-03 | Phase 5 | Complete |
 | PORT-04 | Phase 5 | Pending |
 | PORT-05 | Phase 5 | Pending |
 | PORT-06 | Phase 5 | Pending |
-| PORT-07 | Phase 5 | Pending |
-| PORT-08 | Phase 5 | Pending |
-| SEOP-05 | Phase 5 | Pending |
-| SEOP-08 | Phase 5 | Pending |
+| PORT-07 | Phase 5 | Complete |
+| PORT-08 | Phase 5 | Complete |
+| SEOP-05 | Phase 5 | Complete |
+| SEOP-08 | Phase 5 | Complete |
 | CONT-01 | Phase 6 | Pending |
 | CONT-02 | Phase 6 | Pending |
 | CONT-03 | Phase 6 | Pending |

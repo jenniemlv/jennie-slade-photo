@@ -95,9 +95,9 @@ Plans:
   3. Clicking any image opens a full-screen lightbox; keyboard arrow navigation and mobile swipe both work correctly
   4. Gallery images use `CldImage` with explicit dimensions; Lighthouse CLS score is below 0.1 on all three gallery pages
   5. Lightbox and swipe navigation work on an actual iPhone in Safari (not just DevTools mobile emulation)
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
-- [ ] 05-01-PLAN.md — Install lightbox library, create gallery data arrays, and build GalleryGrid component
+- [x] 05-01-PLAN.md — Install lightbox library, create gallery data arrays, and build GalleryGrid component
 - [ ] 05-02-PLAN.md — Portfolio hub page and three gallery pages with visual verification
 **UI hint**: yes
 
@@ -149,7 +149,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 2. Layout Shell | 3/3 | Complete   | 2026-03-30 |
 | 3. Homepage | 2/2 | Complete   | 2026-03-31 |
 | 4. About Page | 1/1 | Complete   | 2026-03-31 |
-| 5. Gallery System | 0/2 | Planning complete | - |
+| 5. Gallery System | 1/2 | In Progress|  |
 | 6. Contact Page | 0/TBD | Not started | - |
 | 7. SEO and Open Graph | 0/TBD | Not started | - |
 | 8. Blog Structure | 0/TBD | Not started | - |
