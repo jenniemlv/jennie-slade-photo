@@ -128,9 +128,9 @@ Plans:
   5. Lighthouse SEO score is 100 and overall score is 90+ on all categories across all pages
 **Plans:** 3 plans
 Plans:
-- [ ] 07-01-PLAN.md — JSON-LD structured data, base OG metadata, sitemap, robots.txt, and OG default image
-- [ ] 07-02-PLAN.md — SEO-optimized meta titles and OG tags on all 8 pages
-- [ ] 07-03-PLAN.md — Lighthouse audit, fixes, and human verification
+- [x] 07-01-PLAN.md — JSON-LD structured data, base OG metadata, sitemap, robots.txt, and OG default image
+- [x] 07-02-PLAN.md — SEO-optimized meta titles and OG tags on all 8 pages
+- [x] 07-03-PLAN.md — Lighthouse audit, fixes, and human verification
 
 ### Phase 8: Blog Structure
 **Goal**: Blog infrastructure exists and is ready to receive content, even with zero posts at launch

@@ -73,7 +73,7 @@ completed: 2026-03-30
 
 1. **Task 1: Build Header component with scroll behavior and desktop navigation** - `2db6720` (feat)
 
-**Plan metadata:** _(pending docs commit)_
+**Plan metadata:** `be9336b` (docs)
 
 ## Files Created/Modified
 
