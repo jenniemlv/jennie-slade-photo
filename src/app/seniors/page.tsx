@@ -21,10 +21,14 @@ import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { seniorImages } from '@/data/galleries'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Senior Portraits — Jennie Slade Photography',
-  description:
-    'Las Vegas senior portrait photography marking this milestone with confidence, personality, and style.',
+  title: 'Las Vegas Senior Portraits | Jennie Slade Photography',
+  description: 'Senior portrait sessions that capture who you really are. Fun, relaxed photos at your favorite Las Vegas spots.',
+  openGraph: {
+    title: 'Las Vegas Senior Portraits | Jennie Slade Photography',
+    description: 'Senior portrait sessions that capture who you really are. Fun, relaxed photos at your favorite Las Vegas spots.',
+  },
 }
 
 export default function SeniorsPage() {

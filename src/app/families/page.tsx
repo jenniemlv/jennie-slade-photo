@@ -21,10 +21,14 @@ import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { familyImages } from '@/data/galleries'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Family Photography — Jennie Slade Photography',
-  description:
-    'Las Vegas family portrait sessions capturing the love, laughter, and connection that make your family uniquely yours.',
+  title: 'Las Vegas Family Photographer | Jennie Slade',
+  description: 'Family portrait sessions full of real moments, belly laughs, and love. Photographing Las Vegas families for over 20 years.',
+  openGraph: {
+    title: 'Las Vegas Family Photographer | Jennie Slade',
+    description: 'Family portrait sessions full of real moments, belly laughs, and love. Photographing Las Vegas families for over 20 years.',
+  },
 }
 
 export default function FamiliesPage() {

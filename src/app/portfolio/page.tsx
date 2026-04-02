@@ -28,10 +28,14 @@ import Link from 'next/link'
 import Section from '@/components/layout/Section'
 import ScrollFade from '@/components/ui/ScrollFade'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Portfolio — Jennie Slade Photography',
-  description:
-    'Browse wedding, family, senior, and headshot photography by Jennie Slade, Las Vegas photographer with over 20 years of experience.',
+  title: 'Photography Portfolio | Jennie Slade Photography',
+  description: 'Curated wedding, family, senior, and headshot galleries from over two decades of Las Vegas portrait photography.',
+  openGraph: {
+    title: 'Photography Portfolio | Jennie Slade Photography',
+    description: 'Curated wedding, family, senior, and headshot galleries from over two decades of Las Vegas portrait photography.',
+  },
 }
 
 // The three gallery categories with editorial descriptors (D-02)

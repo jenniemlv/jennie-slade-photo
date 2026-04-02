@@ -15,10 +15,14 @@ import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { headshotImages } from '@/data/galleries'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Headshots & Corporate — Jennie Slade Photography',
-  description:
-    'Professional headshots and corporate photography in Las Vegas. Clean, polished portraits for LinkedIn, branding, and business.',
+  title: 'Las Vegas Headshots & Corporate | Jennie Slade',
+  description: 'Professional headshots and corporate team photography. Confident, approachable portraits starting at $200.',
+  openGraph: {
+    title: 'Las Vegas Headshots & Corporate | Jennie Slade',
+    description: 'Professional headshots and corporate team photography. Confident, approachable portraits starting at $200.',
+  },
 }
 
 export default function HeadshotsPage() {

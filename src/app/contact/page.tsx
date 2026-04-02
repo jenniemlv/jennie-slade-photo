@@ -27,10 +27,14 @@ import Section from '@/components/layout/Section'
 import ScrollFade from '@/components/ui/ScrollFade'
 import ContactForm from './ContactForm'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Contact | Jennie Slade Photography',
-  description:
-    'Get in touch with Jennie Slade Photography in Las Vegas. Inquire about family portraits, senior photos, weddings, and headshot sessions.',
+  title: 'Book a Session | Jennie Slade Photography',
+  description: "Ready to book your Las Vegas photo session? Families, weddings, seniors, and headshots. Reach out and let's create something beautiful.",
+  openGraph: {
+    title: 'Book a Session | Jennie Slade Photography',
+    description: "Ready to book your Las Vegas photo session? Families, weddings, seniors, and headshots. Reach out and let's create something beautiful.",
+  },
 }
 
 // ── Investment / Pricing data (D-13) ─────────────────────────────────────────

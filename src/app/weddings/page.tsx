@@ -21,10 +21,14 @@ import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { weddingImages } from '@/data/galleries'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'Wedding Photography — Jennie Slade Photography',
-  description:
-    'Las Vegas wedding photography capturing every moment from ceremony to reception. Over 20 years of experience documenting love stories.',
+  title: 'Las Vegas Wedding Photographer | Jennie Slade',
+  description: 'Timeless, editorial wedding photography from first look to last dance. Capturing every real moment of your Las Vegas wedding.',
+  openGraph: {
+    title: 'Las Vegas Wedding Photographer | Jennie Slade',
+    description: 'Timeless, editorial wedding photography from first look to last dance. Capturing every real moment of your Las Vegas wedding.',
+  },
 }
 
 export default function WeddingsPage() {

@@ -24,10 +24,14 @@ import Section from '@/components/layout/Section'
 import Button from '@/components/ui/Button'
 import ScrollFade from '@/components/ui/ScrollFade'
 
+// SEO metadata — optimized for Las Vegas market (Phase 7, D-01 through D-07)
 export const metadata: Metadata = {
-  title: 'About | Jennie Slade Photography',
-  description:
-    'Las Vegas portrait photographer with over twenty years of experience capturing families, weddings, and seniors. Meet Jennie and learn her story.',
+  title: 'About Jennie Slade | Las Vegas Photographer',
+  description: 'Las Vegas photographer with 20+ years capturing the same families from newborns to seniors. Meet the person behind the camera.',
+  openGraph: {
+    title: 'About Jennie Slade | Las Vegas Photographer',
+    description: 'Las Vegas photographer with 20+ years capturing the same families from newborns to seniors. Meet the person behind the camera.',
+  },
 }
 
 export default function AboutPage() {
