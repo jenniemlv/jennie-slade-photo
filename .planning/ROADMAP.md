@@ -141,13 +141,16 @@ Plans:
   2. Creating an MDX file in the correct directory makes a post appear on the listing page with title, date, and excerpt
   3. Individual blog post pages render at `/blog/[slug]` with correct H1 title and H2/H3 heading hierarchy
   4. Blog post images reference Cloudinary and render without layout shift
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 08-01-PLAN.md — MDX infrastructure, blog utility library, and listing page with empty state
+- [ ] 08-02-PLAN.md — Blog post template, sample MDX post, sitemap update, and visual verification
 **UI hint**: yes
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -158,4 +161,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 5. Gallery System | 2/2 | Complete   | 2026-04-01 |
 | 6. Contact Page | 1/1 | Complete   | 2026-04-01 |
 | 7. SEO and Open Graph | 0/3 | In progress | - |
-| 8. Blog Structure | 0/TBD | Not started | - |
+| 8. Blog Structure | 0/2 | Not started | - |
