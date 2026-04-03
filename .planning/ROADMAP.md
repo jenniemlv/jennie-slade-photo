@@ -144,7 +144,7 @@ Plans:
 **Plans:** 1/2 plans executed
 Plans:
 - [x] 08-01-PLAN.md — MDX infrastructure, blog utility library, and listing page with empty state
-- [ ] 08-02-PLAN.md — Blog post template, sample MDX post, sitemap update, and visual verification
+- [x] 08-02-PLAN.md — Blog post template, sample MDX post, sitemap update, and visual verification
 **UI hint**: yes
 
 ## Progress
