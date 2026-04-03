@@ -63,9 +63,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Blog
 
-- [ ] **BLOG-01**: Blog listing page showing posts with title, date, excerpt, and featured image
+- [x] **BLOG-01**: Blog listing page showing posts with title, date, excerpt, and featured image
 - [ ] **BLOG-02**: Individual blog post template with proper heading hierarchy (H1 title, H2/H3 sections)
-- [ ] **BLOG-03**: Blog posts stored as MDX files (easy to create and edit via Claude Code)
+- [x] **BLOG-03**: Blog posts stored as MDX files (easy to create and edit via Claude Code)
 - [ ] **BLOG-04**: Blog post images use Cloudinary for optimization
 
 ### SEO & Performance
@@ -183,9 +183,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEOP-03 | Phase 7 | Pending |
 | SEOP-04 | Phase 7 | Pending |
 | SEOP-06 | Phase 7 | Pending |
-| BLOG-01 | Phase 8 | Pending |
+| BLOG-01 | Phase 8 | Complete |
 | BLOG-02 | Phase 8 | Pending |
-| BLOG-03 | Phase 8 | Pending |
+| BLOG-03 | Phase 8 | Complete |
 | BLOG-04 | Phase 8 | Pending |
 
 **Coverage:**

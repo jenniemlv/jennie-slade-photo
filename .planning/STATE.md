@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 7 context gathered
-last_updated: "2026-04-02T21:37:04.642Z"
+status: Ready to execute
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-04-03T02:52:35.885Z"
 progress:
   total_phases: 8
   completed_phases: 7
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 16
+  completed_plans: 15
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** The photographs are the product. Every design decision must make the photography look stunning, never compete with it.
-**Current focus:** Phase 07 — seo-and-open-graph
+**Current focus:** Phase 08 — blog-structure
 
 ## Current Position
 
-Phase: 8
-Plan: Not started
+Phase: 08 (blog-structure) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -58,6 +58,7 @@ Plan: Not started
 | Phase 05-gallery-system P01 | 8 | 2 tasks | 3 files |
 | Phase 05-gallery-system P02 | 30 | 2 tasks | 6 files |
 | Phase 06-contact-page P01 | 11 | 2 tasks | 3 files |
+| Phase 08 P01 | 13 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -102,6 +103,8 @@ Recent decisions affecting current work:
 - [Phase 06-contact-page]: ContactForm uses useTransition + direct Server Action call for clean isSubmitting state control without useActionState complexity
 - [Phase 06-contact-page]: Investment section placed AFTER the form — form is primary conversion action, pricing is supplementary context
 - [Phase 06-contact-page]: Honeypot field uses absolute -left-[9999px] positioning with tabIndex=-1 — invisible to real users, filled by bots
+- [Phase 08]: gray-matter + next-mdx-remote for MDX blog: lightweight frontmatter parsing, App Router Server Component compatible
+- [Phase 08]: Blog listing page title is 'The Journal' — editorial magazine feel over generic 'Blog'
 
 ### Pending Todos
 
@@ -116,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T20:37:03.440Z
-Stopped at: Phase 7 context gathered
-Resume file: .planning/phases/07-seo-and-open-graph/07-CONTEXT.md
+Last session: 2026-04-03T02:52:35.881Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None
