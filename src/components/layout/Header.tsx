@@ -127,7 +127,7 @@ export default function Header() {
         <div className="relative z-10 max-w-[1200px] mx-auto py-6 px-6 md:px-8">
 
           {/* Site name — centered, links to home (D-02) */}
-          <Link href="/" className="type-title block text-center">
+          <Link href="/" className="font-display text-[22px] md:text-[26px] font-light tracking-[0.1em] uppercase text-charcoal block text-center">
             JENNIE SLADE
           </Link>
 
