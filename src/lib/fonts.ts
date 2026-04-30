@@ -8,7 +8,7 @@
 // - Montserrat Light: clean sans-serif for small uppercase labels
 // - Arapey Italic: accent/testimonial font
 
-import { Cormorant, Lora, Montserrat, Arapey } from 'next/font/google'
+import { Cormorant, Lora, Montserrat, Arapey, Bodoni_Moda } from 'next/font/google'
 import localFont from 'next/font/local'
 
 // Cormorant — elegant, light display serif for titles and headlines
@@ -45,6 +45,18 @@ export const arapey = Arapey({
   weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-arapey',
+  display: 'swap',
+})
+
+// Bodoni Moda — high-contrast didone for editorial hero moments.
+// Used selectively on the What to Wear quiz results screen for "Vogue-spread"
+// impact alongside the brand's softer Cormorant Light. Heavy weights only —
+// the brand's everyday display stays Cormorant.
+export const bodoniModa = Bodoni_Moda({
+  subsets: ['latin'],
+  weight: ['400', '500', '700', '800'],
+  style: ['normal', 'italic'],
+  variable: '--font-bodoni',
   display: 'swap',
 })
 

@@ -13,6 +13,11 @@
   --color-off-white: #f8f4ef;         /* Cream/ivory (was #f0eeeb) — matches Lauren Fair */
   --color-cream: #f8f4ef;             /* Alias for readability */
   --color-white: #fdfcfa;             /* Warm white, not pure white */
+  /* Terracotta — single editorial accent. Used surgically on /what-to-wear:
+     section numbers, hairlines under section headers, the masthead italic
+     word, and the Jennie pull-quote signature. Never on buttons, body links,
+     or borders elsewhere. Three placements maximum per spread. */
+  --color-terracotta: #A85A3E;
 
   /* Font family tokens — Lauren Fair / Tec Petaja inspired
      Cormorant for display/titles (light, elegant, like Goldenbook)
@@ -24,6 +29,9 @@
   --font-body: var(--font-lora), Georgia, serif;
   --font-accent: var(--font-arapey), serif;
   --font-script: var(--font-destiny), cursive;
+  /* Bodoni Moda — high-contrast didone for editorial hero moments
+     (used on /what-to-wear). Don't use site-wide. */
+  --font-editorial: var(--font-bodoni), 'Didot', 'Bodoni MT', Georgia, serif;
 }
 
 /* Typography hierarchy — refined to match Lauren Fair / Tec Petaja editorial feel */
@@ -213,4 +221,49 @@
 
 .animate-fade-in {
   animation: fade-in 200ms ease-in-out;
+}
+
+/* ── Print styles ──────────────────────────────────────────────────────────
+   When users hit "Save as PDF" from the quiz results, we don't want the
+   fixed site header (big "JENNIE SLADE") repeating on every page, the
+   action buttons, or the photo gallery taking up multiple pages.
+
+   Convention used in components:
+     .no-print          — hidden in print
+     .print-thumbnails  — collapses a photo grid into a single thin strip
+                          of small thumbnails contained on one page
+*/
+@media print {
+  /* Hide the persistent site header in print — too prominent on every page */
+  header { display: none !important; }
+
+  /* Hide elements explicitly marked no-print (action buttons, share/email,
+     restart links, LTK callout, etc.) */
+  .no-print { display: none !important; }
+
+  /* Page setup: trim the wide site margins for a tighter PDF */
+  body { background: white !important; color: #2D2926 !important; }
+  main { padding-top: 0 !important; }
+
+  /* Photo gallery: tight thumbnail strip, contained to one page block */
+  .print-thumbnails {
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    gap: 4px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 0.5rem !important;
+  }
+  .print-thumbnails > * {
+    aspect-ratio: 3 / 4 !important;
+  }
+
+  /* Don't break content cards across pages where avoidable */
+  section, .outfit-card, .result-section { page-break-inside: avoid; }
+
+  /* Hide animations / transforms that don't print well */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
