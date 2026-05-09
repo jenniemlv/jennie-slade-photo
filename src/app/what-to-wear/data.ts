@@ -81,12 +81,12 @@ export const questions: Question[] = [
 ]
 
 // ── Color palettes by skin tone (these are CLOTHING color suggestions, not brand) ─
-interface ColorSuggestion {
+export interface ColorSuggestion {
   name: string
   hex: string
   why: string
 }
-interface ColorSet {
+export interface ColorSet {
   primary: ColorSuggestion
   secondary: ColorSuggestion
   accent: ColorSuggestion
@@ -116,7 +116,17 @@ const colorMap: Record<string, ColorSet> = {
 }
 
 // ── Outfit recommendations by session × style ─────────────────────────────────
-interface Outfit {
+export type PieceType = 'top' | 'bottom' | 'shoes' | 'accessory' | 'outerwear'
+
+export interface OutfitPiece {
+  type: PieceType
+  name: string
+  description: string
+  shopMyProductUrl?: string
+  priceDisplay?: string
+}
+
+export interface Outfit {
   top: string
   bottom: string
   accessories: string
@@ -127,13 +137,28 @@ interface Outfit {
    * Format: https://shopmy.us/collections/{id}
    */
   shopMyUrl?: string
+  /**
+   * Structured per-piece breakdown for v2 mood board (family scope).
+   * When present, used by MoodBoard to render flat-lay tiles + per-piece purchase.
+   * When absent, getPieces() synthesizes from top/bottom/accessories strings.
+   */
+  pieces?: OutfitPiece[]
+}
+
+export function getPieces(outfit: Outfit): OutfitPiece[] {
+  if (outfit.pieces && outfit.pieces.length > 0) return outfit.pieces
+  return [
+    { type: 'top', name: outfit.top, description: outfit.top, shopMyProductUrl: outfit.shopMyUrl },
+    { type: 'bottom', name: outfit.bottom, description: outfit.bottom, shopMyProductUrl: outfit.shopMyUrl },
+    { type: 'accessory', name: outfit.accessories, description: outfit.accessories, shopMyProductUrl: outfit.shopMyUrl },
+  ]
 }
 
 type StyleKey = 'casual' | 'classic' | 'trendy' | 'minimal' | 'eclectic'
 type SessionKey = 'headshots' | 'family' | 'couples' | 'branding'
 // 'seniors' and 'unsure' fall back to one of the above via a session-key resolver.
 
-const outfitsBySession: Record<SessionKey, Record<StyleKey, Outfit[]>> = {
+export const outfitsBySession: Record<SessionKey, Record<StyleKey, Outfit[]>> = {
   headshots: {
     casual: [
       { top: 'Soft cream knit sweater', bottom: 'Dark wash straight-leg jeans', accessories: 'Small gold hoops, neutral leather watch', why: 'Polished but never stiff. The knit moves with you and reads professional without feeling corporate.', shopMyUrl: 'https://shopmy.us/shop/collections/5043621' },
@@ -315,3 +340,243 @@ export const fabrics = [
   { name: 'Soft knits', desc: 'Flattering, drape with you, add texture on camera.' },
   { name: 'Silk blends', desc: 'Elegant movement, photographs like a film still.' },
 ]
+
+// ── Multi-person family flow ──────────────────────────────────────────────────
+
+export type PersonRole = 'anchor' | 'partner' | 'child' | 'teen' | 'grandparent' | 'other'
+export type Gender = 'woman' | 'man' | 'non-binary'
+
+export const ROLE_LABELS: Record<PersonRole, string> = {
+  anchor: 'You',
+  partner: 'Partner',
+  child: 'Child',
+  teen: 'Teen',
+  grandparent: 'Grandparent',
+  other: 'Family member',
+}
+
+export const GENDER_LABELS: Record<Gender, string> = {
+  woman: 'Woman',
+  man: 'Man',
+  'non-binary': 'Non-binary',
+}
+
+export interface Person {
+  id: string
+  role: PersonRole
+  gender?: Gender
+  displayName?: string
+  answers: Answers
+  isAnchor: boolean
+}
+
+export interface QuizState {
+  anchor: Person | null
+  group: Person[]
+  isGroup: boolean
+}
+
+export const EMPTY_QUIZ_STATE: QuizState = {
+  anchor: null,
+  group: [],
+  isGroup: false,
+}
+
+export type PaletteSlot = 'dominant' | 'complement' | 'neutral' | 'accentTonal'
+
+export interface FamilyPalette {
+  dominant: ColorSuggestion
+  complement: ColorSuggestion
+  neutral: ColorSuggestion
+  accentTonal: ColorSuggestion
+}
+
+export interface PersonRecommendations {
+  person: Person
+  recommendations: Recommendations
+  paletteSlot: PaletteSlot
+  assignedPrimary: ColorSuggestion
+}
+
+export interface GroupRecommendations {
+  familyPalette: FamilyPalette
+  people: PersonRecommendations[]
+  sharedAvoid: string[]
+  sharedTips: string[]
+}
+
+// ── Color math ────────────────────────────────────────────────────────────────
+
+function hexToHsl(hex: string): [number, number, number] {
+  const clean = hex.replace('#', '')
+  const r = parseInt(clean.slice(0, 2), 16) / 255
+  const g = parseInt(clean.slice(2, 4), 16) / 255
+  const b = parseInt(clean.slice(4, 6), 16) / 255
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  const l = (max + min) / 2
+  let h = 0
+  let s = 0
+  if (max !== min) {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6
+    else if (max === g) h = ((b - r) / d + 2) / 6
+    else h = ((r - g) / d + 4) / 6
+  }
+  return [h * 360, s * 100, l * 100]
+}
+
+function hslToHex(h: number, s: number, l: number): string {
+  const sNorm = s / 100
+  const lNorm = l / 100
+  const c = (1 - Math.abs(2 * lNorm - 1)) * sNorm
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
+  const m = lNorm - c / 2
+  let r = 0
+  let g = 0
+  let b = 0
+  if (h < 60) [r, g, b] = [c, x, 0]
+  else if (h < 120) [r, g, b] = [x, c, 0]
+  else if (h < 180) [r, g, b] = [0, c, x]
+  else if (h < 240) [r, g, b] = [0, x, c]
+  else if (h < 300) [r, g, b] = [x, 0, c]
+  else [r, g, b] = [c, 0, x]
+  const toHex = (v: number) =>
+    Math.round((v + m) * 255)
+      .toString(16)
+      .padStart(2, '0')
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase()
+}
+
+export function shiftLuminance(hex: string, deltaPct: number): string {
+  const [h, s, l] = hexToHsl(hex)
+  const nextL = Math.min(95, Math.max(8, l + deltaPct))
+  return hslToHex(h, s, nextL)
+}
+
+const NEUTRAL_BY_SKIN_TONE: Record<string, ColorSuggestion> = {
+  fair: { name: 'Soft Oat', hex: '#E8DDC8', why: 'A soft, universally coordinating neutral that photographs warm against fair skin.' },
+  medium: { name: 'Warm Stone', hex: '#C7B49A', why: 'Earthy, harmonious, lets every face in the frame be the focal point.' },
+  deep: { name: 'Ivory', hex: '#F0E8D8', why: 'High-contrast and editorial. Photographs like film against deeper skin.' },
+  unsure: { name: 'Warm Cream', hex: '#EFE4D2', why: 'A safe coordinating neutral that flatters every skin tone in a group.' },
+}
+
+export function deriveNeutral(skinTone: string): ColorSuggestion {
+  return NEUTRAL_BY_SKIN_TONE[skinTone] || NEUTRAL_BY_SKIN_TONE.unsure
+}
+
+export function buildFamilyPalette(anchor: Person): FamilyPalette {
+  const colors = colorMap[anchor.answers.skinTone] || colorMap.unsure
+  const accentHex = shiftLuminance(colors.primary.hex, -22)
+  return {
+    dominant: colors.primary,
+    complement: colors.secondary,
+    neutral: deriveNeutral(anchor.answers.skinTone),
+    accentTonal: {
+      name: `Deep ${colors.primary.name}`,
+      hex: accentHex,
+      why: 'A deeper tonal of the family dominant — supports without competing. Photographs as a coordinated, intentional pairing.',
+    },
+  }
+}
+
+function assignSlot(role: PersonRole, addOrder: number, childCountSoFar: number): PaletteSlot {
+  if (role === 'anchor') return 'dominant'
+  if (role === 'partner') return 'accentTonal'
+  if (role === 'grandparent') return 'neutral'
+  if (role === 'teen') return 'complement'
+  if (role === 'child') return childCountSoFar % 2 === 0 ? 'dominant' : 'neutral'
+  const cycle: PaletteSlot[] = ['accentTonal', 'complement', 'neutral', 'dominant']
+  return cycle[addOrder % cycle.length]
+}
+
+function paletteSlotToColor(slot: PaletteSlot, palette: FamilyPalette): ColorSuggestion {
+  return palette[slot]
+}
+
+function fillMiniAnswersFromAnchor(person: Person, anchor: Person): Answers {
+  return {
+    sessionType: anchor.answers.sessionType,
+    style: person.answers.style || anchor.answers.style,
+    confidence: anchor.answers.confidence,
+    vibe: anchor.answers.vibe,
+    skinTone: person.answers.skinTone || anchor.answers.skinTone,
+  }
+}
+
+export function getGroupRecommendations(state: QuizState): GroupRecommendations | null {
+  if (!state.anchor || !state.isGroup) return null
+  const anchor = state.anchor
+  const palette = buildFamilyPalette(anchor)
+
+  const anchorEntry: PersonRecommendations = {
+    person: anchor,
+    recommendations: getRecommendations(anchor.answers),
+    paletteSlot: 'dominant',
+    assignedPrimary: paletteSlotToColor('dominant', palette),
+  }
+
+  let childCount = 0
+  const groupEntries: PersonRecommendations[] = state.group.map((person, idx) => {
+    const isChild = person.role === 'child'
+    if (isChild) childCount += 1
+    const slot = assignSlot(person.role, idx, isChild ? childCount - 1 : 0)
+    const personAnswers: Answers = isChild
+      ? { ...person.answers, style: 'casual' }
+      : person.answers
+    const filled: Person = {
+      ...person,
+      answers: fillMiniAnswersFromAnchor({ ...person, answers: personAnswers }, anchor),
+    }
+    return {
+      person: filled,
+      recommendations: getRecommendations(filled.answers),
+      paletteSlot: slot,
+      assignedPrimary: paletteSlotToColor(slot, palette),
+    }
+  })
+
+  const allPeople = [anchorEntry, ...groupEntries]
+  const sharedAvoid = Array.from(
+    new Set(allPeople.flatMap((p) => p.recommendations.avoid)),
+  ).slice(0, 5)
+  const sharedTips = Array.from(
+    new Set(allPeople.flatMap((p) => p.recommendations.tips)),
+  ).slice(0, 5)
+
+  return {
+    familyPalette: palette,
+    people: allPeople,
+    sharedAvoid,
+    sharedTips,
+  }
+}
+
+// ── Stable outfit identity for cache keys ─────────────────────────────────────
+
+export type StyleKeyPublic = 'casual' | 'classic' | 'trendy' | 'minimal' | 'eclectic'
+export type SessionKeyPublic = 'headshots' | 'family' | 'couples' | 'branding'
+
+export function resolveSessionKey(sessionType: string): SessionKeyPublic {
+  if (sessionType === 'unsure') return 'branding'
+  if (sessionType === 'seniors') return 'headshots'
+  return sessionType as SessionKeyPublic
+}
+
+export function resolveStyleKey(style: string): StyleKeyPublic {
+  return ((style as StyleKeyPublic) in outfitsBySession.headshots ? style : 'classic') as StyleKeyPublic
+}
+
+export function makeOutfitKey(
+  sessionType: string,
+  style: string,
+  outfitIdx: number,
+  modifier?: string,
+): string {
+  const session = resolveSessionKey(sessionType)
+  const styleKey = resolveStyleKey(style)
+  return modifier
+    ? `${session}:${styleKey}:${outfitIdx}:${modifier}`
+    : `${session}:${styleKey}:${outfitIdx}`
+}
