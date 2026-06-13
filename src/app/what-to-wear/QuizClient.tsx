@@ -23,32 +23,24 @@
  */
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import {
   questions,
   getRecommendations,
   getGroupRecommendations,
   getPieces,
-  resolveSessionKey,
-  resolveStyleKey,
   fabrics,
   ROLE_LABELS,
-  GENDER_LABELS,
   type Answers,
   type Person,
   type PersonRole,
   type Gender,
   type PersonRecommendations,
-  type FamilyPalette,
   type ColorSuggestion,
   type Outfit,
   type OutfitPiece,
   type QuizState,
-  type GroupRecommendations,
 } from './data'
-import { GARMENT_CACHE } from './garment-cache'
-import { getGalleryFor } from './gallery-manifest'
 
 const EMPTY_ANSWERS: Answers = {
   sessionType: '',
@@ -60,8 +52,8 @@ const EMPTY_ANSWERS: Answers = {
 
 const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 
-// LTK fallback URL — used when an outfit has no specific ShopMy collection
-const LTK_FALLBACK_URL = 'https://www.shopltk.com/explore/jen.slayed'
+// ShopMy hub — fallback when an outfit/piece has no specific collection link
+const SHOPMY_HUB_URL = 'https://shopmy.us/shop/jennieslayed'
 
 // ── Phase machine ─────────────────────────────────────────────────────────────
 // Anchor takes the existing 5-question quiz. After q5 they hit a gate: solo or
@@ -481,15 +473,6 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
   const recs = getRecommendations(answers)
   const sessionLabel =
     questions[0].options.find((o) => o.value === answers.sessionType)?.label || 'session'
-  const hasAnyShopUrl = recs.outfits.some((o) => o.shopMyUrl)
-
-  // Solo flat-lays for the hero outfit (top, bottom, accessory).
-  const sessionKey = resolveSessionKey(answers.sessionType)
-  const styleKey = resolveStyleKey(answers.style)
-  const heroPiecesFlatLayUrls: Array<string | undefined> = [0, 1, 2].map(
-    (pieceIdx) => GARMENT_CACHE[`${sessionKey}:${styleKey}:0:${pieceIdx}`],
-  )
-  const heroTopFlatLay = heroPiecesFlatLayUrls[0]
 
   return (
     <div className="animate-fade-in">
@@ -616,11 +599,7 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
 
         {/* Hero outfit */}
         {recs.outfits[0] && (
-          <HeroOutfitCard
-            outfit={recs.outfits[0]}
-            index={0}
-            photo={heroTopFlatLay ? { src: heroTopFlatLay, alt: recs.outfits[0].top } : undefined}
-          />
+          <HeroOutfitCard outfit={recs.outfits[0]} index={0} />
         )}
 
         {/* Alternates — collapsed on mobile, side-by-side on desktop */}
@@ -656,27 +635,6 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
           </>
         )}
 
-        {/* Fallback CTA: when none of the outfits have ShopMy collections */}
-        {!hasAnyShopUrl && (
-          <div className="mt-8 bg-warm-gray-light p-7 md:p-8 text-center">
-            <p className="font-subheading uppercase tracking-[0.18em] text-[10px] text-charcoal opacity-60 mb-3">
-              Shop the Style Edit
-            </p>
-            <p className="font-body text-[15px] leading-[1.6] text-charcoal opacity-80 mb-6 max-w-md mx-auto">
-              Curated edits for this exact look are coming. In the meantime,
-              browse the full Style Edit on LTK.
-            </p>
-            <a
-              href={LTK_FALLBACK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3.5 bg-charcoal text-off-white font-subheading uppercase tracking-[0.15em] text-[12px] hover:bg-black transition-colors min-h-[44px]"
-            >
-              Browse on LTK
-              <span aria-hidden="true" className="font-editorial italic text-[18px]">→</span>
-            </a>
-          </div>
-        )}
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -752,46 +710,6 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          05 — REAL SESSIONS (full-bleed editorial moodboard)
-          Mobile: hero + horizontal scroll-snap carousel
-          Desktop: contact-sheet grid with mixed aspects + italic captions
-          ═══════════════════════════════════════════════════════════════════ */}
-      {/* 05 — The Edit (flat-lay grid of recommended pieces) */}
-      {heroPiecesFlatLayUrls.some(Boolean) && (
-        <section className="mb-20 md:mb-28">
-          <div className="max-w-5xl mx-auto px-6 md:px-10 mb-10">
-            <SectionHeader number="05" eyebrow="The Edit" title="The pieces, laid out" variant="hero" />
-            <p className="font-accent italic text-[17px] md:text-[18px] leading-[1.6] text-charcoal opacity-80 max-w-xl">
-              Tap any piece to shop it.
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-              {getPieces(recs.outfits[0]).map((piece, i) => (
-                <FlatLayTile
-                  key={i}
-                  piece={piece}
-                  paletteHex={recs.colors.primary.hex}
-                  flatLayUrl={heroPiecesFlatLayUrls[i]}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="max-w-5xl mx-auto px-6 md:px-10 mt-8 no-print">
-            <a
-              href="/portfolio"
-              className="inline-flex items-center gap-2 py-3 -mx-1 px-1 font-subheading uppercase tracking-[0.18em] text-[11px] text-charcoal opacity-70 hover:opacity-100 transition-opacity min-h-[44px]"
-            >
-              See the full portfolio
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </section>
-      )}
-
-      {/* ═══════════════════════════════════════════════════════════════════
           PULL-QUOTE — full-width inverted, smaller mobile padding
           Body paragraph hidden on mobile (mode-shift; pull quotes work brief)
           Terracotta "— Jennie" signature
@@ -854,7 +772,7 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          FOOTER CHROME — LTK + Action chips + Restart
+          FOOTER CHROME — ShopMy + Action chips + Restart
           ═══════════════════════════════════════════════════════════════════ */}
       <section className="max-w-3xl mx-auto px-6 md:px-10 pb-20">
         <div className="border-t border-warm-gray pt-10 mb-10 text-center no-print">
@@ -862,16 +780,16 @@ function Results({ answers, onRestart, onShare, onEmail }: ResultsProps) {
             More from Jennie
           </p>
           <p className="font-body text-[15px] text-charcoal opacity-80 mb-6 max-w-md mx-auto">
-            I curate looks on LTK that match these aesthetics — for moments
+            I curate looks on ShopMy that match these aesthetics — for moments
             beyond your session.
           </p>
           <a
-            href={LTK_FALLBACK_URL}
+            href={SHOPMY_HUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block py-3 px-2 -mx-2 font-subheading uppercase tracking-[0.15em] text-[12px] text-charcoal underline decoration-warm-gray underline-offset-4 hover:decoration-charcoal transition-all min-h-[44px]"
           >
-            Browse my LTK →
+            Browse my ShopMy →
           </a>
         </div>
 
@@ -985,28 +903,21 @@ function SectionHeader({
 }
 
 /**
- * HeroOutfitCard — first outfit, full editorial spread treatment.
- * Now 8/4 split (was 7/5) — text gets more room, photo less dominant.
- * Photo is aspect-[3/4], capped height. Primary "Shop this look" CTA in
- * the top-right of the text column for early visibility, plus the
- * edge-to-edge dark Shop bar at the bottom for committed scrollers.
+ * HeroOutfitCard — first outfit, editorial card treatment.
+ * Text-only after flat-lay strip; Shop CTA top-right and edge-to-edge bottom bar.
  */
 function HeroOutfitCard({
   outfit,
   index,
-  photo,
 }: {
   outfit: ReturnType<typeof getRecommendations>['outfits'][number]
   index: number
-  photo: { src: string; alt: string } | undefined
 }) {
   const shopHref = outfit.shopMyUrl
 
   return (
     <article className="bg-warm-gray-light overflow-hidden mb-5 md:mb-6">
-      <div className="grid grid-cols-1 md:grid-cols-12">
-        {/* Left: outfit details (8 cols on desktop) */}
-        <div className="md:col-span-8 p-7 md:p-10 lg:p-12 flex flex-col">
+      <div className="p-7 md:p-10 lg:p-12 flex flex-col">
           {/* Top row: number + eyebrow on left, primary Shop CTA on right */}
           <div className="flex items-start justify-between gap-4 mb-7">
             <div className="flex items-center gap-4">
@@ -1054,34 +965,11 @@ function HeroOutfitCard({
             <OutfitItem label="Accessories" value={outfit.accessories} />
           </div>
 
-          {/* Italic "why" caption */}
-          <div className="border-t border-warm-gray pt-5 md:pt-6">
-            <p className="font-accent italic text-[16px] md:text-[17px] leading-[1.6] text-charcoal max-w-md">
-              {outfit.why}
-            </p>
-          </div>
-        </div>
-
-        {/* Right: photo (4 cols on desktop, 3:4 aspect, capped height) */}
-        <div
-          className="md:col-span-4 relative bg-warm-gray"
-          style={{ aspectRatio: '3 / 4', maxHeight: '480px' }}
-        >
-          {photo ? (
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              sizes="(min-width: 768px) 33vw, 100vw"
-              className="object-cover"
-            />
-          ) : (
-            <div className="w-full h-full bg-warm-gray flex items-center justify-center">
-              <span className="font-subheading uppercase tracking-[0.18em] text-[10px] text-charcoal opacity-40">
-                Sample Look
-              </span>
-            </div>
-          )}
+        {/* Italic "why" caption */}
+        <div className="border-t border-warm-gray pt-5 md:pt-6">
+          <p className="font-accent italic text-[16px] md:text-[17px] leading-[1.6] text-charcoal max-w-md">
+            {outfit.why}
+          </p>
         </div>
       </div>
 
@@ -1833,10 +1721,6 @@ function MiniOption({
 interface MoodBoardProps {
   anchorAnswers: Answers
   group: Person[]
-  /** Optional family photo data URL — used as visual anchor at top. */
-  familyPhoto?: string | null
-  /** Map of outfit-piece-key → flat-lay image URL (data URL or remote). Empty = placeholders. */
-  flatLays?: Record<string, string>
   onRestart: () => void
 }
 
@@ -1847,8 +1731,6 @@ function MoodBoardStub(props: MoodBoardProps) {
 function MoodBoard({
   anchorAnswers,
   group,
-  familyPhoto = null,
-  flatLays = {},
   onRestart,
 }: MoodBoardProps) {
   const sessionLabel =
@@ -1908,31 +1790,6 @@ function MoodBoard({
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          FAMILY PHOTO ANCHOR (optional, if uploaded)
-          ═══════════════════════════════════════════════════════════════════ */}
-      {familyPhoto && (
-        <section className="max-w-5xl mx-auto px-6 md:px-10 mb-16 md:mb-24">
-          <div className="relative w-full aspect-[16/10] overflow-hidden bg-warm-gray-light">
-            <Image
-              src={familyPhoto}
-              alt="Your family photo, used as the anchor of this board."
-              fill
-              unoptimized
-              className="object-cover"
-            />
-          </div>
-          <p className="mt-4 font-body italic text-[13px] text-charcoal opacity-60 text-center">
-            Your family photo — the visual anchor of this board.
-          </p>
-        </section>
-      )}
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          FAMILY LOOKBOOK COMPOSITE — full editorial spread, all family in one frame
-          ═══════════════════════════════════════════════════════════════════ */}
-      <FamilyLookbookComposite groupRecs={groupRecs} outfitIndices={outfitIndices} flatLays={flatLays} />
-
-      {/* ═══════════════════════════════════════════════════════════════════
           01 — FAMILY PALETTE  (4-slot strip)
           ═══════════════════════════════════════════════════════════════════ */}
       <section className="max-w-5xl mx-auto px-6 md:px-10 mb-16 md:mb-24">
@@ -1971,7 +1828,6 @@ function MoodBoard({
               key={personRecs.person.id}
               personRecs={personRecs}
               outfitIdx={outfitIndices[personRecs.person.id] ?? 0}
-              flatLays={flatLays}
             />
           ))}
         </div>
@@ -2110,11 +1966,9 @@ function PaletteSwatch({
 function PersonLookSection({
   personRecs,
   outfitIdx,
-  flatLays,
 }: {
   personRecs: PersonRecommendations
   outfitIdx: number
-  flatLays: Record<string, string>
 }) {
   const { person, recommendations, assignedPrimary } = personRecs
   const heroOutfit: Outfit | undefined = recommendations.outfits[outfitIdx] || recommendations.outfits[0]
@@ -2152,21 +2006,6 @@ function PersonLookSection({
       <p className="font-accent italic text-[15px] md:text-[16px] text-charcoal opacity-85 mb-8 max-w-xl">
         {heroOutfit.why}
       </p>
-
-      {/* Flat-lay tiles (3-up grid, placeholders until generation lands) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6">
-        {pieces.map((piece, i) => {
-          const key = pieceKeyForPerson(person, i, outfitIdx)
-          return (
-            <FlatLayTile
-              key={i}
-              piece={piece}
-              paletteHex={assignedPrimary.hex}
-              flatLayUrl={flatLays[key] || GARMENT_CACHE[key]}
-            />
-          )
-        })}
-      </div>
 
       {/* Per-piece purchase list */}
       <div className="border-t border-warm-gray pt-5">
@@ -2206,96 +2045,10 @@ function computeOutfitIndices(people: PersonRecommendations[]): Record<string, n
   return result
 }
 
-function pieceKeyForPerson(person: Person, pieceIdx: number, outfitIdx: number): string {
-  // Cache key = outfit identity, not person identity. Same outfit shared
-  // across people gets the same image.
-  const session = resolveSessionKey(person.answers.sessionType)
-  const style = resolveStyleKey(person.answers.style)
-  return `${session}:${style}:${outfitIdx}:${pieceIdx}`
-}
-
-// ── Flat-lay tile (placeholder + future generated image slot) ─────────────────
-
-function FlatLayTile({
-  piece,
-  paletteHex,
-  flatLayUrl,
-}: {
-  piece: OutfitPiece
-  paletteHex: string
-  flatLayUrl?: string
-}) {
-  const buyHref = piece.shopMyProductUrl || LTK_FALLBACK_URL
-
-  const tileBody = (
-    <>
-      {flatLayUrl ? (
-        <Image
-          src={flatLayUrl}
-          alt={piece.name}
-          fill
-          unoptimized
-          className="object-cover"
-        />
-      ) : (
-        <>
-          {/* Editorial placeholder: subtle palette tint with type label */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg, ${paletteHex}22 0%, ${paletteHex}55 100%)`,
-            }}
-          />
-          <div className="absolute inset-0 flex items-end justify-start p-5 md:p-6">
-            <div>
-              <p
-                className="font-subheading uppercase tracking-[0.32em] text-[9px] mb-2"
-                style={{ color: 'var(--color-terracotta)' }}
-              >
-                {piece.type}
-              </p>
-              <p
-                className="font-editorial italic font-normal text-charcoal leading-tight"
-                style={{ fontSize: 'clamp(16px, 1.8vw, 20px)' }}
-              >
-                {piece.name}
-              </p>
-            </div>
-          </div>
-        </>
-      )}
-      {/* Shop pin: appears in the corner when image is loaded */}
-      {flatLayUrl && (
-        <span
-          aria-hidden="true"
-          className="absolute top-3 right-3 inline-flex items-center justify-center w-8 h-8 rounded-full bg-charcoal text-off-white font-subheading uppercase tracking-[0.1em] text-[10px] shadow-md"
-        >
-          →
-        </span>
-      )}
-    </>
-  )
-
-  return (
-    <a
-      href={buyHref}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block relative"
-      aria-label={`Shop ${piece.name}`}
-    >
-      <figure className="relative w-full aspect-[3/4] overflow-hidden bg-warm-gray-light">
-        {tileBody}
-      </figure>
-    </a>
-  )
-}
-
 // ── Per-piece shop row ────────────────────────────────────────────────────────
 
 function PieceShopRow({ piece }: { piece: OutfitPiece }) {
-  const href = piece.shopMyProductUrl || LTK_FALLBACK_URL
-  const hasProductUrl = !!piece.shopMyProductUrl
+  const href = piece.shopMyProductUrl || SHOPMY_HUB_URL
 
   return (
     <li className="flex items-center justify-between gap-4 py-2">
@@ -2319,451 +2072,10 @@ function PieceShopRow({ piece }: { piece: OutfitPiece }) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-charcoal text-off-white font-subheading uppercase tracking-[0.15em] text-[10px] hover:bg-black transition-colors min-h-[44px]"
         >
-          {hasProductUrl ? 'Buy' : 'Browse'}
+          Shop
           <span aria-hidden="true" className="font-editorial italic text-[14px]">→</span>
         </a>
       </div>
     </li>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// PHOTO UPLOAD STEP — optional, client-side data URL only, never sent to server
-// ─────────────────────────────────────────────────────────────────────────────
-
-function PhotoUploadStep({
-  addedCount,
-  onSelected,
-  onSkip,
-  onBack,
-}: {
-  addedCount: number
-  onSelected: (dataUrl: string) => void
-  onSkip: () => void
-  onBack: () => void
-}) {
-  function handleFile(file: File) {
-    if (file.size > 10 * 1024 * 1024) {
-      alert('Photo is over 10MB. Try a smaller version.')
-      return
-    }
-    const reader = new FileReader()
-    reader.onload = () => {
-      const result = reader.result
-      if (typeof result === 'string') onSelected(result)
-    }
-    reader.onerror = () => alert("Couldn't read that file. Try another.")
-    reader.readAsDataURL(file)
-  }
-
-  return (
-    <div className="max-w-3xl mx-auto px-6 md:px-10 animate-fade-in">
-      <div className="mb-12 md:mb-16 flex items-center justify-between gap-6">
-        <div className="font-subheading uppercase tracking-[0.2em] text-[11px] text-charcoal opacity-60">
-          One last thing
-        </div>
-        <span className="font-subheading uppercase tracking-[0.2em] text-[11px] text-charcoal opacity-60">
-          {addedCount + 1} people
-        </span>
-      </div>
-
-      <div className="flex items-baseline gap-5 md:gap-8 mb-7">
-        <span
-          className="font-editorial italic font-medium leading-[0.85] flex-shrink-0"
-          style={{
-            fontSize: 'clamp(48px, 9vw, 80px)',
-            color: 'var(--color-terracotta)',
-            opacity: 0.8,
-          }}
-        >
-          ✦
-        </span>
-        <div className="flex-1 pt-1">
-          <p className="font-subheading uppercase tracking-[0.2em] text-[10px] text-charcoal opacity-60 mb-3">
-            Optional
-          </p>
-          <h2
-            className="font-display font-light text-charcoal leading-[1.15] tracking-[-0.005em]"
-            style={{ fontSize: 'clamp(24px, 3.6vw, 36px)' }}
-          >
-            Drop a recent family photo.
-          </h2>
-        </div>
-      </div>
-
-      <p className="font-accent italic text-[16px] md:text-[18px] text-charcoal opacity-70 mb-10 max-w-xl">
-        We&apos;ll use it as the visual anchor of your mood board. Stays on your
-        device — never uploaded.
-      </p>
-
-      <label className="block w-full border-2 border-dashed border-charcoal/30 hover:border-charcoal/60 transition-colors py-12 px-6 cursor-pointer text-center min-h-[140px]">
-        <input
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/heic"
-          className="hidden"
-          onChange={(e) => {
-            const f = e.target.files?.[0]
-            if (f) handleFile(f)
-          }}
-        />
-        <p
-          className="font-editorial italic font-medium leading-tight mb-2"
-          style={{ fontSize: 'clamp(20px, 2.4vw, 28px)', color: 'var(--color-terracotta)' }}
-        >
-          Choose a photo
-        </p>
-        <p className="font-body text-[13px] text-charcoal opacity-60">
-          JPEG, PNG, or HEIC. Up to 10MB.
-        </p>
-      </label>
-
-      <div className="mt-10 flex items-center justify-between gap-4">
-        <button
-          onClick={onBack}
-          className="font-subheading uppercase tracking-[0.18em] text-[11px] text-charcoal flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer py-3 -mx-1 px-1 min-h-[44px]"
-        >
-          <span aria-hidden="true">←</span>
-          Back
-        </button>
-        <button
-          onClick={onSkip}
-          className="font-subheading uppercase tracking-[0.18em] text-[11px] text-charcoal opacity-60 hover:opacity-100 transition-opacity cursor-pointer py-3 px-3 min-h-[44px]"
-        >
-          Skip — go straight to the board →
-        </button>
-      </div>
-    </div>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// FAMILY LOOKBOOK COMPOSITE — single editorial spread of the whole family's
-// looks, palette + all per-person tiles arranged as one cohesive frame.
-// ─────────────────────────────────────────────────────────────────────────────
-
-function FamilyLookbookComposite({
-  groupRecs,
-  outfitIndices,
-  flatLays,
-}: {
-  groupRecs: GroupRecommendations
-  outfitIndices: Record<string, number>
-  flatLays: Record<string, string>
-}) {
-  const palette = groupRecs.familyPalette
-
-  return (
-    <section className="max-w-6xl mx-auto px-4 md:px-8 mb-20 md:mb-28">
-      {/* Cover-style header above the composite */}
-      <div className="text-center mb-8 md:mb-10">
-        <p
-          className="font-subheading uppercase tracking-[0.32em] text-[10px] mb-4"
-          style={{ color: 'var(--color-terracotta)' }}
-        >
-          The Lookbook
-        </p>
-        <h2
-          className="font-editorial font-light text-charcoal leading-[1.05] tracking-[-0.015em]"
-          style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}
-        >
-          All of you,{' '}
-          <span
-            className="font-editorial italic font-normal"
-            style={{ color: 'var(--color-terracotta)' }}
-          >
-            dressed together.
-          </span>
-        </h2>
-      </div>
-
-      {/* THE COMPOSITE — single bordered editorial frame */}
-      <div
-        className="relative border border-charcoal/10 overflow-hidden"
-        style={{ backgroundColor: '#F8F4EF' }}
-      >
-        {/* Magazine masthead-style top bar */}
-        <div className="border-b border-charcoal/10 px-5 md:px-8 py-4 flex items-center justify-between gap-4">
-          <p
-            className="font-subheading uppercase tracking-[0.32em] text-[9px] md:text-[10px]"
-            style={{ color: 'var(--color-terracotta)' }}
-          >
-            Vol. 02 · The Family Edit
-          </p>
-          <p className="font-subheading uppercase tracking-[0.18em] text-[9px] md:text-[10px] text-charcoal opacity-50">
-            {groupRecs.people.length} Looks · {groupRecs.people.reduce((sum, p) => sum + getPieces(p.recommendations.outfits[0]).length, 0)} Pieces
-          </p>
-        </div>
-
-        {/* PALETTE STRIP — full bleed, edge to edge */}
-        <div className="grid grid-cols-4">
-          {(['dominant', 'complement', 'neutral', 'accentTonal'] as const).map((slot) => {
-            const c = palette[slot]
-            return (
-              <div
-                key={slot}
-                className="relative aspect-[3/1] md:aspect-[4/1]"
-                style={{ backgroundColor: c.hex }}
-                aria-label={`${c.name} palette tone`}
-              >
-                <span className="absolute bottom-2 left-2 font-subheading uppercase tracking-[0.18em] text-[8px] md:text-[9px] text-charcoal/60 mix-blend-multiply">
-                  {c.name}
-                </span>
-                <span className="absolute bottom-2 right-2 font-subheading uppercase tracking-[0.18em] text-[8px] md:text-[9px] text-charcoal/50 mix-blend-multiply">
-                  {c.hex}
-                </span>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* PER-PERSON TILE CLUSTERS — editorial grid */}
-        <div className="px-5 md:px-8 py-8 md:py-10">
-          <div
-            className="grid gap-6 md:gap-8"
-            style={{
-              gridTemplateColumns: `repeat(${Math.min(groupRecs.people.length, 2)}, minmax(0, 1fr))`,
-            }}
-          >
-            {groupRecs.people.map((personRecs) => (
-              <LookbookPersonCluster
-                key={personRecs.person.id}
-                personRecs={personRecs}
-                outfitIdx={outfitIndices[personRecs.person.id] ?? 0}
-                flatLays={flatLays}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* MAGAZINE FOOTER */}
-        <div className="border-t border-charcoal/10 px-5 md:px-8 py-4 flex items-center justify-between gap-4">
-          <p className="font-accent italic text-[12px] md:text-[13px] text-charcoal opacity-65">
-            Styled in your family palette.
-          </p>
-          <p
-            className="font-subheading uppercase tracking-[0.32em] text-[9px] md:text-[10px]"
-            style={{ color: 'var(--color-terracotta)' }}
-          >
-            — Jennie
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function LookbookPersonCluster({
-  personRecs,
-  outfitIdx,
-  flatLays,
-}: {
-  personRecs: PersonRecommendations
-  outfitIdx: number
-  flatLays: Record<string, string>
-}) {
-  const { person, recommendations, assignedPrimary } = personRecs
-  const heroOutfit = recommendations.outfits[outfitIdx] || recommendations.outfits[0]
-  if (!heroOutfit) return null
-  const pieces = getPieces(heroOutfit)
-  const roleLabel = ROLE_LABELS[person.role]
-  const displayName =
-    person.displayName && person.displayName !== roleLabel ? person.displayName : roleLabel
-
-  return (
-    <div>
-      {/* Cluster header */}
-      <div className="flex items-center gap-3 mb-4">
-        <span
-          className="block w-4 h-4 rounded-sm flex-shrink-0"
-          style={{ backgroundColor: assignedPrimary.hex }}
-          aria-label={`${assignedPrimary.name} palette tone`}
-        />
-        <div className="flex-1 min-w-0">
-          <p
-            className="font-subheading uppercase tracking-[0.2em] text-[9px] md:text-[10px] mb-0.5"
-            style={{ color: 'var(--color-terracotta)' }}
-          >
-            {roleLabel}
-          </p>
-          <p
-            className="font-editorial font-normal text-charcoal leading-tight truncate"
-            style={{ fontSize: 'clamp(15px, 1.7vw, 19px)' }}
-          >
-            {displayName} · {assignedPrimary.name}
-          </p>
-        </div>
-      </div>
-
-      {/* Tile mosaic — 3 pieces in a 2-row asymmetric layout */}
-      <div className="grid grid-cols-2 gap-2 md:gap-3">
-        {/* Hero tile (top piece) — spans both columns, taller */}
-        {pieces[0] && (
-          <div className="col-span-2">
-            <LookbookTile
-              piece={pieces[0]}
-              paletteHex={assignedPrimary.hex}
-              flatLayUrl={flatLays[pieceKeyForPerson(person, 0, outfitIdx)] || GARMENT_CACHE[pieceKeyForPerson(person, 0, outfitIdx)]}
-              aspect="aspect-[16/10]"
-            />
-          </div>
-        )}
-        {/* Two smaller tiles below */}
-        {pieces[1] && (
-          <LookbookTile
-            piece={pieces[1]}
-            paletteHex={assignedPrimary.hex}
-            flatLayUrl={flatLays[pieceKeyForPerson(person, 1, outfitIdx)] || GARMENT_CACHE[pieceKeyForPerson(person, 1, outfitIdx)]}
-            aspect="aspect-[3/4]"
-          />
-        )}
-        {pieces[2] && (
-          <LookbookTile
-            piece={pieces[2]}
-            paletteHex={assignedPrimary.hex}
-            flatLayUrl={flatLays[pieceKeyForPerson(person, 2, outfitIdx)] || GARMENT_CACHE[pieceKeyForPerson(person, 2, outfitIdx)]}
-            aspect="aspect-[3/4]"
-          />
-        )}
-      </div>
-
-      {/* Cluster caption */}
-      <p className="mt-4 font-accent italic text-[12px] md:text-[13px] text-charcoal opacity-70 leading-snug">
-        {recommendations.outfits[0]?.why}
-      </p>
-    </div>
-  )
-}
-
-function LookbookTile({
-  piece,
-  paletteHex,
-  flatLayUrl,
-  aspect,
-}: {
-  piece: OutfitPiece
-  paletteHex: string
-  flatLayUrl?: string
-  aspect: string
-}) {
-  const buyHref = piece.shopMyProductUrl || LTK_FALLBACK_URL
-
-  const tileBody = (
-    <>
-      {flatLayUrl ? (
-        <Image
-          src={flatLayUrl}
-          alt={piece.name}
-          fill
-          unoptimized
-          className="object-cover"
-        />
-      ) : (
-        <>
-          {/* Editorial palette wash — diagonal gradient + subtle paper texture */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(135deg, ${paletteHex}1a 0%, ${paletteHex}55 100%)`,
-            }}
-          />
-          {/* Garment silhouette hint via simple shape — type-specific */}
-          <GarmentSilhouette type={piece.type} hex={paletteHex} />
-          {/* Caption */}
-          <div className="absolute inset-x-0 bottom-0 px-3 md:px-4 py-2 md:py-3">
-            <p
-              className="font-subheading uppercase tracking-[0.2em] text-[8px] md:text-[9px] mb-0.5"
-              style={{ color: 'var(--color-terracotta)' }}
-            >
-              {piece.type}
-            </p>
-            <p
-              className="font-editorial italic font-normal text-charcoal leading-tight line-clamp-2"
-              style={{ fontSize: 'clamp(11px, 1.2vw, 14px)' }}
-            >
-              {piece.name}
-            </p>
-          </div>
-        </>
-      )}
-      {/* Shop pin (only when generated image present) */}
-      {flatLayUrl && (
-        <span
-          aria-hidden="true"
-          className="absolute top-2 right-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-charcoal text-off-white text-[10px] font-subheading shadow-md"
-        >
-          →
-        </span>
-      )}
-    </>
-  )
-
-  return (
-    <a
-      href={buyHref}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block relative"
-      aria-label={`Shop ${piece.name}`}
-    >
-      <figure className={`relative w-full ${aspect} overflow-hidden bg-warm-gray-light`}>
-        {tileBody}
-      </figure>
-    </a>
-  )
-}
-
-/**
- * Simple SVG garment silhouettes — palette-tinted abstract shapes that hint at
- * the piece type without trying to look photoreal. Replaced by real flat-lay
- * images once the AI generation pipeline lands (step 5).
- */
-function GarmentSilhouette({ type, hex }: { type: string; hex: string }) {
-  const stroke = `${hex}66`
-  const fill = `${hex}22`
-
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMid meet"
-      aria-hidden="true"
-    >
-      {type === 'top' && (
-        <path
-          d="M30 25 L25 35 L25 65 L40 70 L60 70 L75 65 L75 35 L70 25 L60 30 L50 32 L40 30 Z"
-          fill={fill}
-          stroke={stroke}
-          strokeWidth="0.6"
-        />
-      )}
-      {type === 'bottom' && (
-        <path
-          d="M35 30 L30 75 L42 75 L46 50 L50 75 L62 75 L60 30 Z"
-          fill={fill}
-          stroke={stroke}
-          strokeWidth="0.6"
-        />
-      )}
-      {type === 'shoes' && (
-        <>
-          <ellipse cx="35" cy="55" rx="14" ry="6" fill={fill} stroke={stroke} strokeWidth="0.6" />
-          <ellipse cx="65" cy="55" rx="14" ry="6" fill={fill} stroke={stroke} strokeWidth="0.6" />
-        </>
-      )}
-      {type === 'accessory' && (
-        <>
-          <circle cx="50" cy="40" r="14" fill="none" stroke={stroke} strokeWidth="0.8" />
-          <circle cx="50" cy="40" r="9" fill={fill} stroke={stroke} strokeWidth="0.5" />
-        </>
-      )}
-      {type === 'outerwear' && (
-        <path
-          d="M25 28 L20 38 L20 70 L35 75 L42 50 L42 75 L58 75 L58 50 L65 75 L80 70 L80 38 L75 28 L65 32 L50 35 L35 32 Z"
-          fill={fill}
-          stroke={stroke}
-          strokeWidth="0.6"
-        />
-      )}
-    </svg>
   )
 }

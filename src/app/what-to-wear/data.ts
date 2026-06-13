@@ -158,6 +158,10 @@ type StyleKey = 'casual' | 'classic' | 'trendy' | 'minimal' | 'eclectic'
 type SessionKey = 'headshots' | 'family' | 'couples' | 'branding'
 // 'seniors' and 'unsure' fall back to one of the above via a session-key resolver.
 
+// Audience splits the outfit pool by who's wearing the look. Default = women.
+// Routed at recommendation time via person.gender + person.role (see resolveAudience).
+export type Audience = 'women' | 'men' | 'kid'
+
 export const outfitsBySession: Record<SessionKey, Record<StyleKey, Outfit[]>> = {
   headshots: {
     casual: [
@@ -269,6 +273,139 @@ export const outfitsBySession: Record<SessionKey, Record<StyleKey, Outfit[]>> = 
   },
 }
 
+// ── Men's outfit pool ─────────────────────────────────────────────────────────
+// Same shape as outfitsBySession (women). Routed via person.gender === 'man'.
+// shopMyUrl left blank — fill in as Jennie builds men's ShopMy collections.
+
+export const outfitsBySessionMen: Record<SessionKey, Record<StyleKey, Outfit[]>> = {
+  headshots: {
+    casual: [
+      { top: 'Cream merino crewneck sweater', bottom: 'Dark wash straight-leg jeans', accessories: 'Classic leather watch, simple band ring', why: 'Approachable but pulled together. The knit photographs warm and the dark denim grounds you.' },
+      { top: 'Stone linen button-up, sleeves rolled', bottom: 'Tailored camel chinos', accessories: 'Leather watch, leather belt to match shoes', why: 'Linen catches light beautifully. You read confident without trying too hard.' },
+      { top: 'Fitted heather-gray tee under an open neutral blazer', bottom: 'Dark trousers or dark jeans', accessories: 'Minimal watch, no extras', why: 'Layered without effort. The blazer means business; the tee keeps it human.' },
+    ],
+    classic: [
+      { top: 'White oxford button-up', bottom: 'Tailored navy trousers', accessories: 'Classic watch, brown leather belt + shoes', why: 'Timeless and intentional. Lets your face be the focal point.' },
+      { top: 'Camel fine-knit crewneck over a white tee', bottom: 'Cream tailored trousers', accessories: 'Simple watch, nothing else', why: 'Tonal dressing photographs editorial. Elevated without trying.' },
+      { top: 'White dress shirt under a charcoal blazer', bottom: 'Charcoal tailored trousers', accessories: 'Quality watch, polished leather shoes', why: 'The classic for a reason. Sharp, confident, never out of place.' },
+    ],
+    trendy: [
+      { top: 'Oversized cream knit polo', bottom: 'Wide-leg trousers in chocolate or black', accessories: 'Statement watch, leather loafers', why: 'Modern silhouette, confident energy. Photographs current without dating.' },
+      { top: 'Textured camel overshirt over a white tee', bottom: 'High-waisted tailored trousers', accessories: 'Layered chain or pendant, sleek boot', why: 'Fashion-forward but flattering. Reads creative, not costume.' },
+      { top: 'Cream silk-blend shirt with subtle drape', bottom: 'Tailored leather-look trousers', accessories: 'Single quality watch, structured shoe', why: 'Texture contrast reads expensive. Photographs like a magazine.' },
+    ],
+    minimal: [
+      { top: 'Cream merino crewneck', bottom: 'Cream or stone tailored trousers', accessories: 'One beautiful watch, nothing else', why: 'Quiet luxury. The simplicity puts you front and center.' },
+      { top: 'Crisp white tee (high-quality, fitted)', bottom: 'Black tailored trousers', accessories: 'Minimal watch, simple ring', why: "Stripped back on purpose. Confidence doesn't need decoration." },
+      { top: 'Stone linen button-up', bottom: 'Dark wash straight-leg jeans', accessories: 'Single leather strap watch', why: 'Effortless and intentional. Reads polished without trying.' },
+    ],
+    eclectic: [
+      { top: 'Burgundy fine-knit crewneck', bottom: 'Camel wide-leg trousers', accessories: 'Vintage watch, single ring with character', why: 'Personality without chaos. The rich color shows you have a point of view.' },
+      { top: 'Textured cream knit with interesting weave', bottom: 'Olive or rust trousers', accessories: 'Mixed metal cuff, unique watch', why: 'You bring the personality; the outfit just supports it.' },
+      { top: 'Vintage-inspired chambray button-up', bottom: 'Tailored trousers in chocolate or black', accessories: 'Collected-feeling jewelry, leather strap watch', why: "You look like yourself, just elevated. That's the goal." },
+    ],
+  },
+  family: {
+    casual: [
+      { top: 'Cream merino crewneck sweater', bottom: 'Dark wash jeans', accessories: 'Leather watch, simple band ring', why: "You'll be chasing kids and laughing. This works for all of it and still photographs warm." },
+      { top: 'Linen button-up over a fitted white tee', bottom: 'Light wash jeans rolled at the ankle', accessories: 'Leather watch, simple belt', why: 'Relaxed but pulled together. Linen catches outdoor light gorgeously.' },
+      { top: 'Cozy oatmeal cardigan over a white tee', bottom: 'Camel or stone chinos', accessories: 'Minimal watch', why: 'Warm and approachable. You look like the dad everyone wants to hug.' },
+    ],
+    classic: [
+      { top: 'Cream fisherman knit sweater', bottom: 'Dark wash straight-leg jeans', accessories: 'Classic watch, simple leather belt', why: 'Timeless family photo energy. Will look as good in 20 years as it does today.' },
+      { top: 'Soft camel fine-knit crewneck', bottom: 'Cream or stone chinos', accessories: 'Leather watch, polished leather shoes', why: 'Elevated but soft. Family photos should feel warm, not stiff.' },
+      { top: 'White oxford tucked into trousers', bottom: 'Camel trousers or dark jeans', accessories: 'Classic watch, brown belt + shoes', why: 'Classic for a reason. Photographs beautifully and never dates.' },
+    ],
+    trendy: [
+      { top: 'Oversized cream knit polo', bottom: 'Wide-leg jeans or trousers in a warm neutral', accessories: 'Statement watch, leather loafers', why: 'Modern proportions photograph editorial. Current without trying too hard.' },
+      { top: 'Textured camel overshirt over a fitted tee', bottom: 'High-waisted dark jeans', accessories: 'Layered chain or pendant, ankle boot', why: 'Fashion-forward family vibes. Flattering modern silhouette.' },
+      { top: 'Silk-blend button-up in oat or sand', bottom: 'Tailored trousers in a warm neutral', accessories: 'Quality watch, sleek loafer', why: 'Soft and elevated. Photographs like a magazine spread.' },
+    ],
+    minimal: [
+      { top: 'Cream merino crewneck', bottom: 'Cream or stone tailored trousers', accessories: 'One quality watch', why: 'Tonal dressing for a family looks incredibly editorial. Lets connection be the focus.' },
+      { top: 'Simple white tee (high-quality, fitted)', bottom: 'Dark wash jeans', accessories: 'Minimal watch, no extras', why: "Stripped back on purpose. Family photos shine when there's nothing competing." },
+      { top: 'Oatmeal linen button-up', bottom: 'Cream chinos', accessories: 'Single leather strap watch', why: 'Effortless and warm. Photographs like soft natural light in clothing form.' },
+    ],
+    eclectic: [
+      { top: 'Burgundy or rust fine-knit sweater', bottom: 'Camel or olive chinos', accessories: 'Vintage watch, single ring with character', why: 'Personality and warmth. Family photos with character age beautifully.' },
+      { top: 'Textured cream sweater with interesting detail', bottom: 'Dark wash jeans', accessories: 'Mixed metal watch, leather strap', why: "You look like yourself. That's what your family needs to remember." },
+      { top: 'Chambray button-up in a warm wash', bottom: 'Solid cream or camel chinos', accessories: 'Single quality watch, collected ring', why: 'Subtle pattern done right. Adds interest without chaos.' },
+    ],
+  },
+  couples: {
+    casual: [
+      { top: 'Cream merino crewneck', bottom: 'Dark wash jeans', accessories: 'Leather watch, simple band ring', why: 'Soft, approachable, romantic without trying too hard. Perfect for connection-focused photos.' },
+      { top: 'Linen button-up in oat or sand', bottom: 'Camel or cream chinos', accessories: 'Leather watch, simple belt', why: 'Linen on couples photographs unbelievably romantic. The texture reads like a film still.' },
+      { top: 'Fitted cream tee under an open cardigan', bottom: 'Dark wash jeans', accessories: 'Minimal watch', why: 'Cozy and intimate. You look like you actually like each other.' },
+    ],
+    classic: [
+      { top: 'White oxford button-up', bottom: 'Camel chinos or cream trousers', accessories: 'Classic watch, brown leather belt + shoes', why: 'Timeless and romantic. These photos will look beautiful framed for decades.' },
+      { top: 'Soft camel turtleneck or fine-knit', bottom: 'Cream wide-leg trousers', accessories: 'Quality watch, polished leather shoes', why: 'Tonal and elegant. Photographs like an editorial.' },
+      { top: 'Cream fisherman sweater', bottom: 'Dark wash jeans', accessories: 'Classic watch, simple ring', why: 'Cozy, classic, incredibly photogenic in golden hour light.' },
+    ],
+    trendy: [
+      { top: 'Silk-blend shirt in champagne or oat', bottom: 'Tailored wide-leg trousers', accessories: 'Layered chains, statement watch', why: 'Soft, modern, romantic. The silk catches light gorgeously.' },
+      { top: 'Fitted cream tee under an oversized blazer', bottom: 'High-waisted trousers', accessories: 'Quality watch, sleek loafer', why: 'Fashion-forward couple energy. Photographs like a magazine.' },
+      { top: 'Camel overshirt over a fitted white tee', bottom: 'Wide-leg dark jeans', accessories: 'Layered pendant, leather ankle boot', why: 'Modern and intimate. Photographs flattering and current.' },
+    ],
+    minimal: [
+      { top: 'Cream merino crewneck', bottom: 'Cream chinos', accessories: 'One quality watch', why: 'Tonal couples photos are stunning. Lets connection be the loudest thing.' },
+      { top: 'Simple white tee (fitted, beautiful quality)', bottom: 'Dark wash jeans', accessories: 'Single watch, simple band ring', why: "Stripped back on purpose. Romance doesn't need a costume." },
+      { top: 'Oatmeal linen button-up', bottom: 'Cream wide-leg chinos', accessories: 'Leather strap watch', why: 'Effortless and romantic. Photographs like a film.' },
+    ],
+    eclectic: [
+      { top: 'Burgundy fine-knit crewneck', bottom: 'Camel wide-leg chinos', accessories: 'Vintage watch, single ring with character', why: 'Romantic with personality. Rich color photographs beautifully against natural backdrops.' },
+      { top: 'Textured cream knit with interesting weave', bottom: 'Rust or olive trousers', accessories: 'Mixed metal cuff, unique watch', why: 'Couples with style, not costumes. You both look like yourselves.' },
+      { top: 'Vintage-inspired chambray button-up', bottom: 'Tailored trousers in a warm tone', accessories: 'Collected-feeling watch and ring', why: 'Photographs timeless and interesting. Like you stepped out of a film.' },
+    ],
+  },
+  branding: {
+    casual: [
+      { top: 'Cream merino crewneck', bottom: 'Tailored camel chinos', accessories: 'Quality watch, sleek loafer', why: "Approachable but intentional. Reads like someone you'd want to work with." },
+      { top: 'Linen button-up rolled to the elbow', bottom: 'Dark wash straight-leg jeans', accessories: 'Statement watch, simple ring', why: 'Confident and grounded. The linen photographs like natural light in clothing form.' },
+      { top: 'Fitted white tee under an oversized neutral blazer', bottom: 'Tailored trousers', accessories: 'Quality watch, sleek shoe', why: 'Editorial energy with a casual base. Photographs current and confident.' },
+    ],
+    classic: [
+      { top: 'White oxford button-up', bottom: 'Tailored navy or charcoal trousers', accessories: 'Classic watch, brown leather belt + shoes', why: 'Polished and powerful. Reads expert without being stiff.' },
+      { top: 'Camel fine-knit crewneck over white tee', bottom: 'Cream wide-leg trousers', accessories: 'Quality watch, layered leather pieces', why: 'Tonal, elegant. Confidence in clothing form.' },
+      { top: 'White dress shirt under a structured blazer', bottom: 'Tailored trousers', accessories: 'Quality watch, polished shoes', why: 'The power outfit. Sharp, intentional, never out of place.' },
+    ],
+    trendy: [
+      { top: 'Oversized neutral blazer over a fitted tee', bottom: 'Wide-leg trousers in chocolate or black', accessories: 'Statement watch, sleek shoe', why: 'Modern, magnetic, photographs editorial. This is brand-builder energy.' },
+      { top: 'Silk-blend shirt in champagne or burgundy', bottom: 'Tailored leather-look trousers', accessories: 'Quality watch, structured shoe', why: 'Texture contrast reads expensive. Photographs like a magazine cover.' },
+      { top: 'Textured camel overshirt', bottom: 'High-waisted wide-leg trousers', accessories: 'Layered chain, statement watch', why: 'Fashion-forward but flattering. Reads creative director, not trend-chaser.' },
+    ],
+    minimal: [
+      { top: 'Cream merino crewneck', bottom: 'Cream tailored trousers', accessories: 'One beautiful watch, nothing else', why: 'Quiet luxury. "I don\'t need to try hard" personified.' },
+      { top: 'Crisp white tee (high-quality, fitted)', bottom: 'Black tailored trousers', accessories: 'Minimal watch', why: "Stripped back on purpose. Confidence doesn't need decoration." },
+      { top: 'Stone linen button-up', bottom: 'Cream wide-leg chinos', accessories: 'Single leather strap watch', why: 'Effortless and intentional. Reads expert without trying.' },
+    ],
+    eclectic: [
+      { top: 'Burgundy fine-knit crewneck', bottom: 'Camel wide-leg trousers', accessories: 'Vintage watch, layered rings', why: 'Personality and authority. Photographs unforgettable.' },
+      { top: 'Textured cream knit with architectural detail', bottom: 'Olive or rust trousers', accessories: 'Mixed metal statement watch', why: 'You bring the brand. The outfit just supports it.' },
+      { top: 'Vintage-inspired chambray button-up', bottom: 'Tailored trousers in chocolate or black', accessories: 'Collected-feeling watch and ring', why: "Photographs like someone with a clear point of view. That's the whole brand." },
+    ],
+  },
+}
+
+// ── Kid outfit pool ───────────────────────────────────────────────────────────
+// Kids run on a single casual track regardless of style (per quiz flow).
+// Boy / girl variants. Routed via person.role === 'child' + gender.
+// shopMyUrl left blank — fill in as Jennie builds kid ShopMy collections.
+
+export const outfitsKid: Record<'boy' | 'girl', Outfit[]> = {
+  boy: [
+    { top: 'Cream knit sweater or henley', bottom: 'Dark wash kid jeans', accessories: 'Cream or tan canvas sneakers', why: "Cozy, photogenic, lets him be a kid. He can move and you don't have to fight him to keep him clean." },
+    { top: 'Linen button-up in oat or sand', bottom: 'Camel or cream cotton pants', accessories: 'Tan leather sneakers or boat shoes', why: 'Linen on kids photographs like a magazine. Soft texture, easy movement.' },
+    { top: 'Fitted cream tee under an open cardigan', bottom: 'Light wash kid jeans', accessories: 'Cream sneakers', why: 'Layered and warm. Reads intentional without looking forced on a kid.' },
+  ],
+  girl: [
+    { top: 'Cream knit cardigan over a soft tee or dress', bottom: 'Cream tights or soft denim leggings', accessories: 'Neutral booties, simple hair tie or soft bow', why: 'Cozy and photogenic. She can twirl, sit, climb — and still photograph beautifully.' },
+    { top: 'Long-sleeve cream or oat cotton dress', bottom: '— (dress)', accessories: 'Cream or tan booties, simple barrette', why: 'A simple soft dress lets her be the focal point. Movement reads romantic on camera.' },
+    { top: 'Soft camel or rust knit sweater', bottom: 'Cream corduroy or cotton pants', accessories: 'Neutral sneakers or booties', why: 'Earthy and warm. Photographs like a vintage editorial.' },
+  ],
+}
+
 export interface Recommendations {
   colors: ColorSet
   outfits: Outfit[]
@@ -276,8 +413,18 @@ export interface Recommendations {
   tips: string[]
 }
 
-export function getRecommendations(answers: Answers): Recommendations {
+export interface RecommendationContext {
+  audience?: Audience
+  // For kid audience: which kid variant to pull. Defaults to 'girl' when omitted.
+  kidVariant?: 'boy' | 'girl'
+}
+
+export function getRecommendations(
+  answers: Answers,
+  context: RecommendationContext = {},
+): Recommendations {
   const { sessionType, style, confidence, skinTone } = answers
+  const audience: Audience = context.audience || 'women'
 
   const colors = colorMap[skinTone] || colorMap.unsure
   // Map quiz answers to outfit-set keys. Seniors share the headshot wardrobe
@@ -287,8 +434,17 @@ export function getRecommendations(answers: Answers): Recommendations {
     sessionType === 'seniors' ? 'headshots' :
     (sessionType as SessionKey)
   const styleKey: StyleKey = (style as StyleKey) in outfitsBySession.headshots ? (style as StyleKey) : 'classic'
-  const outfits =
-    outfitsBySession[sessionKey]?.[styleKey] || outfitsBySession.headshots.classic
+
+  let outfits: Outfit[]
+  if (audience === 'kid') {
+    outfits = outfitsKid[context.kidVariant || 'girl']
+  } else if (audience === 'men') {
+    outfits =
+      outfitsBySessionMen[sessionKey]?.[styleKey] || outfitsBySessionMen.headshots.classic
+  } else {
+    outfits =
+      outfitsBySession[sessionKey]?.[styleKey] || outfitsBySession.headshots.classic
+  }
 
   // ── Avoid list ──
   let avoid: string[]
@@ -505,6 +661,17 @@ function fillMiniAnswersFromAnchor(person: Person, anchor: Person): Answers {
   }
 }
 
+function resolveAudience(person: Person): Audience {
+  if (person.role === 'child') return 'kid'
+  if (person.gender === 'man') return 'men'
+  return 'women'
+}
+
+function resolveKidVariant(person: Person): 'boy' | 'girl' {
+  // Kids get gender via mini-quiz. Default to 'girl' if unset.
+  return person.gender === 'man' ? 'boy' : 'girl'
+}
+
 export function getGroupRecommendations(state: QuizState): GroupRecommendations | null {
   if (!state.anchor || !state.isGroup) return null
   const anchor = state.anchor
@@ -512,7 +679,7 @@ export function getGroupRecommendations(state: QuizState): GroupRecommendations 
 
   const anchorEntry: PersonRecommendations = {
     person: anchor,
-    recommendations: getRecommendations(anchor.answers),
+    recommendations: getRecommendations(anchor.answers, { audience: resolveAudience(anchor) }),
     paletteSlot: 'dominant',
     assignedPrimary: paletteSlotToColor('dominant', palette),
   }
@@ -529,9 +696,13 @@ export function getGroupRecommendations(state: QuizState): GroupRecommendations 
       ...person,
       answers: fillMiniAnswersFromAnchor({ ...person, answers: personAnswers }, anchor),
     }
+    const audience = resolveAudience(filled)
     return {
       person: filled,
-      recommendations: getRecommendations(filled.answers),
+      recommendations: getRecommendations(filled.answers, {
+        audience,
+        kidVariant: audience === 'kid' ? resolveKidVariant(filled) : undefined,
+      }),
       paletteSlot: slot,
       assignedPrimary: paletteSlotToColor(slot, palette),
     }
