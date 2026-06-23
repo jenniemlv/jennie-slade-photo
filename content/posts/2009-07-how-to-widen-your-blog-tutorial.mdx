@@ -1,0 +1,64 @@
+---
+title: 'how to widen your blog: tutorial'
+date: '2009-07-07'
+excerpt: >-
+  after many emails of fellow bloggers asking how to widen their blog and how to
+  make their pictures bigger, I have decided to write a post so that everyone
+  can…
+featuredImage: ''
+---
+
+after many emails of fellow bloggers asking how to widen their blog and how to make their pictures bigger, I have decided to write a post so that everyone can have big beautiful pictures.  (for all of you that commented or wrote an email months ago, sorry it took me so long to get to it.) i don't really know if this is the easiest way or the correct way, but after some messing around in html it worked for me. Todays tutorial is on <span>"How to widen your blog"</span> and sometime this week I will post, <span>"How to make your pictures big and beautiful on your blog"</span> You actually have to do the first one in order to do the second one. 
+
+** disclaimer!!! before you do anything SAVE YOUR TEMPLATE, i don't want any one messing up their blog.  
+
+** my blog is style "minima" i don't really even know if it will work in other blogs, but i'm sure it will. if you have downloaded another template (like cutest blog on the block) it may be different also.
+
+<div><font size="5">
+HOW TO WIDEN YOUR BLOG IN BLOGGER
+</font></div>
+1. Go to your Dashboard and click the Layout Button.
+2. Then click "Edit HTML"
+3. Looks scary I know, but don't freak out.
+4. Check the box that says "Expand Widgets"
+5. Now scroll down to where it says this:
+
+/* Outer-Wrapper
+----------------------------------------------- */
+
+6. Your numbers will be different then my numbers.
+7.  Change them to what I have if you want your blog wider.
+8. Hit the "Preview" button to see what it will look like
+9. If you want it more narrow or wider you can change the numbers.
+     * Hint:  the outer wrapper must have a higher number than the main wrapper and sidebar    wrapper together.
+
+<span>/* Outer-Wrapper</span>
+<span>----------------------------------------------- */</span>
+<span>#outer-wrapper {</span>
+<span>  width: 1200px;</span>
+<span>  margin:0 auto;</span>
+<span>  padding:10px;</span>
+<span>  text-align:$startSide;</span>
+<span>  font: $bodyfont;</span>
+<span>  }</span>
+
+<span>#main-wrapper {</span>
+<span>  width: 800px;</span>
+<span>  float: $startSide;</span>
+<span>  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */</span>
+<span>  overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */</span>
+<span>  }</span>
+
+<span>#sidebar-wrapper {</span>
+<span>  width: 293px;</span>
+<span>  float: $endSide;</span>
+<span>  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */</span>
+<span>  overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */</span>
+<span>}</span>
+
+7. If you like what you see in "Preview" click "Save Changes"
+8. Now there is no going back.
+9.  View your blog and WALLAA, you should have a nice wide blog, perfect for big pictures.
+10. Wasn't too hard was it?
+
+Leave a comment if you widen your blog, so that everyone realizes that they can do it too. Plus, I like to feel like I've benefited someone with all this jibber jabber.

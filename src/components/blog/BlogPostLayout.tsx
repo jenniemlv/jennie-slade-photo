@@ -15,9 +15,15 @@
  */
 
 import Link from 'next/link'
+import Image from 'next/image'
 import Section from '@/components/layout/Section'
 import CloudinaryImage from '@/components/images/CloudinaryImage'
 import type { BlogPostMeta } from '@/lib/blog'
+
+/** Local public-folder asset paths start with "/". Cloudinary public IDs do not. */
+function isLocalAsset(src: string): boolean {
+  return src.startsWith('/')
+}
 
 interface BlogPostLayoutProps {
   meta: BlogPostMeta
@@ -56,18 +62,29 @@ export default function BlogPostLayout({ meta, children }: BlogPostLayoutProps) 
 
       {/* ── Featured image ──────────────────────────────────────────────────── */}
       <Section variant="default" className="py-0">
-        <div className="max-w-[750px] mx-auto mb-12">
+        <div className="max-w-[750px] mx-auto mb-8">
           {meta.featuredImage ? (
             /* Full-width image, aspect-[3/2] matching blog listing cards */
             <div className="w-full aspect-[3/2] overflow-hidden">
-              <CloudinaryImage
-                src={meta.featuredImage}
-                alt={meta.title}
-                width={1200}
-                height={800}
-                className="w-full h-full object-cover"
-                priority
-              />
+              {isLocalAsset(meta.featuredImage) ? (
+                <Image
+                  src={meta.featuredImage}
+                  alt={meta.title}
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              ) : (
+                <CloudinaryImage
+                  src={meta.featuredImage}
+                  alt={meta.title}
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              )}
             </div>
           ) : (
             /* Warm-gray placeholder when no Cloudinary image is set */

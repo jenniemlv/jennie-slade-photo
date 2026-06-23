@@ -65,16 +65,16 @@ async function parsePostMeta(filename: string): Promise<BlogPostMeta | null> {
     const raw = await fs.readFile(filePath, 'utf8')
     const { data } = matter(raw)
 
-    // Validate required frontmatter fields
-    if (!data.title || !data.date || !data.excerpt) {
-      console.warn(`[blog] Skipping ${filename}: missing required frontmatter (title, date, excerpt)`)
+    // Title + date are required. Excerpt is optional (image-only posts may omit).
+    if (!data.title || !data.date) {
+      console.warn(`[blog] Skipping ${filename}: missing required frontmatter (title, date)`)
       return null
     }
 
     return {
       title: data.title as string,
       date: data.date as string,
-      excerpt: data.excerpt as string,
+      excerpt: (data.excerpt as string) ?? '',
       featuredImage: (data.featuredImage as string) ?? '',
       slug: fileToSlug(filename),
     }
@@ -117,6 +117,21 @@ export async function getAllPosts(): Promise<BlogPostMeta[]> {
 }
 
 /**
+ * getPostsByYear — groups posts by year for archive nav.
+ */
+export async function getPostsByYear(): Promise<{ year: string; count: number }[]> {
+  const posts = await getAllPosts()
+  const counts = new Map<string, number>()
+  for (const p of posts) {
+    const y = p.date.slice(0, 4)
+    counts.set(y, (counts.get(y) ?? 0) + 1)
+  }
+  return [...counts.entries()]
+    .map(([year, count]) => ({ year, count }))
+    .sort((a, b) => b.year.localeCompare(a.year))
+}
+
+/**
  * getPostBySlug — returns full post data (meta + raw MDX content) for a given slug.
  *
  * Returns null if the post doesn't exist. The caller should handle 404.
@@ -136,8 +151,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       const raw = await fs.readFile(filePath, 'utf8')
       const { data, content } = matter(raw)
 
-      if (!data.title || !data.date || !data.excerpt) {
-        console.warn(`[blog] Post ${slug} is missing required frontmatter`)
+      if (!data.title || !data.date) {
+        console.warn(`[blog] Post ${slug} is missing required frontmatter (title, date)`)
         return null
       }
 
@@ -145,7 +160,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
         meta: {
           title: data.title as string,
           date: data.date as string,
-          excerpt: data.excerpt as string,
+          excerpt: (data.excerpt as string) ?? '',
           featuredImage: (data.featuredImage as string) ?? '',
           slug,
         },

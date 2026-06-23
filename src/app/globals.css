@@ -106,6 +106,15 @@
      p   = body copy (Lora, comfortable reading size)
   */
 
+  /* Wrapper defaults so loose text outside any block still inherits brand type. */
+  .blog-prose {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--color-charcoal);
+    letter-spacing: 0.02em;
+  }
+
   .blog-prose h2 {
     font-family: var(--font-display);
     font-size: 28px;
@@ -185,6 +194,61 @@
 
   .blog-prose li {
     margin-bottom: 0.5rem;
+  }
+
+  /* Images in post body — full column width, generous vertical breathing room */
+  .blog-prose img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Blogger-imported HTML normalization ──────────────────────────────────
+     Imported Blogger posts wrap each line/paragraph in <div class="separator">.
+     Without these rules, paragraphs jam together (no margin) and empty
+     separators collapse to 0px, killing the post rhythm.
+  */
+  .blog-prose div.separator {
+    margin-bottom: 1.5rem;
+  }
+  .blog-prose div.separator:empty {
+    margin: 0;
+    height: 1.25rem;
+  }
+  .blog-prose > div:empty {
+    margin: 0;
+    height: 1rem;
+  }
+  /* When a separator only wraps an image, let the image margins do the work. */
+  .blog-prose div.separator:has(> img:only-child) {
+    margin: 0;
+  }
+  /* Bare <b> "headings" (OUTRAGEOUS BROWNIES, Ingredients) get editorial label
+     treatment + breathing room above. */
+  .blog-prose p > b:only-child,
+  .blog-prose > b {
+    display: block;
+    font-family: var(--font-subheading);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  /* First child of the body should hug the featured image (no extra top margin). */
+  .blog-prose > *:first-child {
+    margin-top: 0;
+  }
+  .blog-prose > div.separator:first-child > img {
+    margin-top: 0;
+  }
+  /* Tighten consecutive short paragraphs (Blogger ingredient lists, etc.) */
+  .blog-prose p + p {
+    margin-top: -0.25rem;
   }
 
   /* Helper classes used by the h2/h3 MDX component overrides in [slug]/page.tsx */

@@ -72,8 +72,12 @@ export default async function BlogPostPage({
     notFound()
   }
 
-  // Convert markdown content to HTML using remark
-  const processed = await remark().use(html).process(post.content)
+  // Convert markdown content to HTML using remark.
+  // sanitize:false — imported Blogger posts contain trusted raw HTML
+  // (divs, images, links). Without this, remark-html strips them.
+  const processed = await remark()
+    .use(html, { sanitize: false })
+    .process(post.content)
   const contentHtml = processed.toString()
 
   return (
