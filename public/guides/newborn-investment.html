@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Investment — Newborn Sessions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400&family=Arapey:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream:        #f8f4ef;
+    --cream-warm:   #f1ebe0;
+    --cream-deep:   #ebe2d2;
+    --warm-gray:    #d4d1cb;
+    --warm-gray-l:  #e3e0da;
+    --taupe:        #b9a999;
+    --charcoal:     #4b4746;
+    --gray:         #8a8483;
+    --sage:         #5f8f8b;
+    --line:         #d8cdbd;
+  }
+
+  html, body {
+    background: #d4d1cb;
+    color: var(--charcoal);
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0.4in auto;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    box-shadow: 0 1px 40px rgba(75,71,70,0.08);
+  }
+  .page:last-child { page-break-after: auto; }
+  @media print {
+    html, body { background: var(--cream); }
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  .inner {
+    padding: 0.95in 0.85in 1.05in;
+    height: 100%;
+    position: relative;
+  }
+
+  /* TYPOGRAPHY */
+  .display {
+    font-family: 'Cormorant', Georgia, serif;
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: -0.005em;
+    line-height: 1.04;
+  }
+  .display em {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--sage);
+  }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-size: 8pt;
+    color: var(--gray);
+  }
+  .eyebrow .num { color: var(--sage); margin-right: 0.65em; }
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7.5pt;
+    color: var(--sage);
+  }
+  p { color: var(--charcoal); margin-bottom: 0.16in; }
+  p strong { font-weight: 500; color: var(--charcoal); }
+  .lead {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 14pt;
+    line-height: 1.55;
+    color: var(--charcoal);
+    margin-bottom: 0.3in;
+    max-width: 5.6in;
+  }
+
+  /* CHROME */
+  .top-bar {
+    position: absolute;
+    top: 0.45in; left: 0.85in; right: 0.85in;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--warm-gray);
+    padding-bottom: 0.12in;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7pt;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .top-bar .mark {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    letter-spacing: 0.32em;
+    font-size: 9pt;
+    color: var(--charcoal);
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0.45in; left: 0.85in; right: 0.85in;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--warm-gray);
+    padding-top: 0.12in;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7pt;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .bottom-bar .pageno { color: var(--sage); }
+
+  /* PHOTO PLACEHOLDERS */
+  .photo {
+    background: linear-gradient(135deg, #e8e0d2 0%, #d6cbb8 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* COVER */
+  .cover { padding: 0; background: var(--cream); }
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    height: 100%;
+  }
+  .cover-photo { background: var(--cream-deep); }
+  .cover-photo .photo { width: 100%; height: 100%; }
+  .cover-text {
+    padding: 1in 0.85in 0.85in 0.7in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .cover-mark {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    letter-spacing: 0.32em;
+    font-size: 9pt;
+    text-transform: uppercase;
+    color: var(--charcoal);
+  }
+  .cover-issue {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.34em;
+    font-size: 7.5pt;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 0.18in;
+  }
+  .cover-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 60pt;
+    line-height: 0.98;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3in;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .cover-sub {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--charcoal);
+    line-height: 1.5;
+    max-width: 3.3in;
+    margin-bottom: 0.45in;
+  }
+  .cover-rule {
+    width: 0.5in; height: 1px; background: var(--taupe);
+    margin-bottom: 0.2in;
+  }
+  .cover-foot {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.34em;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    color: var(--gray);
+    line-height: 1.9;
+  }
+  .cover-foot .tag {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 11pt;
+    color: var(--sage);
+    display: block;
+    margin-top: 0.04in;
+  }
+
+  /* WELCOME */
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 0.4in;
+    margin-top: 0.4in;
+    align-items: start;
+  }
+  .signature {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28pt;
+    color: var(--sage);
+    margin-top: 0.18in;
+    line-height: 1;
+  }
+  .side-photo { height: 5.3in; }
+  .dropcap::first-letter {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--sage);
+    float: left;
+    font-size: 64pt;
+    line-height: 0.85;
+    padding: 0.08in 0.14in 0 0;
+    margin-top: 0.04in;
+  }
+
+  /* COLLECTIONS */
+  .collection {
+    border-top: 1px solid var(--warm-gray);
+    padding: 0.22in 0 0.2in;
+    display: grid;
+    grid-template-columns: 0.6in 1fr 1.4in;
+    gap: 0.32in;
+    align-items: start;
+  }
+  .collection:last-of-type { border-bottom: 1px solid var(--warm-gray); }
+  .collection .num {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 30pt;
+    color: var(--sage);
+    line-height: 1;
+  }
+  .collection .name {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 20pt;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 0.07in;
+  }
+  .collection .name em {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .collection .desc {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: var(--charcoal);
+    line-height: 1.45;
+    margin-bottom: 0.1in;
+  }
+  .collection ul {
+    list-style: none;
+  }
+  .collection li {
+    font-size: 9pt;
+    color: var(--charcoal);
+    padding-left: 0.2in;
+    position: relative;
+    margin-bottom: 0.03in;
+    line-height: 1.5;
+  }
+  .collection li::before {
+    content: '';
+    position: absolute;
+    left: 0.02in;
+    top: 0.11in;
+    width: 0.06in;
+    height: 1px;
+    background: var(--sage);
+  }
+  .collection .price {
+    text-align: right;
+  }
+  .collection .price-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7pt;
+    color: var(--gray);
+    margin-bottom: 0.06in;
+  }
+  .collection .price-amount {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 28pt;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+  .collection .price-note {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--gray);
+    margin-top: 0.06in;
+  }
+
+  /* ADDONS */
+  .addon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3in 0.5in;
+    margin-top: 0.3in;
+  }
+  .addon-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.18in;
+    padding: 0.12in 0;
+    border-bottom: 1px dotted var(--warm-gray);
+    align-items: baseline;
+  }
+  .addon-row .item {
+    font-family: 'Lora', serif;
+    font-size: 10pt;
+    color: var(--charcoal);
+  }
+  .addon-row .item em {
+    display: block;
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--gray);
+    margin-top: 0.02in;
+  }
+  .addon-row .cost {
+    font-family: 'Cormorant', serif;
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--sage);
+    white-space: nowrap;
+  }
+
+  /* HEIRLOOM */
+  .heirloom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.32in;
+    margin-top: 0.28in;
+  }
+  .heirloom-card {
+    border-top: 1px solid var(--warm-gray);
+    padding-top: 0.16in;
+  }
+  .heirloom-card .name {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17pt;
+    color: var(--charcoal);
+    line-height: 1;
+    margin: 0.05in 0 0.08in;
+  }
+  .heirloom-card p {
+    font-size: 9.5pt;
+    line-height: 1.6;
+    margin-bottom: 0.08in;
+  }
+  .heirloom-card .from {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 8pt;
+    color: var(--sage);
+    margin-top: 0.04in;
+  }
+
+  /* BOOK / STEPS */
+  .steps {
+    margin-top: 0.34in;
+  }
+  .step-row {
+    display: grid;
+    grid-template-columns: 0.5in 1fr;
+    gap: 0.3in;
+    align-items: start;
+    padding: 0.22in 0;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  .step-row:first-of-type { border-top: 1px solid var(--warm-gray); }
+  .step-row .num {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 26pt;
+    color: var(--sage);
+    line-height: 1;
+  }
+  .step-row .name {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17pt;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 0.08in;
+  }
+  .step-row p {
+    font-size: 9.5pt;
+    margin-bottom: 0;
+  }
+
+  .pullquote {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20pt;
+    line-height: 1.3;
+    color: var(--sage);
+    text-align: center;
+    padding: 0.3in 0.5in;
+    margin: 0.28in 0 0.18in;
+  }
+  .pullquote::before, .pullquote::after {
+    content: '';
+    display: block;
+    width: 0.4in;
+    height: 1px;
+    background: var(--taupe);
+    margin: 0 auto;
+  }
+  .pullquote::before { margin-bottom: 0.18in; }
+  .pullquote::after { margin-top: 0.18in; }
+
+  /* CLOSING */
+  .closing-page { background: var(--cream); padding: 0; }
+  .closing-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 0.06in;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  .closing-mosaic .photo {
+    width: 100%;
+    height: 100%;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+  }
+  .closing-hero {
+    background: var(--cream-deep);
+    position: relative;
+  }
+  .closing-text {
+    padding: 0.7in 0.85in 0.85in;
+    text-align: center;
+  }
+  .closing-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 42pt;
+    line-height: 0.98;
+    color: var(--charcoal);
+    margin-bottom: 0.22in;
+    letter-spacing: -0.005em;
+  }
+  .closing-title em {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .closing-sub {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--charcoal);
+    max-width: 4.5in;
+    margin: 0 auto 0.34in;
+    line-height: 1.6;
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4in;
+    max-width: 6in;
+    margin: 0.28in auto 0;
+    padding-top: 0.22in;
+    border-top: 1px solid var(--warm-gray);
+  }
+  .contact-row .label { display: block; margin-bottom: 0.06in; }
+  .contact-row .val {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 12pt;
+    color: var(--charcoal);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 — COVER -->
+<section class="page cover">
+  <div class="cover-grid">
+    <div class="cover-photo">
+      <div class="photo"><img src="../images/newborn/new-mom-cheek.jpg" alt="Mother with newborn"></div>
+    </div>
+    <div class="cover-text">
+      <div>
+        <div class="cover-mark">JENNIE SLADE PHOTOGRAPHY</div>
+        <div class="cover-issue">No. 02 &nbsp;·&nbsp; The Investment</div>
+      </div>
+      <div>
+        <h1 class="cover-title">The<br><em>Investment</em><br>Guide.</h1>
+        <div class="cover-rule"></div>
+        <div class="cover-sub">Newborn collections, heirloom products, and how to reserve your date.</div>
+      </div>
+      <div class="cover-foot">
+        Las Vegas &nbsp;·&nbsp; 2026
+        <span class="tag">because memories make us who we are</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 2 — WELCOME / PHILOSOPHY -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>A Note on Investment</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">01</span>A Note on Investment</div>
+    <h2 class="display" style="font-size: 44pt; margin: 0.18in 0 0.3in; max-width: 6in;">
+      What you are<br><em>actually</em> buying.
+    </h2>
+
+    <div class="welcome-grid">
+      <div>
+        <p class="lead">A photograph is a small thing, until it is the only thing left of a season you cannot get back.</p>
+
+        <p class="dropcap">When you book a newborn session, you are not buying an hour. You are buying eighteen years of practiced eyes, a steady presence in your home on a very tender week, and a set of images you will hold onto long after the swaddle is outgrown.</p>
+
+        <p>My promise to you is simple. You will look like yourselves. Your baby will look like a baby, not a prop. The light will be soft and the morning will move at your pace.</p>
+
+        <p>Below are three ways to invest in this season. Every collection includes my signature warm, hand-edited style and a beautifully delivered online gallery. There is no right or wrong choice. Only what feels like the right fit for your family.</p>
+
+        <p style="margin-top: 0.18in;">I am honored you are even thinking about this.</p>
+        <div class="signature">Jennie</div>
+      </div>
+
+      <div>
+        <div class="photo side-photo"><img src="../images/newborn/new-parents-bed.jpg" alt="Parents with newborn"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">02 / 06</span>
+  </div>
+</section>
+
+<!-- PAGE 3 — THE COLLECTIONS -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>The Collections</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">02</span>The Collections</div>
+    <h2 class="display" style="font-size: 32pt; margin: 0.14in 0 0.12in; max-width: 6.5in;">
+      Three ways to<br><em>remember.</em>
+    </h2>
+    <p class="lead" style="font-size: 12pt; margin-bottom: 0.18in;">Pick the one that fits the season you are in. You can always upgrade after the gallery is delivered.</p>
+
+    <div class="collection">
+      <div class="num">i.</div>
+      <div>
+        <div class="name">The <em>Mini.</em></div>
+        <div class="desc">A short, sweet visit. Perfect for a second or third baby, or families who want only the essentials.</div>
+        <ul>
+          <li>30-minute in-home session</li>
+          <li>15 hand-edited digital images</li>
+          <li>Private online gallery</li>
+          <li>Personal print release</li>
+        </ul>
+      </div>
+      <div class="price">
+        <div class="price-label">Investment</div>
+        <div class="price-amount">$475</div>
+        <div class="price-note">+ tax</div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="num">ii.</div>
+      <div>
+        <div class="name">The <em>Lifestyle.</em> &nbsp;<span style="font-family: 'Arapey', serif; font-style: italic; font-size: 10pt; color: var(--sage); letter-spacing: 0.15em; text-transform: uppercase;">Most loved</span></div>
+        <div class="desc">My signature session. The relaxed, slow-morning shoot most families book.</div>
+        <ul>
+          <li>90-minute in-home session</li>
+          <li>40 hand-edited digital images</li>
+          <li>Private online gallery</li>
+          <li>Personal print release</li>
+          <li>Sneak peek within 48 hours</li>
+        </ul>
+      </div>
+      <div class="price">
+        <div class="price-label">Investment</div>
+        <div class="price-amount">$750</div>
+        <div class="price-note">+ tax</div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="num">iii.</div>
+      <div>
+        <div class="name">The <em>Heirloom.</em></div>
+        <div class="desc">A more unhurried session for families who want every quiet detail, plus a finished piece for the wall.</div>
+        <ul>
+          <li>Two-hour in-home session</li>
+          <li>60+ hand-edited digital images</li>
+          <li>Private online gallery</li>
+          <li>Personal print release</li>
+          <li>$200 album credit</li>
+          <li>Priority gallery turnaround</li>
+        </ul>
+      </div>
+      <div class="price">
+        <div class="price-label">Investment</div>
+        <div class="price-amount">$1,250</div>
+        <div class="price-note">+ tax</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">03 / 06</span>
+  </div>
+</section>
+
+<!-- PAGE 4 — ADD-ONS -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>A La Carte</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">03</span>A La Carte</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      Little ways to<br><em>add on.</em>
+    </h2>
+    <p class="lead">Mix and match with any collection. Most add-ons can be booked before the session or after you see your gallery.</p>
+
+    <div class="addon-grid">
+      <div class="addon-row">
+        <div class="item">Extra detailed edit
+          <em>Skin smoothing, color polish, custom retouch — per image</em>
+        </div>
+        <div class="cost">$25</div>
+      </div>
+      <div class="addon-row">
+        <div class="item">Fresh 48 add-on
+          <em>Hospital or first-day-home session, added on to any booked collection</em>
+        </div>
+        <div class="cost">$350</div>
+      </div>
+      <div class="addon-row">
+        <div class="item">Rush gallery delivery
+          <em>5 business days vs. 10</em>
+        </div>
+        <div class="cost">$150</div>
+      </div>
+      <div class="addon-row">
+        <div class="item">Travel beyond Henderson
+          <em>Over 30 mi from home base</em>
+        </div>
+        <div class="cost">$1/mi</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 0.32in; font-family: 'Arapey', serif; font-style: italic; font-size: 11pt; color: var(--charcoal); max-width: 5.5in;">Every session already includes hand-edited color <em>and</em> black-and-white images, siblings are always welcome at no extra fee, and pets are encouraged.</p>
+
+    <div class="pullquote">The everyday is the part you will miss most.<br>Print it.</div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">04 / 06</span>
+  </div>
+</section>
+
+<!-- PAGE 5 — HEIRLOOM PRODUCTS -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>Heirloom Keepsakes</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">04</span>Heirloom Keepsakes</div>
+    <h2 class="display" style="font-size: 30pt; margin: 0.14in 0 0.12in; max-width: 6.5in;">
+      Something to <em>hold</em><br>and keep.
+    </h2>
+    <p class="lead" style="font-size: 12pt; margin-bottom: 0.18in;">Two pieces I design and deliver myself. Both built to outlast the season.</p>
+
+    <div class="heirloom-grid" style="margin-top: 0.16in;">
+      <div class="heirloom-card">
+        <div class="label">Hardbound Linen Album</div>
+        <div class="name">A book for your shelf.</div>
+        <p>Hand-bound linen cover, fine-art interior pages, designed by me from your favorite gallery images. Available in square or portrait sizes.</p>
+        <div class="from">Starting at $300</div>
+      </div>
+      <div class="heirloom-card">
+        <div class="label">Birth Story Box</div>
+        <div class="name">A keepsake of the week.</div>
+        <p>Linen-wrapped archival box with 25 fine-art 5x7 prints and a USB of your full gallery. A quiet little time capsule.</p>
+        <div class="from">Starting at $325</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 0.28in; font-family: 'Arapey', serif; font-style: italic; font-size: 11pt; color: var(--charcoal); max-width: 5.5in;">Heirloom collection clients receive a $200 album credit.</p>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">05 / 06</span>
+  </div>
+</section>
+
+<!-- PAGE 6 — HOW TO BOOK + CLOSING -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>How to Reserve</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">05</span>How to Reserve</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      Saving your<br><em>date.</em>
+    </h2>
+    <p class="lead">Newborn dates are flexible by nature. Reach out anytime in your second or third trimester and we will hold a tentative window.</p>
+
+    <div class="steps">
+      <div class="step-row">
+        <div class="num">i.</div>
+        <div>
+          <div class="name">Reach out.</div>
+          <p>Email or use the contact form on jennieslade.com. Share your due date and the collection you are drawn to.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="num">ii.</div>
+        <div>
+          <div class="name">Reserve.</div>
+          <p>A signed contract and $200 retainer hold your tentative window. The retainer applies to your collection total.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="num">iii.</div>
+        <div>
+          <div class="name">Welcome baby.</div>
+          <p>Once your little one arrives, message me and we lock in the actual session date around feeding and sleep.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="num">iv.</div>
+        <div>
+          <div class="name">Final payment.</div>
+          <p>Balance is due the day of the session. Major cards, ACH, and Venmo all welcome.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 0.28in; padding: 0.22in 0; border-top: 1px solid var(--warm-gray); border-bottom: 1px solid var(--warm-gray);">
+      <div class="label" style="display:block; margin-bottom: 0.08in;">A Note on Pricing</div>
+      <p style="font-size: 10pt; margin-bottom: 0;">Pricing is current for 2026 and may change with the calendar year. Once your retainer is received, the rates in this guide are locked for your session.</p>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">06 / 06</span>
+  </div>
+</section>
+
+<!-- PAGE 7 — CLOSING -->
+<section class="page closing-page">
+  <div class="closing-grid" style="grid-template-rows: 6.5in auto;">
+    <div class="closing-hero" style="background: transparent;">
+      <div class="closing-mosaic">
+        <div class="photo"><img src="../images/newborn/new-bw-cover.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-mom-cheek.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-sibling-hands.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-bw-detail.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-orange-bow.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-crib.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-siblings-looking.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-mom-mauve.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-parents-baby.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/tessa-3.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-family-dog.jpg" alt=""></div>
+        <div class="photo"><img src="../images/newborn/new-parents-bed.jpg" alt=""></div>
+      </div>
+    </div>
+    <div class="closing-text" style="padding: 0.5in 0.85in 0.55in;">
+      <div class="eyebrow" style="justify-content:center; text-align:center; margin-bottom: 0.18in;">
+        <span class="num">·</span>Let's Begin
+      </div>
+      <h2 class="closing-title" style="font-size: 36pt; margin-bottom: 0.16in;">I cannot wait<br>to <em>meet</em> them.</h2>
+      <p class="closing-sub" style="margin-bottom: 0.22in;">Whenever you are ready, I am here.</p>
+      <div class="contact-row" style="margin: 0.18in auto 0; padding-top: 0.16in;">
+        <div><span class="label">Web</span><span class="val">jennieslade.com</span></div>
+        <div><span class="label">Email</span><span class="val">jennie@jennieslade.com</span></div>
+        <div><span class="label">Instagram</span><span class="val">@jenniesladephoto</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

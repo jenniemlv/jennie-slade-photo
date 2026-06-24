@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What to Expect — Newborn Session Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400&family=Arapey:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream:        #f8f4ef;
+    --cream-warm:   #f1ebe0;
+    --cream-deep:   #ebe2d2;
+    --warm-gray:    #d4d1cb;
+    --warm-gray-l:  #e3e0da;
+    --taupe:        #b9a999;
+    --charcoal:     #4b4746;
+    --gray:         #8a8483;
+    --sage:         #5f8f8b;
+    --line:         #d8cdbd;
+  }
+
+  html, body {
+    background: #d4d1cb;
+    color: var(--charcoal);
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ==================== PAGE ==================== */
+  .page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0.4in auto;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  @media print {
+    html, body { background: var(--cream); }
+    .page { margin: 0; box-shadow: none; }
+  }
+  .page { box-shadow: 0 1px 40px rgba(75,71,70,0.08); }
+
+  /* Inner content area, accounts for chrome */
+  .inner {
+    padding: 0.95in 0.85in 1.05in;
+    height: 100%;
+    position: relative;
+  }
+
+  /* ==================== TYPOGRAPHY ==================== */
+  .display {
+    font-family: 'Cormorant', Georgia, serif;
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: -0.005em;
+    line-height: 1.04;
+  }
+  .display em {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--sage);
+  }
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-size: 8pt;
+    color: var(--gray);
+  }
+  .eyebrow .num {
+    color: var(--sage);
+    margin-right: 0.65em;
+  }
+  .accent {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7.5pt;
+    color: var(--sage);
+  }
+  p { color: var(--charcoal); margin-bottom: 0.16in; }
+  p strong { font-weight: 500; color: var(--charcoal); }
+  .lead {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 14pt;
+    line-height: 1.55;
+    color: var(--charcoal);
+    margin-bottom: 0.3in;
+    max-width: 5.6in;
+  }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--sage);
+    float: left;
+    font-size: 64pt;
+    line-height: 0.85;
+    padding: 0.08in 0.14in 0 0;
+    margin-top: 0.04in;
+  }
+
+  /* ==================== CHROME ==================== */
+  .top-bar {
+    position: absolute;
+    top: 0.45in;
+    left: 0.85in;
+    right: 0.85in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--warm-gray);
+    padding-bottom: 0.12in;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7pt;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .top-bar .mark {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    letter-spacing: 0.32em;
+    font-size: 9pt;
+    color: var(--charcoal);
+  }
+  .bottom-bar {
+    position: absolute;
+    bottom: 0.45in;
+    left: 0.85in;
+    right: 0.85in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--warm-gray);
+    padding-top: 0.12in;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 7pt;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .bottom-bar .pageno { color: var(--sage); }
+
+  /* ==================== PHOTO PLACEHOLDERS ==================== */
+  .photo {
+    background: linear-gradient(135deg, #e8e0d2 0%, #d6cbb8 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .photo::after {
+    content: attr(data-caption);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.2in;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 7.5pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(75,71,70,0.45);
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo.has-img::after { display: none; }
+  .photo.cover-bw img {
+    filter: grayscale(100%) contrast(1.04) brightness(1.02);
+  }
+  .photo-cap {
+    margin-top: 0.08in;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 7pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ==================== COVER ==================== */
+  .cover {
+    padding: 0;
+    background: var(--cream);
+  }
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    height: 100%;
+  }
+  .cover-text {
+    padding: 1in 0.7in 0.85in 0.85in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .cover-mark {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    letter-spacing: 0.32em;
+    font-size: 9pt;
+    text-transform: uppercase;
+    color: var(--charcoal);
+  }
+  .cover-issue {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.34em;
+    font-size: 7.5pt;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 0.18in;
+  }
+  .cover-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 56pt;
+    line-height: 0.98;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3in;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .cover-sub {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--charcoal);
+    line-height: 1.5;
+    max-width: 3.3in;
+    margin-bottom: 0.45in;
+  }
+  .cover-rule {
+    width: 0.5in; height: 1px; background: var(--taupe);
+    margin-bottom: 0.2in;
+  }
+  .cover-foot {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.34em;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    color: var(--gray);
+    line-height: 1.9;
+  }
+  .cover-foot .tag {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 11pt;
+    color: var(--sage);
+    display: block;
+    margin-top: 0.04in;
+  }
+  .cover-photo {
+    background: var(--cream-deep);
+    position: relative;
+  }
+  .cover-photo .photo { width: 100%; height: 100%; }
+
+  /* ==================== WELCOME PAGE ==================== */
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 0.4in;
+    align-items: start;
+    margin-top: 0.4in;
+  }
+  .signature {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28pt;
+    color: var(--sage);
+    margin-top: 0.18in;
+    line-height: 1;
+  }
+  .side-photo {
+    height: 5.3in;
+  }
+
+  /* ==================== APPROACH PAGE ==================== */
+  .diptych {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 0.18in;
+    margin: 0.34in 0 0.3in;
+  }
+  .diptych .photo { height: 3.3in; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4in;
+    margin-top: 0.2in;
+  }
+  .col-head {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16pt;
+    color: var(--charcoal);
+    margin-bottom: 0.14in;
+    padding-bottom: 0.08in;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  ul.list {
+    list-style: none;
+  }
+  ul.list li {
+    color: var(--charcoal);
+    padding-left: 0.22in;
+    position: relative;
+    margin-bottom: 0.1in;
+    line-height: 1.6;
+    font-size: 10pt;
+  }
+  ul.list li::before {
+    content: '';
+    position: absolute;
+    left: 0.02in;
+    top: 0.13in;
+    width: 0.06in;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  .pullquote {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22pt;
+    line-height: 1.3;
+    color: var(--sage);
+    text-align: center;
+    padding: 0.32in 0.5in;
+    margin: 0.3in 0 0.2in;
+    position: relative;
+  }
+  .pullquote::before,
+  .pullquote::after {
+    content: '';
+    display: block;
+    width: 0.4in;
+    height: 1px;
+    background: var(--taupe);
+    margin: 0 auto;
+  }
+  .pullquote::before { margin-bottom: 0.18in; }
+  .pullquote::after { margin-top: 0.18in; }
+
+  /* ==================== TIMING ==================== */
+  .timing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 0.5in;
+    margin-top: 0.34in;
+    align-items: start;
+  }
+  .timing-photo { height: 5.6in; }
+
+  .note {
+    margin-top: 0.2in;
+    padding: 0.24in 0;
+    border-top: 1px solid var(--warm-gray);
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  .note .label { display: block; margin-bottom: 0.08in; }
+  .note p { margin-bottom: 0; font-size: 10pt; }
+
+  /* ==================== HOME PREP ==================== */
+  .prep-photo {
+    height: 2.6in;
+    margin: 0.32in 0;
+  }
+
+  /* ==================== WEAR PAGE ==================== */
+  .wear-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.32in;
+    margin-top: 0.34in;
+  }
+  .wear-card {
+    border-top: 1px solid var(--warm-gray);
+    padding-top: 0.18in;
+  }
+  .wear-card .label { margin-bottom: 0.08in; }
+  .wear-card .name {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18pt;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 0.12in;
+  }
+  .wear-card p {
+    font-size: 9.5pt;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ==================== DAY OF ==================== */
+  .day-photo {
+    height: 2.4in;
+    margin: 0.28in 0 0.2in;
+  }
+  .day-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4in;
+  }
+
+  /* ==================== AFTER ==================== */
+  .after-row {
+    display: grid;
+    grid-template-columns: 0.4in 1fr;
+    gap: 0.3in;
+    align-items: start;
+    padding: 0.24in 0;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  .after-row:first-of-type { border-top: 1px solid var(--warm-gray); }
+  .after-row .num {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 24pt;
+    color: var(--sage);
+    line-height: 1;
+  }
+  .after-row .name {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16pt;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-bottom: 0.08in;
+  }
+  .after-row p {
+    font-size: 9.5pt;
+    margin-bottom: 0;
+  }
+  .closing-note {
+    margin-top: 0.28in;
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: var(--charcoal);
+  }
+
+  /* ==================== CLOSING ==================== */
+  .closing-page {
+    background: var(--cream);
+    padding: 0;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+  }
+  .closing-hero {
+    background: var(--cream-deep);
+    position: relative;
+  }
+  .closing-text {
+    padding: 0.7in 0.85in 0.85in;
+    text-align: center;
+  }
+  .closing-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 44pt;
+    line-height: 0.98;
+    color: var(--charcoal);
+    margin-bottom: 0.22in;
+    letter-spacing: -0.005em;
+  }
+  .closing-title em {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 300;
+  }
+  .closing-sub {
+    font-family: 'Arapey', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--charcoal);
+    max-width: 4.5in;
+    margin: 0 auto 0.34in;
+    line-height: 1.6;
+  }
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4in;
+    max-width: 6in;
+    margin: 0.28in auto 0;
+    padding-top: 0.22in;
+    border-top: 1px solid var(--warm-gray);
+  }
+  .contact-row .label { display: block; margin-bottom: 0.06in; }
+  .contact-row .val {
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 12pt;
+    color: var(--charcoal);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PAGE 1 — COVER
+     ============================================================ -->
+<section class="page cover">
+  <div class="cover-grid">
+    <div class="cover-text">
+      <div>
+        <div class="cover-mark">JENNIE SLADE PHOTOGRAPHY</div>
+        <div class="cover-issue">No. 01 &nbsp;·&nbsp; A Guide for New Parents</div>
+      </div>
+      <div>
+        <h1 class="cover-title">What to<br>Expect at<br>Your <em>Newborn</em><br>Session.</h1>
+        <div class="cover-rule"></div>
+        <div class="cover-sub">Relaxed, lifestyle photography for your growing family.</div>
+      </div>
+      <div class="cover-foot">
+        Las Vegas &nbsp;·&nbsp; Est. 2007
+        <span class="tag">because memories make us who we are</span>
+      </div>
+    </div>
+    <div class="cover-photo">
+      <div class="photo has-img"><img src="../images/newborn/new-bw-cover.jpg" alt="Sleeping newborn portrait"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 2 — WELCOME
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>Welcome</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">01</span>Welcome</div>
+    <h2 class="display" style="font-size: 46pt; margin: 0.18in 0 0.3in; max-width: 6in;">
+      First,<br><em>congratulations.</em>
+    </h2>
+
+    <div class="welcome-grid">
+      <div>
+        <p class="lead">You made a whole person. And now you are tired, a little wide-eyed, and somewhere in the middle of the most tender season you will ever live through.</p>
+
+        <p class="dropcap">I am so glad you want to remember it. I have been photographing families here in Las Vegas for more than eighteen years, and I have watched babies I photographed in their first week of life grow up and come back for their senior portraits. That is the part I love most.</p>
+
+        <p>These early days feel endless when you are in them, and then suddenly they are gone. A photograph is how you hold onto them.</p>
+
+        <p>My style is simple and unposed. I am not going to bend your baby into shapes or fill the room with props. I want the real thing. The way she curls into your chest. The way your toddler wants to kiss the baby and then immediately wants a snack. The quiet, the chaos, the love. All of it.</p>
+
+        <p style="margin-top: 0.2in;">I cannot wait to meet your newest love.</p>
+        <div class="signature">Jennie</div>
+      </div>
+
+      <div>
+        <div class="photo side-photo has-img"><img src="../images/newborn/new-mom-mauve.jpg" alt="Newborn in mother's arms"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">02 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 — APPROACH
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>The Approach</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">02</span>The Approach</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      What a <em>lifestyle</em><br>session looks like.
+    </h2>
+    <p class="lead">Less a photoshoot, more a slow, soft morning at home, with me quietly capturing it.</p>
+
+    <div class="diptych">
+      <div class="photo has-img"><img src="../images/newborn/new-sibling-hands.jpg" alt="Siblings reaching for newborn"></div>
+      <div class="photo has-img"><img src="../images/newborn/new-siblings-looking.jpg" alt="Siblings looking at newborn"></div>
+    </div>
+
+    <p>Most of our session happens right where life happens. Your bed, the nursery, the cozy corner with the good light. You will hold your baby, snuggle in close, change a diaper, maybe feed her. I will be moving around you, catching the real moments as they unfold.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="col-head">For you</div>
+        <ul class="list">
+          <li>No stiff smiles at the camera</li>
+          <li>No complicated poses to hold</li>
+          <li>Plenty of time for feeding and cuddles</li>
+          <li>Older siblings can be themselves</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head">What we capture</div>
+        <ul class="list">
+          <li>Baby's tiny details — lashes, fingers, toes</li>
+          <li>You holding and loving on your little one</li>
+          <li>Siblings meeting and snuggling baby</li>
+          <li>The everyday, made beautiful</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pullquote">The best newborn photos are not<br>perfect. They are honest.</div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">03 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 4 — TIMING
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>Timing</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">03</span>Timing</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      When to book<br>your <em>session.</em>
+    </h2>
+    <p class="lead">The sweet spot is the first few weeks. Reading this a little later? Do not panic.</p>
+
+    <div class="timing-grid">
+      <div>
+        <div class="photo timing-photo has-img"><img src="../images/newborn/new-orange-bow.jpg" alt="Sleeping newborn with orange bow"></div>
+      </div>
+      <div>
+        <p><strong>The classic newborn window is the first two to three weeks.</strong> Babies this young are extra sleepy and still curl up in that snug, fresh-from-the-womb way. They tend to snooze right through the session, which makes for those dreamy, peaceful images.</p>
+
+        <p><strong>Already past three weeks?</strong> You are still right on time. Because my style is lifestyle and not heavily posed, slightly older newborns photograph beautifully. An alert, awake baby looking around is just as precious as a sleepy one, and we lean into whoever your baby is that day.</p>
+
+        <p style="margin-top: 0.2in;">If you book before baby arrives, we pencil in a tentative date and stay flexible. Newborns keep their own calendars. Once your little one is here, we lock in the day and time that works best around feeding and sleep. No stress, ever.</p>
+
+        <div class="note">
+          <span class="label">Best Time of Day</span>
+          <p>Mid-morning to midday, when natural light through your windows is at its softest. I will help you choose the right time once I know your home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">04 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 5 — HOME PREP
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>Before the Session</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">04</span>Before the Session</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      Getting your<br><em>home</em> ready.
+    </h2>
+    <p class="lead">Please do not deep clean your whole house. We only need a couple of rooms.</p>
+
+    <div class="photo prep-photo has-img"><img src="../images/newborn/new-crib.jpg" alt="Newborn in white crib"></div>
+
+    <p>The spaces I use most are <strong>the primary bedroom, the nursery, and a living room with good natural light.</strong> Pick the rooms that feel best to you, and we will work there.</p>
+
+    <div class="two-col" style="margin-top: 0.2in;">
+      <div>
+        <div class="col-head">A few easy things</div>
+        <ul class="list">
+          <li>Open all blinds and curtains for natural light</li>
+          <li>Clear clutter from nightstands and dressers</li>
+          <li>Put fresh, neutral sheets on the bed if you can</li>
+          <li>Turn off overhead and lamp lights</li>
+          <li>Tuck away the laundry basket and diaper boxes</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head">Make it cozy</div>
+        <ul class="list">
+          <li>Warm the house to 72–75°F</li>
+          <li>A warm baby is a happy, sleepy baby</li>
+          <li>Have a soft, neutral swaddle or two ready</li>
+          <li>Pull out simple keepsakes for a photo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top: 0.26in;">
+      <span class="label">Remember</span>
+      <p>Less is more. A simple, decluttered space lets the focus stay where it belongs — on your family. A little mess in the next room is none of the camera's business.</p>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">05 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 — WHAT TO WEAR
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>What to Wear</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">05</span>What to Wear</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      Dressing the<br><em>family.</em>
+    </h2>
+    <p class="lead">Soft, neutral, comfortable. When everyone coordinates without matching, photos feel timeless.</p>
+
+    <div class="wear-grid">
+      <div class="wear-card">
+        <div class="label">For Mom</div>
+        <div class="name">Soft &amp; flowy.</div>
+        <p>Wear something that feels good on a fresh postpartum body. You will be seated and snuggling, so choose what feels comfortable both sitting and standing. Creams, whites, soft neutrals, muted tones. A relaxed dress or a simple top with a cardigan. Wear what makes you feel like you.</p>
+      </div>
+      <div class="wear-card">
+        <div class="label">For Dad &amp; Partners</div>
+        <div class="name">Simple &amp; neutral.</div>
+        <p>A plain tee, henley, or button-up in a complementary neutral, paired with jeans or chinos. Skip the logos and busy prints.</p>
+      </div>
+      <div class="wear-card">
+        <div class="label">For Siblings</div>
+        <div class="name">Comfort wins.</div>
+        <p>Keep it in the same soft, neutral family. Simple tees, sweaters, dresses, and rompers all photograph beautifully. This is not the day for itchy or fussy outfits.</p>
+      </div>
+      <div class="wear-card">
+        <div class="label">For Baby</div>
+        <div class="name">Sweet &amp; simple.</div>
+        <p>A plain onesie, a neutral romper, a soft knit, or just a swaddle and a diaper. Avoid bright reds, greens, and hot pinks — they cast color onto baby's skin. Make sure outfits fit so they don't swallow tiny hands and feet.</p>
+      </div>
+    </div>
+
+    <div class="pullquote" style="font-size: 18pt; margin-top: 0.24in;">When in doubt, wear what you would<br>want to be remembered in.</div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">06 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 7 — DAY OF
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>The Day Of</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">06</span>The Day Of</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      How to make<br>the day <em>easy.</em>
+    </h2>
+    <p class="lead">The more relaxed you are, the better the photos. Babies feel everything you feel.</p>
+
+    <div class="photo day-photo has-img"><img src="../images/newborn/new-family-dog.jpg" alt="Family with newborn, toddler, and dog"></div>
+
+    <div class="day-list-grid">
+      <div>
+        <div class="col-head">Right before I arrive</div>
+        <ul class="list">
+          <li>Feed baby just before our start — a full belly means sleepy and content</li>
+          <li>Have a burp cloth and an extra swaddle within reach</li>
+          <li>Keep baby in something easy to slip off</li>
+          <li>Take a breath. You are ready.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head">During our time together</div>
+        <ul class="list">
+          <li>We go at baby's pace, always</li>
+          <li>Feedings and diaper changes are part of it, not interruptions</li>
+          <li>If a sibling needs a break, that is fine</li>
+          <li>Snacks and a favorite toy work wonders for toddlers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top: 0.26in;">
+      <span class="label">About fussy moments</span>
+      <p>Every baby has them. If your little one needs to eat, cry, or be cuddled, we pause. Some of my favorite images come right after a feeding, when baby is milk-drunk and dreamy. We never rush a newborn.</p>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">07 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 — AFTER
+     ============================================================ -->
+<section class="page">
+  <div class="top-bar">
+    <span class="mark">JENNIE SLADE</span>
+    <span>After the Session</span>
+  </div>
+  <div class="inner">
+    <div class="eyebrow"><span class="num">07</span>After the Session</div>
+    <h2 class="display" style="font-size: 38pt; margin: 0.18in 0 0.18in; max-width: 6.5in;">
+      What happens<br><em>next.</em>
+    </h2>
+    <p class="lead">Once we wrap, you go back to those newborn snuggles. I do the rest.</p>
+
+    <div class="after-row">
+      <div class="num">i.</div>
+      <div>
+        <div class="name">Your gallery.</div>
+        <p>I hand-edit your images in my signature warm, natural style and deliver them in a beautiful online gallery you can view, download, and share. You will receive a sneak peek soon after our session so you have something to hold onto right away.</p>
+      </div>
+    </div>
+    <div class="after-row">
+      <div class="num">ii.</div>
+      <div>
+        <div class="name">Turnaround.</div>
+        <p>Full galleries are typically ready within about ten days. Newborns change so fast, so I make your images a priority.</p>
+      </div>
+    </div>
+    <div class="after-row">
+      <div class="num">iii.</div>
+      <div>
+        <div class="name">Prints &amp; keepsakes.</div>
+        <p>These are the photos you will want on your walls and in your hands, not just on a screen. Your gallery includes a simple way to order professional prints, albums, and keepsakes. I am always happy to help you choose.</p>
+      </div>
+    </div>
+
+    <p class="closing-note">And this is just the beginning. I would love to be the one who photographs this little one through every milestone — the sitter session, the first birthday, all the way to senior portraits one day.</p>
+  </div>
+  <div class="bottom-bar">
+    <span>Jennie Slade Photography</span>
+    <span class="pageno">08 / 09</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 9 — CLOSING
+     ============================================================ -->
+<section class="page closing-page">
+  <div class="closing-grid">
+    <div class="closing-hero">
+      <div class="photo has-img"><img src="../images/newborn/new-parents-baby.jpg" alt="Parents with newborn"></div>
+    </div>
+    <div class="closing-text">
+      <div class="eyebrow" style="justify-content:center; text-align:center; margin-bottom: 0.24in;">
+        <span class="num">·</span>Let's Capture This
+      </div>
+      <h2 class="closing-title">Soak in <em>every</em><br>tiny moment.</h2>
+      <p class="closing-sub">You will blink and she will be grown. Let's freeze this season exactly as it is — soft, sleepy, and full of love.</p>
+      <div class="contact-row">
+        <div><span class="label">Web</span><span class="val">jennieslade.com</span></div>
+        <div><span class="label">Email</span><span class="val">jennie@jennieslade.com</span></div>
+        <div><span class="label">Instagram</span><span class="val">@jenniesladephoto</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
