@@ -17,6 +17,7 @@
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { seniorImages } from '@/data/galleries'
@@ -44,6 +45,12 @@ export default function SeniorsPage() {
             portraits that show who you are right now. Not some stiff yearbook photo. Let&apos;s
             find a spot you love, bring your personality, and have some fun with it.
           </p>
+          <Link
+            href="/seniors/info"
+            className="inline-block mt-8 border border-charcoal text-charcoal px-8 py-3 type-heading hover:bg-charcoal hover:text-off-white transition-colors"
+          >
+            Pricing, Locations &amp; FAQ
+          </Link>
         </div>
 
         {/*
