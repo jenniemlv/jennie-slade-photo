@@ -7,6 +7,9 @@ import { NextRequest, NextResponse } from 'next/server'
  *   - "/" rewrites to "/families/info" (URL stays clean)
  *   - other paths pass through (e.g. "/what-to-wear" still works)
  *
+ * newborns.jennieslade.com — serves the newborn info hub at root.
+ *   - "/" rewrites to "/newborns/info"
+ *
  * All other hosts (localhost, jennie-slade-photo.vercel.app, jennieslade.com)
  * behave normally with no rewrites.
  *
@@ -14,6 +17,7 @@ import { NextRequest, NextResponse } from 'next/server'
  */
 
 const FAMILY_INFO_HOST = 'family-info.jennieslade.com'
+const NEWBORN_INFO_HOST = 'newborns.jennieslade.com'
 
 export function middleware(req: NextRequest) {
   const host = req.headers.get('host') ?? ''
@@ -23,6 +27,14 @@ export function middleware(req: NextRequest) {
   if (host === FAMILY_INFO_HOST) {
     if (url.pathname === '/') {
       url.pathname = '/families/info'
+      return NextResponse.rewrite(url)
+    }
+  }
+
+  // ── newborns.jennieslade.com ─────────────────────────────────────────────
+  if (host === NEWBORN_INFO_HOST) {
+    if (url.pathname === '/') {
+      url.pathname = '/newborns/info'
       return NextResponse.rewrite(url)
     }
   }
