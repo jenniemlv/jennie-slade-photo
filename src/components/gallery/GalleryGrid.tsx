@@ -95,7 +95,8 @@ export default function GalleryGrid({ images, aspectRatio }: GalleryGridProps) {
                     alt={image.alt}
                     fill
                     className="object-cover group-hover:opacity-90 transition-opacity duration-150"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(min-width: 1280px) 420px, (min-width: 768px) 50vw, 100vw"
+                    quality={92}
                     loading="lazy"
                   />
                 ) : (
