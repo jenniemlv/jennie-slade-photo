@@ -66,30 +66,31 @@ export default function Footer() {
             aria-label="Footer navigation"
             className="flex justify-center items-center gap-6 mt-8"
           >
-            <Link
-              href="/about"
+            {/* Live site is still on jennieslade.com — link out until new site ships. */}
+            <a
+              href="https://jennieslade.com/about"
               className="type-heading opacity-60 hover:opacity-100 transition-opacity duration-150"
             >
               About
-            </Link>
-            <Link
-              href="/portfolio"
+            </a>
+            <a
+              href="https://jennieslade.com/portfolio"
               className="type-heading opacity-60 hover:opacity-100 transition-opacity duration-150"
             >
               Portfolio
-            </Link>
-            <Link
-              href="/contact"
+            </a>
+            <a
+              href="https://jennieslade.com/contact"
               className="type-heading opacity-60 hover:opacity-100 transition-opacity duration-150"
             >
               Contact
-            </Link>
-            <Link
-              href="/blog"
+            </a>
+            <a
+              href="https://jennieslade.com/blog"
               className="type-heading opacity-60 hover:opacity-100 transition-opacity duration-150"
             >
               Blog
-            </Link>
+            </a>
           </nav>
 
           {/* Copyright year — auto-generated so it never goes stale */}

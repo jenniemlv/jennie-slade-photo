@@ -39,12 +39,14 @@ function InstagramIcon({ size = 24, className = '' }: { size?: number; className
   )
 }
 
-// Exactly 4 nav links per design spec (D-02). No "Home" link — JENNIE SLADE name navigates to /.
+// New site is WIP. Until it ships, nav routes back to live jennieslade.com.
+// Logo also points to live site (see SITE_HOME).
+const SITE_HOME = 'https://jennieslade.com'
 const NAV_LINKS = [
-  { href: '/about', label: 'About' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/blog', label: 'Blog' },
+  { href: 'https://jennieslade.com/about', label: 'About' },
+  { href: 'https://jennieslade.com/portfolio', label: 'Portfolio' },
+  { href: 'https://jennieslade.com/contact', label: 'Contact' },
+  { href: 'https://jennieslade.com/blog', label: 'Blog' },
 ] as const
 
 export default function Header() {
@@ -126,24 +128,21 @@ export default function Header() {
         {/* Nav content wrapper */}
         <div className="relative z-10 max-w-[1200px] mx-auto py-6 px-6 md:px-8">
 
-          {/* Site name — centered, links to home (D-02) */}
-          <Link href="/" className="font-display text-[22px] md:text-[26px] font-light tracking-[0.1em] uppercase text-charcoal block text-center">
+          {/* Site name — centered, links to live site (D-02) */}
+          <a href={SITE_HOME} className="font-display text-[22px] md:text-[26px] font-light tracking-[0.1em] uppercase text-charcoal block text-center">
             JENNIE SLADE
-          </Link>
+          </a>
 
           {/* Desktop navigation — hidden on mobile, centered row on md+ */}
           <nav aria-label="Main navigation" className="hidden md:flex justify-center items-center gap-8 mt-3">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className={[
-                  'type-heading transition-opacity duration-150',
-                  pathname === link.href ? 'opacity-100' : 'opacity-60 hover:opacity-100',
-                ].join(' ')}
+                className="type-heading transition-opacity duration-150 opacity-60 hover:opacity-100"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -184,9 +183,9 @@ export default function Header() {
         </button>
 
         {/* Site name at top of overlay */}
-        <Link href="/" className="type-title mt-16" onClick={() => setMenuOpen(false)}>
+        <a href={SITE_HOME} className="type-title mt-16" onClick={() => setMenuOpen(false)}>
           JENNIE SLADE
-        </Link>
+        </a>
 
         {/* Stacked nav links — 48px gap per design spec */}
         <nav
@@ -194,16 +193,13 @@ export default function Header() {
           className="flex flex-col items-center justify-center flex-1 gap-[48px]"
         >
           {NAV_LINKS.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
-              className={[
-                'type-heading text-lg transition-opacity duration-150',
-                pathname === link.href ? 'opacity-100' : 'opacity-60 hover:opacity-100',
-              ].join(' ')}
+              className="type-heading text-lg transition-opacity duration-150 opacity-60 hover:opacity-100"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </nav>
 

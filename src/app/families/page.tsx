@@ -17,6 +17,7 @@
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Section from '@/components/layout/Section'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import { familyImages } from '@/data/galleries'
@@ -46,6 +47,12 @@ export default function FamiliesPage() {
             I&apos;ve known since their kids were newborns. This is your story. Let&apos;s make
             sure you remember it.
           </p>
+          <Link
+            href="/families/info"
+            className="inline-block mt-8 border border-charcoal text-charcoal px-8 py-3 type-heading hover:bg-charcoal hover:text-off-white transition-colors"
+          >
+            Pricing, Locations &amp; FAQ
+          </Link>
         </div>
 
         {/*

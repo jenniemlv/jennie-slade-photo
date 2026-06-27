@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:jennakutcher.com)",
+      "WebFetch(domain:www.amymartino.com)",
+      "WebFetch(domain:midnightmavenagency.showit.site)",
+      "Bash(curl -sL \"https://static1.squarespace.com/static/versioned-site-css/5fada9ba99168821c5b178d9/300/5c5a519771c10ba3470d8101/5fada9ba99168821c5b178f5/1782/site.css?nocustom=true\" -o /tmp/am-site.css)",
+      "Bash(curl -sL \"https://static1.squarespace.com/static/custom-css/5fada9ba99168821c5b178d9/5fada9ba99168821c5b178f5/0/custom.css\" -o /tmp/am-custom.css)",
+      "Bash(curl -sL https://jennakutcher.com/ -o /tmp/jk.html)"
+    ]
+  }
+}
