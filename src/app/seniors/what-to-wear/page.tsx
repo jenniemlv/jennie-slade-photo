@@ -27,6 +27,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Section from '@/components/layout/Section'
+import VibeCarousel from './VibeCarousel'
 import { Fraunces, Permanent_Marker, Space_Grotesk } from 'next/font/google'
 
 const fraunces = Fraunces({
@@ -64,12 +65,18 @@ export const metadata: Metadata = {
   },
 }
 
-// 8 aesthetics — each paired w/ one of her actual senior photos
+// 8 aesthetics — each w/ multi-photo carousel (her actual senior photos)
 const AESTHETICS = [
   {
     name: 'Old Money',
     tagline: 'Quiet luxury, zero logos.',
-    img: '/images/seniors/real/tivoli.jpg',
+    images: [
+      { src: '/images/seniors/real/tivoli.jpg', alt: 'Senior boy in white shirt and tie at Tivoli' },
+      { src: '/images/seniors/real/old-money.jpg', alt: 'Senior boy blue blazer sunglasses at Red Rock' },
+      { src: '/images/seniors/real/smith-center.jpg', alt: 'Senior boy in blue blazer at Smith Center' },
+      { src: '/images/seniors/real/sunglasses-boy.jpg', alt: 'Senior boy in sunglasses and blue blazer at Red Rock' },
+      { src: '/images/seniors/real/clean-preppy.jpg', alt: 'Senior boy white shirt and khaki' },
+    ],
     palette: ['#f4ede0', '#c9a87c', '#4a4a4a', '#1a1a1a'],
     pieces: ['Cashmere or silk', 'Tailored trousers', 'Pearl drop earrings', 'Slick low ponytail'],
     boy: 'Charcoal sweater over collared shirt, gray trousers, white sneakers or loafers.',
@@ -78,7 +85,11 @@ const AESTHETICS = [
   {
     name: 'Cowboy Era',
     tagline: 'Modern ranch — not costume.',
-    img: '/images/seniors/real/mt-charleston.jpg',
+    images: [
+      { src: '/images/seniors/real/mt-charleston.jpg', alt: 'Cowboy Era senior at Mt Charleston' },
+      { src: '/images/seniors/real/cowboy.jpg', alt: 'Senior in cowboy boots ranch country' },
+      { src: '/images/seniors/real/cowboy2.jpg', alt: 'Senior in denim overalls at Red Rock' },
+    ],
     palette: ['#e6dcc8', '#a85a3e', '#5d6b3e', '#3a2520'],
     pieces: ['Prairie dress + structured bodice', 'Real cowboy boots', 'Tooled leather belt', 'Loose Western waves'],
     boy: 'Chambray pearl-snap, raw denim, brown belt, real boots, felt hat.',
@@ -87,7 +98,16 @@ const AESTHETICS = [
   {
     name: 'Desert Boho 2.0',
     tagline: 'Earthy + sculptural. NOT 2014 Coachella.',
-    img: '/images/seniors/real/valley-of-fire.jpg',
+    images: [
+      { src: '/images/seniors/real/valley-of-fire.jpg', alt: 'Desert Boho senior Valley of Fire' },
+      { src: '/images/seniors/real/wetlands.jpg', alt: 'Senior rust dress Wetlands dry grass' },
+      { src: '/images/seniors/real/whitelace-girl.jpg', alt: 'Senior white lace boho dress' },
+      { src: '/images/seniors/real/calico-basin.jpg', alt: 'Senior lavender dress Calico Basin' },
+      { src: '/images/seniors/real/boho2.jpg', alt: 'Boho senior portrait' },
+      { src: '/images/seniors/real/boho3.jpg', alt: 'Boho senior portrait' },
+      { src: '/images/seniors/real/extra-1.jpg', alt: 'Boho senior in floral maxi dress' },
+      { src: '/images/seniors/real/extra-2.jpg', alt: 'Boho senior cream sweater floral pants at Joshua tree' },
+    ],
     palette: ['#f4ede0', '#c4884a', '#8a9a73', '#d4c5a8'],
     pieces: ['Bias-cut slip or linen prairie', 'Suede ankle boots', 'Gold hoops', 'Natural waves'],
     boy: 'Cream or olive linen shirt half-tucked, raw denim, brown leather boot.',
@@ -96,16 +116,39 @@ const AESTHETICS = [
   {
     name: 'Mob Wife',
     tagline: 'Sultry, not scandalous.',
-    img: '/images/seniors/real/las-vegas-strip.jpg',
+    images: [
+      { src: '/images/seniors/real/mob-wife.jpg', alt: 'Mob Wife senior lavender tulle gold hoops' },
+      { src: '/images/seniors/real/las-vegas-strip.jpg', alt: 'Mob Wife senior black dress at Welcome to Las Vegas sign' },
+      { src: '/images/seniors/real/neon-museum.jpg', alt: 'Senior at Neon Museum giant star sign' },
+    ],
     palette: ['#0a0a0a', '#c9a23f', '#8a4538', '#3d1e1a'],
-    pieces: ['Black slip or leather skirt', 'Faux fur shrug', 'Gold hoops + chains', 'Voluminous blowout'],
+    pieces: ['Black slip or tulle gown', 'Faux fur shrug', 'Gold hoops + layered chains', 'Voluminous blowout'],
     boy: 'All-black fit, leather jacket, gold chain, slick hair, clean stubble.',
     location: 'Strip · Neon Museum',
   },
   {
+    name: 'College Core',
+    tagline: 'Sweatshirt + school spirit.',
+    images: [
+      { src: '/images/seniors/real/bostoncollege-girl.jpg', alt: 'Senior in Boston College sweatshirt' },
+      { src: '/images/seniors/real/preppy.jpg', alt: 'Senior in red Utah sweatshirt at Red Rock' },
+      { src: '/images/seniors/real/preppy2.jpg', alt: 'Senior in UNLV sweatshirt at Red Rock' },
+    ],
+    palette: ['#7a1a2e', '#1a2e4a', '#f4ede0', '#c9a23f'],
+    pieces: ['Vintage college crewneck or sweatshirt', 'Denim skirt or biker shorts', 'Fresh sneakers', 'Hair down + natural'],
+    boy: 'College tee or hoodie, casual jeans, sneakers, hat optional. Where you committed.',
+    location: 'Red Rock · Calico Basin · Spring Mountain Ranch',
+  },
+  {
     name: 'Y2K Editorial',
     tagline: '2003 magazine spread, reborn.',
-    img: '/images/seniors/real/neon-museum.jpg',
+    images: [
+      { src: '/images/seniors/real/neon-museum.jpg', alt: 'Y2K senior Neon Museum vintage' },
+      { src: '/images/seniors/real/y2k.jpg', alt: 'Y2K senior red top wide-leg jeans Valley of Fire' },
+      { src: '/images/seniors/real/y2k2.jpg', alt: 'Y2K senior black mini dress at mural' },
+      { src: '/images/seniors/real/y2k3.jpg', alt: 'Y2K senior gray polo pink sneakers at pink mural' },
+      { src: '/images/seniors/real/downtown.jpg', alt: 'Senior boy turquoise wall Downtown' },
+    ],
     palette: ['#1a1a1a', '#5d7a99', '#c8c8c8', '#7a5a3a'],
     pieces: ['Low-rise denim', 'Baby tee or band tee', 'Leather jacket', 'Smudgy eyeliner'],
     boy: 'Vintage tee, baggy jeans, Sambas or Vans, silver chain, shag cut.',
@@ -114,7 +157,12 @@ const AESTHETICS = [
   {
     name: 'Sports Core',
     tagline: 'Letterman + main-character energy.',
-    img: '/images/seniors/real/jw-marriott.jpg',
+    images: [
+      { src: '/images/seniors/real/jw-marriott.jpg', alt: 'Sports Core Jagger PV varsity jacket' },
+      { src: '/images/seniors/real/letterman-boy.jpg', alt: 'Senior boy Mead varsity letterman' },
+      { src: '/images/seniors/real/tunnel-boy.jpg', alt: 'Athletic senior boy backlit tunnel' },
+      { src: '/images/seniors/real/sports.jpg', alt: 'Senior golf player with club and Travis Mathew polo' },
+    ],
     palette: ['#1f2924', '#f4ede0', '#5a8f5a', '#a8a8a8'],
     pieces: ['Vintage varsity jacket', 'Crew tank', 'Fresh sneakers', 'Gold name chain'],
     boy: 'Letterman + white tee, fresh sneakers, gold chain. Bring the ball.',
@@ -123,7 +171,12 @@ const AESTHETICS = [
   {
     name: 'Clean Girl',
     tagline: 'Skin > clothes.',
-    img: '/images/seniors/real/dry-lake-bed.jpg',
+    images: [
+      { src: '/images/seniors/real/dry-lake-bed.jpg', alt: 'Clean Girl senior Dry Lake Bed' },
+      { src: '/images/seniors/real/clean-desert.jpg', alt: 'Clean Girl senior black top white shorts dry lake' },
+      { src: '/images/seniors/real/clean-girl2.jpg', alt: 'Clean Girl senior white bubble dress park' },
+      { src: '/images/seniors/real/old-money2.jpg', alt: 'Clean Girl senior black top white shorts close-up' },
+    ],
     palette: ['#f4ede0', '#d4c4a8', '#8a6a4a', '#c9a23f'],
     pieces: ['White tank + straight jeans', 'Gold hoops', 'Slicked bun', 'Glossy lip'],
     boy: 'Plain white tee, raw denim, gold chain, clean fade, dewy skin.',
@@ -132,11 +185,28 @@ const AESTHETICS = [
   {
     name: 'Preppy Revival',
     tagline: 'Ralph Lauren Core. Polo match.',
-    img: '/images/seniors/real/smith-center.jpg',
+    images: [
+      { src: '/images/seniors/real/smith-center.jpg', alt: 'Preppy senior blue blazer Smith Center' },
+      { src: '/images/seniors/real/preppy3.jpg', alt: 'Preppy senior in chambray button-down at tunnel' },
+      { src: '/images/seniors/real/preppy4.jpg', alt: 'Preppy senior PV varsity letterman checkered pants' },
+      { src: '/images/seniors/real/jw-marriott.jpg', alt: 'Preppy senior at JW Marriott garden' },
+    ],
     palette: ['#2c4a3a', '#1a2e4a', '#f4ede0', '#7a1a2e'],
     pieces: ['Pleated skirt or argyle vest', 'White button-down', 'Cable knit', 'Loafers + knee socks'],
     boy: 'Navy blazer, oxford shirt, chinos, brown loafers. Side part.',
     location: 'JW Marriott · Tivoli · Smith Center',
+  },
+  {
+    name: 'Graduated',
+    tagline: 'Cap, gown, cords, sunset.',
+    images: [
+      { src: '/images/seniors/real/floyd-lamb.jpg', alt: 'Senior graduation cap gown Floyd Lamb golden hour' },
+      { src: '/images/seniors/real/graduated.jpg', alt: 'Senior in graduation cap gown medals and cords' },
+    ],
+    palette: ['#0a4a2e', '#c9a23f', '#1a1a1a', '#f4ede0'],
+    pieces: ['Cap + gown w/ all your cords + medals', 'Hair styled simple', 'Statement earrings', 'Sneakers or low heel under gown'],
+    boy: 'Cap + gown, dress shirt + tie under, polished shoes peeking out.',
+    location: 'Floyd Lamb Park · Spring Mountain Ranch · campus',
   },
 ] as const
 
@@ -269,6 +339,58 @@ export default function WhatToWearPage() {
         </div>
       </section>
 
+      {/* ── 1.5. Mood boards — sketchbook flat-lays ──────────────────── */}
+      <Section>
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <p
+            className="text-[10px] tracking-[0.3em] uppercase text-charcoal/60 mb-3"
+            style={{ fontFamily: 'var(--font-grotesk)' }}
+          >
+            A Sketchbook
+          </p>
+          <h2
+            className="font-[family-name:var(--font-fraunces)] italic text-charcoal mb-6"
+            style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 400 }}
+          >
+            Style Notes
+          </h2>
+          <p className="type-body">
+            Two pages from the style notebook. Print, screenshot, send to
+            your group chat. Steal the looks.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {[
+            { src: '/images/seniors/moodboards/girls.jpg', label: 'For Her', alt: 'Senior girl style mood board' },
+            { src: '/images/seniors/moodboards/boys.jpg', label: 'For Him', alt: 'Senior boy style mood board' },
+          ].map((m, i) => (
+            <div
+              key={m.src}
+              className="relative shadow-xl"
+              style={{ transform: `rotate(${i === 0 ? '-0.8deg' : '0.8deg'})` }}
+            >
+              <span
+                className="absolute -top-3 left-6 z-10 px-3 py-1 text-[10px] tracking-[0.3em] uppercase font-bold"
+                style={{ backgroundColor: CORAL, color: CREAM, fontFamily: 'var(--font-grotesk)' }}
+              >
+                {m.label}
+              </span>
+              <div className="relative aspect-[16/9] overflow-hidden bg-warm-gray">
+                <Image
+                  src={m.src}
+                  alt={m.alt}
+                  fill
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                  quality={95}
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* ── 2. Aesthetics grid ───────────────────────────────────────── */}
       <Section id="aesthetics">
         <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto">
@@ -295,27 +417,23 @@ export default function WhatToWearPage() {
           {AESTHETICS.map((a, i) => (
             <article
               key={a.name}
-              className="group"
               style={{ transform: `rotate(${i % 2 === 0 ? '-0.5deg' : '0.5deg'})` }}
             >
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-warm-gray">
-                <Image
-                  src={a.img}
-                  alt={a.name}
-                  fill
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                  quality={90}
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              <div className="relative mb-4">
+                <VibeCarousel
+                  images={a.images}
+                  aestheticName={a.name}
+                  accent={LIME}
                 />
-                {/* Marker handwritten label overlay */}
+                {/* Marker handwritten label overlay (above carousel) */}
                 <span
-                  className="absolute top-4 left-4 px-3 py-1 text-xs tracking-[0.25em] uppercase font-bold"
+                  className="absolute top-4 left-4 z-20 px-3 py-1 text-xs tracking-[0.25em] uppercase font-bold pointer-events-none"
                   style={{ backgroundColor: LIME, color: EVERGREEN, fontFamily: 'var(--font-grotesk)' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span
-                  className="absolute bottom-4 right-4 text-2xl md:text-3xl"
+                  className="absolute bottom-12 right-4 z-20 text-2xl md:text-3xl pointer-events-none"
                   style={{ fontFamily: 'var(--font-marker)', color: CREAM, textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}
                 >
                   {a.name.toLowerCase()}

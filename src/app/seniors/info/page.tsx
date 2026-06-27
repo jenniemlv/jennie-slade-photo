@@ -155,6 +155,7 @@ const TIMELINE = [
 const NAV = [
   ['Investment', '#pricing'],
   ['Add-Ons', '#add-ons'],
+  ['What to Wear', '/seniors/what-to-wear'],
   ['Bring It All', '#bring-it'],
   ['Locations', '#locations'],
   ['FAQ', '#faq'],
@@ -220,13 +221,6 @@ export default function SeniorInfoPage() {
         className="pt-28 md:pt-32 pb-16 md:pb-24 relative"
       >
         <div className="max-w-[1500px] mx-auto px-6 md:px-10">
-
-          <p
-            className="text-center text-xs md:text-sm tracking-[0.4em] uppercase mb-4 opacity-70"
-            style={{ fontFamily: 'var(--font-grotesk)' }}
-          >
-            Jennie Slade Photography &nbsp;·&nbsp; Senior Editorial
-          </p>
 
           <h1
             aria-label="Seniors"
@@ -640,8 +634,14 @@ export default function SeniorInfoPage() {
             className="font-[family-name:var(--font-fraunces)] italic text-charcoal leading-[1.15]"
             style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}
           >
-            &ldquo;She said her mom cried when she saw it.
-            <span style={{ color: CORAL }}> that&apos;s a yes.</span>&rdquo;
+            &ldquo;I was so nervous about photos
+            <span style={{ color: CORAL }}> but Jennie made it actually fun.</span>&rdquo;
+          </p>
+          <p
+            className="text-xs tracking-[0.2em] uppercase text-charcoal/60 mt-6"
+            style={{ fontFamily: 'var(--font-grotesk)', fontWeight: 600 }}
+          >
+            — Class of &apos;26 Senior
           </p>
         </blockquote>
       </Section>
