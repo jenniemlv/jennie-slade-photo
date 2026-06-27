@@ -364,6 +364,8 @@ export default function WhatToWearPage() {
           {[
             { src: '/images/seniors/moodboards/girls.jpg', label: 'For Her', alt: 'Senior girl style mood board' },
             { src: '/images/seniors/moodboards/boys.jpg', label: 'For Him', alt: 'Senior boy style mood board' },
+            { src: '/images/seniors/moodboards/color-stories.jpg', label: 'Color Stories', alt: 'Senior color palette by Las Vegas location mood board' },
+            { src: '/images/seniors/moodboards/carry-on.jpg', label: 'The Carry-On', alt: 'Senior session-day prep essentials mood board' },
           ].map((m, i) => (
             <div
               key={m.src}
