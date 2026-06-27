@@ -33,7 +33,6 @@ const LOCATIONS: ReadonlyArray<{ name: string; img: string; alt: string }> = [
   { name: 'Blue Desert', img: '/images/seniors/real/blue-desert.jpg', alt: 'Senior girl green dress Joshua trees Blue Desert' },
   { name: 'Sunset Park', img: '/images/seniors/real/twirl-girl.jpg', alt: 'Senior Sunset Park' },
   { name: 'Neon Museum', img: '/images/seniors/real/neon-museum.jpg', alt: 'Senior girl green dress at Neon Museum giant star sign' },
-  { name: 'Spring Mountain Ranch', img: '/images/seniors/real/spring-mountain-ranch.jpg', alt: 'Family portrait at Spring Mountain Ranch red rocks' },
 ]
 
 interface LocationGridProps {
@@ -50,17 +49,15 @@ export default function LocationGrid({ fontGroteskVar }: LocationGridProps) {
       <ul className="md:col-span-7 flex flex-wrap gap-2 md:gap-2.5">
         {LOCATIONS.map((loc, i) => (
           <li key={loc.name}>
-            <a
-              href={GUIDE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               onMouseEnter={() => setHovered(i)}
               onFocus={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               onBlur={() => setHovered(null)}
-              onTouchStart={() => setHovered(i)}
+              onClick={() => setHovered(i)}
               className={[
-                'inline-block px-4 py-2 text-xs tracking-[0.15em] uppercase border transition-colors',
+                'inline-block px-4 py-2 text-xs tracking-[0.15em] uppercase border transition-colors cursor-pointer',
                 hovered === i
                   ? 'bg-charcoal text-off-white border-charcoal'
                   : 'border-charcoal/40 text-charcoal hover:bg-charcoal hover:text-off-white',
@@ -68,7 +65,7 @@ export default function LocationGrid({ fontGroteskVar }: LocationGridProps) {
               style={{ fontFamily: fontGroteskVar, fontWeight: 500 }}
             >
               {loc.name}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
