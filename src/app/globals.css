@@ -24,7 +24,11 @@
      Lora for body text (warm, calligraphic, like Larken)
      Montserrat Light for small uppercase labels */
   --font-display: var(--font-cormorant), Georgia, serif;
-  --font-heading: var(--font-montserrat), sans-serif;
+  /* Display italic — same Fraunces family, italic applied via font-style.
+     One warm serif voice carries both roman statements and italic accents,
+     replacing the Bodoni/Arapey sprawl on editorial pages. */
+  --font-display-italic: var(--font-cormorant), Georgia, serif;
+  --font-heading: var(--font-archivo), var(--font-montserrat), sans-serif;
   --font-subheading: var(--font-apparel), Georgia, sans-serif;
   --font-body: var(--font-lora), Georgia, serif;
   --font-accent: var(--font-arapey), serif;
@@ -47,15 +51,16 @@
     font-weight: 300;
   }
 
-  /* Heading / H2 — Montserrat, wider letter spacing for editorial refinement */
+  /* Heading / kicker — Archivo 500, wide-tracked small caps. A neutral
+     grotesque at 500 reads current; thin geometric sans read dated. */
   .type-heading {
     font-family: var(--font-heading);
     font-size: 11px;
     color: var(--color-gray);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     line-height: 1.8;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   /* Subheading / H3 — Apparel, generous spacing */
@@ -69,13 +74,13 @@
     font-weight: 400;
   }
 
-  /* Body / Paragraph — Libre Baskerville, warm taupe color */
+  /* Body / Paragraph — Lora. Bumped 15px -> 16px: confident, still airy. */
   .type-body {
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-charcoal);
     letter-spacing: 0.02em;
-    line-height: 1.9;
+    line-height: 1.85;
     font-weight: 400;
   }
 
@@ -285,6 +290,22 @@
 
 .animate-fade-in {
   animation: fade-in 200ms ease-in-out;
+}
+
+/* Hero Ken Burns — slow, GPU-only scale drift. Gives a static hero image
+   quiet life without a client component or layout cost. */
+@keyframes ken-burns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.14); }
+}
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out forwards;
+  transform-origin: 50% 40%;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns { animation: none; transform: none; }
 }
 
 /* ── Print styles ──────────────────────────────────────────────────────────

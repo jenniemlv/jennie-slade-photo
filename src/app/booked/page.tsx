@@ -10,6 +10,7 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import FamilyBooked from './FamilyBooked'
 import { Fraunces, Space_Grotesk } from 'next/font/google'
 
 const fraunces = Fraunces({
@@ -33,10 +34,20 @@ const BONE = '#E8E2D5'
 const STATIC = '#A8A39A'
 const SIGNAL = '#FF3B1F'
 
-export const metadata: Metadata = {
-  title: "Confirmed | Jennie Slade Photography",
-  description: "Your senior session is on the calendar.",
-  robots: { index: false, follow: false },
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ session?: string }>
+}): Promise<Metadata> {
+  const { session } = await searchParams
+  return {
+    title: 'Confirmed | Jennie Slade Photography',
+    description:
+      session === 'family'
+        ? 'Your family session is on the calendar.'
+        : 'Your session is on the calendar.',
+    robots: { index: false, follow: false },
+  }
 }
 
 const NEXT_STEPS = [
@@ -94,7 +105,31 @@ function Folio({ n, title }: { n: string; title: string }) {
   )
 }
 
-export default function BookedPage() {
+export default async function BookedPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ session?: string }>
+}) {
+  const { session } = await searchParams
+
+  // Family bookings get their own family-branded thank-you (cream / Zodiak /
+  // oxblood, payment-honest). Everything else keeps the dark senior thank-you.
+  if (session === 'family') {
+    return <FamilyBooked />
+  }
+
+  const badge = 'Confirmed · Deposit Received'
+  const heroSub =
+    'Your date is held. Deposit is in. Below is exactly what happens between now and your session so nothing sneaks up on you.'
+  const stats: [string, string][] = [
+    ['STATUS', 'Confirmed'],
+    ['DEPOSIT', 'Received'],
+    ['BALANCE', 'Due day of'],
+    ['GALLERY', 'In 2-3 weeks'],
+  ]
+  const wtwHref = '/seniors/what-to-wear'
+  const steps = NEXT_STEPS
+
   return (
     <main
       id="main-content"
@@ -115,7 +150,7 @@ export default function BookedPage() {
                 style={{ backgroundColor: SIGNAL, color: BONE }}
                 className="inline-block px-3 py-1.5 text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold mb-6"
               >
-                Confirmed &middot; Deposit Received
+                {badge}
               </span>
 
               <h1
@@ -129,20 +164,13 @@ export default function BookedPage() {
                 className="text-base md:text-lg max-w-xl"
                 style={{ fontFamily: 'var(--font-grotesk)', color: STATIC, lineHeight: 1.6 }}
               >
-                Your date is held. Deposit is in. Below is exactly what
-                happens between now and your session so nothing sneaks up
-                on you.
+                {heroSub}
               </p>
             </div>
 
             <div className="md:col-span-5">
               <div className="grid grid-cols-2 gap-px" style={{ backgroundColor: GRAPHITE }}>
-                {[
-                  ['STATUS', 'Confirmed'],
-                  ['DEPOSIT', 'Received'],
-                  ['BALANCE', 'Due day of'],
-                  ['GALLERY', 'In 2-3 weeks'],
-                ].map(([label, value]) => (
+                {stats.map(([label, value]) => (
                   <div key={label} className="p-5 md:p-6" style={{ backgroundColor: INK }}>
                     <p
                       className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase mb-2"
@@ -192,7 +220,7 @@ export default function BookedPage() {
           </div>
 
           <ol className="max-w-5xl mx-auto">
-            {NEXT_STEPS.map((step, i) => (
+            {steps.map((step, i) => (
               <li
                 key={step.num}
                 className="grid md:grid-cols-[80px_180px_1fr] gap-4 md:gap-8 py-8 md:py-10 items-baseline"
@@ -259,7 +287,7 @@ export default function BookedPage() {
 
           <div className="grid md:grid-cols-2" style={{ gap: 1, backgroundColor: GRAPHITE }}>
             <Link
-              href="/seniors/what-to-wear"
+              href={wtwHref}
               className="block p-10 md:p-12 transition-colors group"
               style={{ backgroundColor: CARBON }}
             >

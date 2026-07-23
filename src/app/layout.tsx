@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { cormorant, lora, montserrat, arapey, apparel, destiny, bodoniModa } from '@/lib/fonts'
+import { cormorant, lora, montserrat, archivo, arapey, apparel, destiny, bodoniModa, zodiak, inter } from '@/lib/fonts'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PageTransition from '@/components/ui/PageTransition'
@@ -49,6 +49,9 @@ export default function RootLayout({
         cormorant.variable,
         lora.variable,
         montserrat.variable,
+        archivo.variable,
+        zodiak.variable,
+        inter.variable,
         arapey.variable,
         apparel.variable,
         destiny.variable,

@@ -43,18 +43,18 @@ export const weddingImages: GalleryImage[] = [
 // Families — aspect-[3/2] landscape (12 images)
 // ---------------------------------------------------------------------------
 export const familyImages: GalleryImage[] = [
-  { id: 'family-01', src: '', alt: 'Las Vegas family portrait session, Red Rock Canyon' },
-  { id: 'family-02', src: '', alt: 'Mother and daughter laughing, outdoor family photos Las Vegas' },
-  { id: 'family-03', src: '', alt: 'Family of five walking together, Las Vegas park setting' },
-  { id: 'family-04', src: '', alt: 'Newborn baby portrait, cozy home session Las Vegas' },
-  { id: 'family-05', src: '', alt: 'Extended family group photo, three generations together Las Vegas' },
-  { id: 'family-06', src: '', alt: 'Toddler playing in fall leaves, Henderson Nevada park' },
-  { id: 'family-07', src: '', alt: 'Parents with newborn, lifestyle family session Las Vegas' },
-  { id: 'family-08', src: '', alt: 'Siblings hugging portrait, Red Rock Canyon trail' },
-  { id: 'family-09', src: '', alt: 'Family candid moment, kids running at sunset Las Vegas' },
-  { id: 'family-10', src: '', alt: 'Holiday family mini session, Las Vegas outdoor location' },
-  { id: 'family-11', src: '', alt: 'Father and son portrait, desert landscape background Nevada' },
-  { id: 'family-12', src: '', alt: 'Family maternity session, golden hour Las Vegas desert' },
+  { id: 'family-01', src: '/images/gallery/families/milar-family-3.jpg', alt: 'Family of four walking hand in hand at Red Rock Canyon, Las Vegas' },
+  { id: 'family-02', src: '/images/gallery/families/fife-family-3.jpg', alt: 'Large family laughing in a group hug at Mt Charleston' },
+  { id: 'family-03', src: '/images/gallery/families/carr-family-1.jpg', alt: 'Couple running and laughing across a Las Vegas dry lake bed' },
+  { id: 'family-04', src: '/images/gallery/families/peterson-family-1.jpg', alt: 'Family with young kids at golden hour in a Las Vegas field' },
+  { id: 'family-05', src: '/images/gallery/families/anderson-family-2.jpg', alt: 'Family portrait at the Neon Museum, Las Vegas' },
+  { id: 'family-06', src: '/images/gallery/families/garber-family-1.jpg', alt: 'Three brothers laughing by a Joshua tree at Red Rock, Las Vegas' },
+  { id: 'family-07', src: '/images/gallery/families/thomas-family-1.jpg', alt: 'Family of six among aspens at golden hour' },
+  { id: 'family-08', src: '/images/gallery/families/milar-family-1.jpg', alt: 'Family walking the desert at Red Rock Canyon, Las Vegas' },
+  { id: 'family-09', src: '/images/gallery/families/mcpeterson-family-1.jpg', alt: 'Family portrait in the Las Vegas mesquite at sunset' },
+  { id: 'family-10', src: '/images/gallery/families/fife-family-2.jpg', alt: 'Large family seated on a log at Mt Charleston' },
+  { id: 'family-11', src: '/images/gallery/families/emick-family-2.jpg', alt: 'Family session in the Las Vegas desert' },
+  { id: 'family-12', src: '/images/gallery/families/carr-family-2.jpg', alt: 'Couple portrait on a Las Vegas dry lake bed at golden hour' },
 ]
 
 // ---------------------------------------------------------------------------

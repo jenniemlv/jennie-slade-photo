@@ -8,14 +8,45 @@
 // - Montserrat Light: clean sans-serif for small uppercase labels
 // - Arapey Italic: accent/testimonial font
 
-import { Cormorant, Lora, Montserrat, Arapey, Bodoni_Moda } from 'next/font/google'
+import { Fraunces, Lora, Montserrat, Archivo, Arapey, Bodoni_Moda, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
-// Cormorant — elegant, light display serif for titles and headlines
-// Similar to Goldenbook (Lauren Fair). Delicate, refined, editorial.
-export const cormorant = Cormorant({
+// ── Vogue-editorial system (families pages) ────────────────────────────────
+// Zodiak (Fontshare, self-hosted) — high-contrast editorial Didone for display.
+// Inter — cold neutral grotesque for body + eyebrows. The Didone/grotesque
+// tension is the fashion-magazine formula. Bodoni Moda Italic (below) is the
+// caption/pull-quote accent. Scoped to /families via CSS-var overrides on
+// <main>, so the rest of the site keeps its Cormorant/Lora tokens.
+export const zodiak = localFont({
+  src: [
+    { path: '../../public/fonts/Zodiak-Thin.woff2', weight: '100', style: 'normal' },
+    { path: '../../public/fonts/Zodiak-Light.woff2', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/Zodiak-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/Zodiak-Bold.woff2', weight: '700', style: 'normal' },
+    { path: '../../public/fonts/Zodiak-LightItalic.woff2', weight: '300', style: 'italic' },
+    { path: '../../public/fonts/Zodiak-Italic.woff2', weight: '400', style: 'italic' },
+  ],
+  variable: '--font-zodiak',
+  display: 'swap',
+  fallback: ['Bodoni Moda', 'Georgia', 'serif'],
+})
+
+// Inter — neutral Swiss grotesque for body + labels on the Vogue pages.
+export const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+// Display serif — Fraunces (variable) replacing Cormorant.
+// Fraunces has more character + higher contrast + editorial punch. Used by
+// The Cut, T Brand Studio, and modern editorial photog sites in 2026.
+// Export name kept as `cormorant` and CSS var `--font-cormorant` so the rest
+// of the codebase and globals.css continue to work without churn.
+export const cormorant = Fraunces({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
   display: 'swap',
@@ -31,11 +62,21 @@ export const lora = Lora({
   display: 'swap',
 })
 
-// Montserrat — clean sans-serif for small uppercase headings/labels
+// Montserrat — legacy label sans (kept for pages still pointing at it directly).
 export const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400'],
   variable: '--font-montserrat',
+  display: 'swap',
+})
+
+// Archivo — neutral 2026-current grotesque for small uppercase labels/kickers.
+// Replaces thin Montserrat as the --font-heading token: a 500-weight grotesque
+// reads modern where thin geometric sans reads 2018 wedding-template.
+export const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-archivo',
   display: 'swap',
 })
 
