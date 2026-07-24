@@ -139,7 +139,7 @@ const FAQ = [
   },
   {
     q: 'What if a kid melts down?',
-    a: 'They will. All five of mine did during our own family session last spring. I plan for it. Snacks in my bag, buffer built into every session, and a rhythm that expects at least one full breakdown per shoot. The images from right after a meltdown are usually the ones that end up framed. I do not need your kids to perform. I just need them to be with you.',
+    a: 'They will, and that is completely normal. I raised five of my own, so I have seen every kind of meltdown there is. I plan for it: buffer built into every session and a rhythm that expects at least one good breakdown per shoot. The shots right after a meltdown are usually the ones that end up framed. I do not need your kids to perform. I just need them to be with you.',
   },
   {
     q: 'I hate having my photo taken. Can you still shoot us?',
@@ -150,7 +150,7 @@ const FAQ = [
     a: 'I keep sessions short and moving. Dads and reluctant partners usually forget the camera is there within ten minutes. If it helps, I can send my prep note directly to them.',
   },
   {
-    q: 'What if the weather is bad or the smoke is heavy?',
+    q: 'What if the weather is bad or the wind is really blowing?',
     a: 'If the weather does not cooperate, we find another date that works. Vegas gives us plenty of second chances.',
   },
   {
@@ -159,11 +159,11 @@ const FAQ = [
   },
   {
     q: 'Do you help with prints and wall art after?',
-    a: 'Yes. Every gallery includes a print shop with sizes and framing that match your home. I can also design a custom wall arrangement or heirloom album on request. Most families print something. The digitals should not just live in a Dropbox folder.',
+    a: 'Yes. Your gallery has a print shop built in, with sizes and framing that match your home, and I can help you design a wall arrangement or an album. Most families print something. The pictures should not just live on your phone.',
   },
   {
-    q: 'Do I have to buy prints separately?',
-    a: 'No. Every package includes full-resolution digitals with a print release. Prints are optional, not required.',
+    q: 'How do prints work?',
+    a: 'Every collection includes your private online gallery of edited images, so the pictures are yours. Prints and wall art are a separate purchase, ordered right from that gallery in professional, archival quality so they last.',
   },
   {
     q: 'What about extended family or grandparents?',
@@ -180,12 +180,11 @@ const TESTIMONIAL_LEAD = {
 }
 
 const TESTIMONIAL_CLOSE = {
-  // PLACEHOLDER — swap for a second real client quote.
   quote:
-    'A second real client quote goes here. Short and specific is best.',
-  name: 'Client name',
+    'Holy cow... that was the easiest family session I have ever had! Thank you Jennie!',
+  name: 'Ashley',
   location: 'Las Vegas',
-  when: 'Recent session',
+  when: '',
 }
 
 export default function FamiliesPage() {
@@ -244,14 +243,15 @@ export default function FamiliesPage() {
           </h1>
           <p className="mt-5 md:mt-6 max-w-xl type-body text-[color:var(--color-off-white)]/95 text-base md:text-lg">
             Editorial family portraits in Las Vegas. Nineteen years behind the
-            camera, five kids of my own, so I know exactly how fast it goes.
+            camera, five kids of my own who are mostly grown now, so I know
+            exactly how fast it goes.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
               href="#investment"
               className="group inline-flex items-center gap-3 px-8 py-3.5 bg-[color:var(--color-off-white)] text-[color:var(--color-charcoal)] type-heading hover:bg-transparent hover:text-[color:var(--color-off-white)] border border-[color:var(--color-off-white)] transition-colors"
             >
-              Check my date
+              Check availability
               <span className="w-6 h-px bg-current transition-all group-hover:w-10" aria-hidden />
             </a>
             <p className="type-heading text-[color:var(--color-off-white)]/85">
@@ -363,13 +363,14 @@ export default function FamiliesPage() {
                 className="font-normal leading-[1.08] mb-6"
                 style={{ fontFamily: SERIF, fontSize: DISPLAY_M, letterSpacing: '-0.01em' }}
               >
-                Nineteen years behind the camera. Five kids climbing on me.
+                Nineteen years behind the camera. Five kids of my own, mostly grown now.
               </h2>
               <p className="type-body text-lg leading-relaxed mb-4">
                 I have photographed more than 800 Las Vegas families since 2007.
                 Newborns I met at three days old are now applying to college and
                 letting me photograph them again for senior year. I know how fast
-                this goes because I am in it with you.
+                this goes because I have watched it happen five times in my own
+                house.
               </p>
               <p className="type-body text-lg leading-relaxed">
                 My kids keep me honest. I bring snacks. I know the light. I will
@@ -461,7 +462,7 @@ export default function FamiliesPage() {
 
       {/* 8. INVESTMENT — Editorial tier elevated. Scarcity + risk-reversal live
           right here, not buried in the FAQ. */}
-      <Section id="investment">
+      <Section id="investment" className="scroll-mt-24 md:scroll-mt-28">
         <ScrollFade>
           <div className="py-6 md:py-12 scroll-mt-24">
             <div className="text-center mb-6 max-w-2xl mx-auto">
@@ -474,9 +475,9 @@ export default function FamiliesPage() {
               </h2>
               <p className="type-body text-base text-[color:var(--color-gray)]">
                 My families come back year after year, so my collections are built
-                for that: enough time to actually shoot, a gallery that is yours to
-                keep, and a print release so nothing is locked behind an upsell
-                later.
+                for that: enough time to actually shoot and a private gallery of
+                edited images that is yours to keep. Professional prints and wall
+                art are available separately whenever you want them.
               </p>
             </div>
 
@@ -520,14 +521,13 @@ export default function FamiliesPage() {
                       <li key={line}>{line}</li>
                     ))}
                     <li>Private online gallery</li>
-                    <li>Full print release</li>
                   </ul>
                   <div className="mt-8">
                     <a
                       href={`${CAL_BASE}/${p.cal}`}
                       className="type-heading border-b border-[color:var(--color-charcoal)] pb-1 hover:opacity-70 transition-opacity"
                     >
-                      Check {p.name} dates
+                      Check availability
                     </a>
                   </div>
                 </div>
@@ -539,7 +539,7 @@ export default function FamiliesPage() {
             <div className="flex flex-wrap justify-center gap-3 mt-12">
               {[
                 'Bad weather? We will find another date.',
-                'Full print release. No upsell wall.',
+                'Your edited digital gallery, yours to keep.',
                 'Private gallery in two weeks.',
               ].map((chip) => (
                 <span
@@ -616,7 +616,14 @@ export default function FamiliesPage() {
           </h2>
           <p className="type-body text-lg mb-10 max-w-xl mx-auto">
             Fall sessions book early. If you are hoping for October or November,{' '}
-            <span className="text-[color:var(--color-terracotta)]">message me now</span>{' '}
+            <a
+              href="https://ig.me/m/jenniesladephoto"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[color:var(--color-terracotta)] underline underline-offset-4 decoration-1 hover:opacity-70 transition-opacity"
+            >
+              message me now
+            </a>{' '}
             and let&rsquo;s find your date.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -624,7 +631,7 @@ export default function FamiliesPage() {
               href="#investment"
               className="group inline-flex items-center gap-3 px-10 py-4 bg-[color:var(--color-charcoal)] text-[color:var(--color-off-white)] type-heading hover:bg-[color:var(--color-terracotta)] transition-colors"
             >
-              Check my date
+              Check availability
               <span className="w-6 h-px bg-current transition-all group-hover:w-10" aria-hidden />
             </a>
             <Link
@@ -721,7 +728,7 @@ export default function FamiliesPage() {
           href="#investment"
           className="px-5 py-3 bg-[color:var(--color-charcoal)] text-[color:var(--color-off-white)] type-heading hover:bg-[color:var(--color-terracotta)] transition-colors"
         >
-          Check my date
+          Check availability
         </a>
       </div>
       <div className="h-20 md:hidden" aria-hidden />
