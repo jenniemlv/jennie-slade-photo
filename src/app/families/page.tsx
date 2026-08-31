@@ -49,12 +49,20 @@ const DISPLAY_M = 'clamp(1.75rem, 3.5vw, 2.75rem)' // sub  ~28 -> 44
 const SERIF = 'var(--font-display)'
 
 // Booking now runs entirely through Pixifi (decided 2026-07-23; Cal.com retired).
-// One Pixifi Booking Page holds all three collections as services in a 3-column
-// layout, so every "Check availability" button points to this single URL. Pixifi
-// handles availability, contract e-sign, deposit, invoice, and reminder emails,
-// and shows its own confirmation page afterwards (no redirect back to us).
+// One Pixifi Booking Page holds all three collections as services. Pixifi handles
+// availability, contract e-sign, deposit, invoice, and reminder emails, and shows
+// its own confirmation page afterwards (no redirect back to us).
 const BOOKING_URL =
   'https://jenniesladephoto.studio-booking.com/booking/jenniesladefamily/'
+
+// Pixifi service IDs, read off the live booking page's markup (service_<id> /
+// addServiceToCartWithStaffMember('<id>')). Appending ?serviceID=<id> hides
+// Pixifi's own collection chooser and drops that one service straight into the
+// cart, so the choice made here on the pricing card is the choice that sticks.
+// Without it every card lands on the same generic chooser.
+// If Jennie rebuilds a service in Pixifi its ID changes — re-read them from the
+// booking page source and update here.
+const bookingUrlFor = (serviceId: string) => `${BOOKING_URL}?serviceID=${serviceId}`
 
 // Booking-flow microcopy. The Pixifi page is set to Auto-Booking, so the date
 // confirms instantly — the old "I confirm within one business day" promise is
@@ -66,6 +74,7 @@ const BOOKING_NOTE =
 const PACKAGES = [
   {
     name: 'Signature',
+    serviceId: '40947', // Pixifi service_40947
     bestFor: 'A focused session for small families and busy schedules.',
     outcome: 'Enough for a gallery wall grouping and holiday cards.',
     price: '$600',
@@ -75,6 +84,7 @@ const PACKAGES = [
   },
   {
     name: 'Editorial',
+    serviceId: '40948', // Pixifi service_40948
     bestFor: 'The full experience. Room to breathe, room to change outfits.',
     outcome: 'Enough wall art for a whole hallway, plus every candid.',
     price: '$795',
@@ -84,6 +94,7 @@ const PACKAGES = [
   },
   {
     name: 'Heirloom',
+    serviceId: '40949', // Pixifi service_40949
     bestFor: 'Milestone years, the whole extended crew, or the big framed piece.',
     outcome: 'The over-the-couch statement print and an album to keep.',
     price: '$995',
@@ -521,7 +532,7 @@ export default function FamiliesPage() {
                   </ul>
                   <div className="mt-8">
                     <a
-                      href={BOOKING_URL}
+                      href={bookingUrlFor(p.serviceId)}
                       className="type-heading border-b border-[color:var(--color-charcoal)] pb-1 hover:opacity-70 transition-opacity"
                     >
                       Check availability
