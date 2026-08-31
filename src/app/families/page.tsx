@@ -48,24 +48,24 @@ const DISPLAY_L = 'clamp(2.25rem, 5vw, 4rem)' //   H2   ~36 -> 64
 const DISPLAY_M = 'clamp(1.75rem, 3.5vw, 2.75rem)' // sub  ~28 -> 44
 const SERIF = 'var(--font-display)'
 
-// Cal.com — real-time availability + deposit, same as the seniors page.
-// Each collection has its own event type. CREATE THESE ON CAL.COM (mirroring
-// senior-*-session) or update the slugs to match what Jennie set up.
-const CAL_BASE = 'https://cal.com/jennie-slade-photo'
+// Booking now runs entirely through Pixifi (decided 2026-07-23; Cal.com retired).
+// One Pixifi Booking Page holds all three collections as services in a 3-column
+// layout, so every "Check availability" button points to this single URL. Pixifi
+// handles availability, contract e-sign, deposit, invoice, and reminder emails,
+// and shows its own confirmation page afterwards (no redirect back to us).
+const BOOKING_URL =
+  'https://jenniesladephoto.studio-booking.com/booking/jenniesladefamily/'
 
-// Cal.com events renamed + slugs confirmed live 2026-07-23. Cards link to the
-// matching event by name.
-//
-// STILL TO CONFIRM IN CAL:
-//   1. Prices — site shows $600/$795/$995; make sure the Cal events match.
-//   2. Payment — Cal collects nothing yet (Stripe deposit, or Zapier -> Pixifi).
-//      Until then, page copy must not claim a charge at booking.
-//   3. Durations + inclusion lines below are still from the old sheet for
-//      Signature + Editorial (Heirloom is confirmed). Verify them.
+// Booking-flow microcopy. The Pixifi page is set to Auto-Booking, so the date
+// confirms instantly — the old "I confirm within one business day" promise is
+// no longer true. Deliberately silent on *when* the deposit is charged so the
+// line stays accurate regardless of the Payment Terms template.
+const BOOKING_NOTE =
+  'Choose your collection and an open date. Your date is confirmed on the spot, and your contract and invoice arrive by email.'
+
 const PACKAGES = [
   {
     name: 'Signature',
-    cal: 'family-session-package-signature',
     bestFor: 'A focused session for small families and busy schedules.',
     outcome: 'Enough for a gallery wall grouping and holiday cards.',
     price: '$600',
@@ -75,7 +75,6 @@ const PACKAGES = [
   },
   {
     name: 'Editorial',
-    cal: 'family-session-editorial',
     bestFor: 'The full experience. Room to breathe, room to change outfits.',
     outcome: 'Enough wall art for a whole hallway, plus every candid.',
     price: '$795',
@@ -85,11 +84,9 @@ const PACKAGES = [
   },
   {
     name: 'Heirloom',
-    cal: 'family-session-heirloom',
     bestFor: 'Milestone years, the whole extended crew, or the big framed piece.',
     outcome: 'The over-the-couch statement print and an album to keep.',
     price: '$995',
-    // Confirmed against the live Cal event 2026-07-09.
     duration: '1.5 to 2 hours',
     lines: [
       '100+ edited images',
@@ -105,7 +102,7 @@ const EXPERIENCE = [
   {
     n: '01',
     title: 'Pick your date',
-    body: 'Choose your collection and an open date on my calendar. I confirm within one business day, then send your contract and invoice by email.',
+    body: BOOKING_NOTE,
   },
   {
     n: '02',
@@ -524,7 +521,7 @@ export default function FamiliesPage() {
                   </ul>
                   <div className="mt-8">
                     <a
-                      href={`${CAL_BASE}/${p.cal}`}
+                      href={BOOKING_URL}
                       className="type-heading border-b border-[color:var(--color-charcoal)] pb-1 hover:opacity-70 transition-opacity"
                     >
                       Check availability
@@ -557,9 +554,7 @@ export default function FamiliesPage() {
               72hr gallery $150
             </p>
             <p className="text-xs text-center text-[color:var(--color-gray)] mt-4">
-              Pick a collection to see live dates. Nothing is charged when you
-              book. I confirm your date, then send your contract and invoice by
-              email.
+              {BOOKING_NOTE}
             </p>
           </div>
         </ScrollFade>
@@ -642,8 +637,7 @@ export default function FamiliesPage() {
             </Link>
           </div>
           <p className="text-xs text-[color:var(--color-gray)] mt-6">
-            Live availability. Nothing is charged when you book. Your contract and
-            invoice follow by email.
+            {BOOKING_NOTE}
           </p>
         </div>
       </Section>
